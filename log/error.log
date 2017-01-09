@@ -1,0 +1,112 @@
+[Mon Jan 09 17:30:23.750348 2017] [:error] [pid 26946:tid 140655951083264] [client 122.176.184.36:51245] mod_wsgi (pid=26946): Target WSGI script '/var/www/api/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:30:23.750439 2017] [:error] [pid 26946:tid 140655951083264] [client 122.176.184.36:51245] mod_wsgi (pid=26946): Exception occurred processing WSGI script '/var/www/api/flaskapp.wsgi'.
+[Mon Jan 09 17:30:23.750463 2017] [:error] [pid 26946:tid 140655951083264] [client 122.176.184.36:51245] Traceback (most recent call last):
+[Mon Jan 09 17:30:23.750499 2017] [:error] [pid 26946:tid 140655951083264] [client 122.176.184.36:51245]   File "/var/www/api/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:30:23.750577 2017] [:error] [pid 26946:tid 140655951083264] [client 122.176.184.36:51245]     from api import app as application
+[Mon Jan 09 17:30:23.750609 2017] [:error] [pid 26946:tid 140655951083264] [client 122.176.184.36:51245] ImportError: No module named api
+[Mon Jan 09 17:33:32.677246 2017] [:error] [pid 27096:tid 139711167317760] [client 122.176.184.36:54266] Target WSGI script not found or unable to stat: /var/www/api/flaskapp.wsgi
+[Mon Jan 09 17:33:38.854261 2017] [:error] [pid 27097:tid 139711167317760] [client 122.176.184.36:54267] Target WSGI script not found or unable to stat: /var/www/api/flaskapp.wsgi
+[Mon Jan 09 17:33:42.382775 2017] [:error] [pid 27097:tid 139711158925056] [client 122.176.184.36:54267] Target WSGI script not found or unable to stat: /var/www/api/flaskapp.wsgi
+[Mon Jan 09 17:34:43.412443 2017] [:error] [pid 27225:tid 139775407286016] [client 122.176.184.36:55396] mod_wsgi (pid=27225): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:34:43.412518 2017] [:error] [pid 27225:tid 139775407286016] [client 122.176.184.36:55396] mod_wsgi (pid=27225): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:34:43.412542 2017] [:error] [pid 27225:tid 139775407286016] [client 122.176.184.36:55396] Traceback (most recent call last):
+[Mon Jan 09 17:34:43.412565 2017] [:error] [pid 27225:tid 139775407286016] [client 122.176.184.36:55396]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:34:43.412634 2017] [:error] [pid 27225:tid 139775407286016] [client 122.176.184.36:55396]     from api import app as application
+[Mon Jan 09 17:34:43.412656 2017] [:error] [pid 27225:tid 139775407286016] [client 122.176.184.36:55396] ImportError: No module named api
+[Mon Jan 09 17:38:05.602288 2017] [:error] [pid 27352:tid 140432218425088] [client 122.176.184.36:58903] mod_wsgi (pid=27352): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:38:05.602351 2017] [:error] [pid 27352:tid 140432218425088] [client 122.176.184.36:58903] mod_wsgi (pid=27352): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:38:05.602393 2017] [:error] [pid 27352:tid 140432218425088] [client 122.176.184.36:58903] Traceback (most recent call last):
+[Mon Jan 09 17:38:05.602420 2017] [:error] [pid 27352:tid 140432218425088] [client 122.176.184.36:58903]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:38:05.602502 2017] [:error] [pid 27352:tid 140432218425088] [client 122.176.184.36:58903]     from api import app as application
+[Mon Jan 09 17:38:05.602525 2017] [:error] [pid 27352:tid 140432218425088] [client 122.176.184.36:58903] ImportError: No module named api
+[Mon Jan 09 17:41:15.212319 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986] mod_wsgi (pid=27486): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:41:15.212387 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986] mod_wsgi (pid=27486): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:41:15.212420 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986] Traceback (most recent call last):
+[Mon Jan 09 17:41:15.212445 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:41:15.212554 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986]     from app import app as application
+[Mon Jan 09 17:41:15.212571 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986]   File "/var/www/api/app.py", line 2, in <module>
+[Mon Jan 09 17:41:15.212617 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986]     from flask_restful import Api
+[Mon Jan 09 17:41:15.212645 2017] [:error] [pid 27486:tid 139880952710912] [client 122.176.184.36:61986] ImportError: No module named flask_restful
+[Mon Jan 09 17:46:36.715689 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879] mod_wsgi (pid=27659): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:46:36.715761 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879] mod_wsgi (pid=27659): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:46:36.715797 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879] Traceback (most recent call last):
+[Mon Jan 09 17:46:36.715833 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:46:36.715919 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879]     from app import app as application
+[Mon Jan 09 17:46:36.715937 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879]   File "/var/www/api/app.py", line 2, in <module>
+[Mon Jan 09 17:46:36.715987 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879]     from flask_restful import Api
+[Mon Jan 09 17:46:36.716013 2017] [:error] [pid 27659:tid 140061022611200] [client 122.176.184.36:50879] ImportError: No module named flask_restful
+[Mon Jan 09 17:49:01.671945 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230] mod_wsgi (pid=27801): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:49:01.671979 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230] mod_wsgi (pid=27801): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:49:01.672009 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230] Traceback (most recent call last):
+[Mon Jan 09 17:49:01.672032 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:49:01.672080 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230]     from app import app as application
+[Mon Jan 09 17:49:01.672131 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230]   File "/var/www/api/app.py", line 3, in <module>
+[Mon Jan 09 17:49:01.672154 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230]     from flask.ext.cors import CORS
+[Mon Jan 09 17:49:01.672161 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230]   File "/usr/local/lib/python2.7/dist-packages/flask/exthook.py", line 110, in load_module
+[Mon Jan 09 17:49:01.672234 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230]     raise ImportError('No module named %s' % fullname)
+[Mon Jan 09 17:49:01.672256 2017] [:error] [pid 27801:tid 139663696107264] [client 122.176.184.36:53230] ImportError: No module named flask.ext.cors
+[Mon Jan 09 17:49:42.602277 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922] mod_wsgi (pid=27919): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:49:42.602313 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922] mod_wsgi (pid=27919): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:49:42.602343 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922] Traceback (most recent call last):
+[Mon Jan 09 17:49:42.602378 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:49:42.602440 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]     from app import app as application
+[Mon Jan 09 17:49:42.602451 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]   File "/var/www/api/app.py", line 5, in <module>
+[Mon Jan 09 17:49:42.602480 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]     from search import *
+[Mon Jan 09 17:49:42.602487 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]   File "/var/www/api/search/__init__.py", line 1, in <module>
+[Mon Jan 09 17:49:42.602515 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]     from test import *
+[Mon Jan 09 17:49:42.602523 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]   File "/var/www/api/search/test.py", line 1, in <module>
+[Mon Jan 09 17:49:42.602546 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922]     from restful import Resource
+[Mon Jan 09 17:49:42.602565 2017] [:error] [pid 27919:tid 139869727778560] [client 122.176.184.36:53922] ImportError: No module named restful
+[Mon Jan 09 17:50:59.968920 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176] mod_wsgi (pid=28052): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 17:50:59.968956 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176] mod_wsgi (pid=28052): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 17:50:59.968998 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176] Traceback (most recent call last):
+[Mon Jan 09 17:50:59.969026 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 17:50:59.969090 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]     from app import app as application
+[Mon Jan 09 17:50:59.969101 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]   File "/var/www/api/app.py", line 5, in <module>
+[Mon Jan 09 17:50:59.969118 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]     from search import *
+[Mon Jan 09 17:50:59.969125 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]   File "/var/www/api/search/__init__.py", line 1, in <module>
+[Mon Jan 09 17:50:59.969151 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]     from test import *
+[Mon Jan 09 17:50:59.969160 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]   File "/var/www/api/search/test.py", line 1, in <module>
+[Mon Jan 09 17:50:59.969184 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176]     from flask_restful import reqpars
+[Mon Jan 09 17:50:59.969206 2017] [:error] [pid 28052:tid 140307169531648] [client 122.176.184.36:55176] ImportError: cannot import name reqpars
+[Mon Jan 09 19:06:29.336819 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903] mod_wsgi (pid=28053): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 19:06:29.336896 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903] mod_wsgi (pid=28053): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 19:06:29.336945 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903] Traceback (most recent call last):
+[Mon Jan 09 19:06:29.336973 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 19:06:29.337048 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]     from app import app as application
+[Mon Jan 09 19:06:29.337070 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]   File "/var/www/api/app.py", line 5, in <module>
+[Mon Jan 09 19:06:29.337089 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]     from search import *
+[Mon Jan 09 19:06:29.337095 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]   File "/var/www/api/search/__init__.py", line 1, in <module>
+[Mon Jan 09 19:06:29.337122 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]     from test import *
+[Mon Jan 09 19:06:29.337130 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]   File "/var/www/api/search/test.py", line 1, in <module>
+[Mon Jan 09 19:06:29.337152 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903]     from flask_restful import reqpars
+[Mon Jan 09 19:06:29.337175 2017] [:error] [pid 28053:tid 140307169531648] [client 122.176.184.36:58903] ImportError: cannot import name reqpars
+[Mon Jan 09 19:10:36.619081 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950] mod_wsgi (pid=28319): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 19:10:36.619111 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950] mod_wsgi (pid=28319): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 19:10:36.619144 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950] Traceback (most recent call last):
+[Mon Jan 09 19:10:36.619167 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 19:10:36.619222 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]     from app import app as application
+[Mon Jan 09 19:10:36.619233 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]   File "/var/www/api/app.py", line 5, in <module>
+[Mon Jan 09 19:10:36.619249 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]     from search import *
+[Mon Jan 09 19:10:36.619255 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]   File "/var/www/api/search/__init__.py", line 1, in <module>
+[Mon Jan 09 19:10:36.619279 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]     from test import *
+[Mon Jan 09 19:10:36.619288 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]   File "/var/www/api/search/test.py", line 1, in <module>
+[Mon Jan 09 19:10:36.619310 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950]     class test(Resource):
+[Mon Jan 09 19:10:36.619330 2017] [:error] [pid 28319:tid 140188222408448] [client 122.176.184.36:62950] NameError: name 'Resource' is not defined
+[Mon Jan 09 19:11:55.890427 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230] mod_wsgi (pid=28461): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Mon Jan 09 19:11:55.890454 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230] mod_wsgi (pid=28461): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Mon Jan 09 19:11:55.890485 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230] Traceback (most recent call last):
+[Mon Jan 09 19:11:55.890509 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Mon Jan 09 19:11:55.890573 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]     from app import app as application
+[Mon Jan 09 19:11:55.890589 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]   File "/var/www/api/app.py", line 5, in <module>
+[Mon Jan 09 19:11:55.890609 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]     from search import *
+[Mon Jan 09 19:11:55.890616 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]   File "/var/www/api/search/__init__.py", line 1, in <module>
+[Mon Jan 09 19:11:55.890653 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]     from test import *
+[Mon Jan 09 19:11:55.890663 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]   File "/var/www/api/search/test.py", line 1, in <module>
+[Mon Jan 09 19:11:55.890686 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230]     class test(Resource):
+[Mon Jan 09 19:11:55.890706 2017] [:error] [pid 28461:tid 140650364262144] [client 122.176.184.36:64230] NameError: name 'Resource' is not defined
+[Mon Jan 09 19:14:54.659418 2017] [:error] [pid 28733:tid 140158380787456] [client 122.176.184.36:50709] Target WSGI script not found or unable to stat: /var/www/flaskapp.wsgitest
+[Mon Jan 09 19:14:57.077897 2017] [:error] [pid 28733:tid 140158372394752] [client 122.176.184.36:50709] Target WSGI script not found or unable to stat: /var/www/flaskapp.wsgitest
+[Mon Jan 09 19:17:25.441383 2017] [:error] [pid 28863:tid 140470596368128] [client 122.176.184.36:53187] Target WSGI script not found or unable to stat: /var/www/flaskapp.wsgitest
+[Mon Jan 09 19:17:28.062221 2017] [:error] [pid 28863:tid 140470587975424] [client 122.176.184.36:53187] Target WSGI script not found or unable to stat: /var/www/flaskapp.wsgitest
+[Mon Jan 09 19:17:46.946497 2017] [:error] [pid 28977:tid 139844918896384] [client 122.176.184.36:53542] Target WSGI script not found or unable to stat: /var/www/flaskapp.wsgitest
