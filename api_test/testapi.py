@@ -215,9 +215,9 @@ class testclass(Resource):
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     i = 0
-                    x = []
+                    x = {}
                     while i<_page_size:
-                        x.append(res['hits']['hits'][i]['_source']['projectId'])
+                        x.append({res['hits']['hits'][i]['_source']['projectId']:res['hits']['hits'][i]['_source']['projectId']})
                         i += 1
                     return x          
 
