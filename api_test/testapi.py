@@ -227,7 +227,8 @@ class testclass(Resource):
                         d.update({'rent': res['hits']['hits'][i]['_source']['rent']})
                         for key in res['hits']['hits'][i]['_source']['bhk']:
                             bhk.append(key)
-                        d.update({'bhks': bhk})
+                        fbhk = ', '.join(str(e) for e in bhk)
+                        d.update({'bhks': fbhk})
                         x.update({i:d})
                         i += 1
                     return x    
