@@ -217,7 +217,7 @@ class testclass(Resource):
                     i = 0
                     x = {}
                     while i<_page_size:
-                        x.append({res['hits']['hits'][i]['_source']['projectId']:res['hits']['hits'][i]['_source']['projectId']})
+                        x.update({res['hits']['hits'][i]['_source']['projectId']:res['hits']['hits'][i]['_source']['projectId']})
                         i += 1
                     return x          
 
