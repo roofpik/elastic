@@ -214,9 +214,8 @@ class testclass(Resource):
                                             i += 1
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
-                    i = _page_size
-                    return 'works'
-                    while i:
+                    i = _page_size - 1
+                    while i!=-1:
                         return res['hits']['hits'][i]['_source']['projectId']
                         i -= 1           
 
