@@ -225,12 +225,8 @@ class testclass(Resource):
                         d.update({'cover': res['hits']['hits'][i]['_source']['cover_pic']})
                         d.update({'area': res['hits']['hits'][i]['_source']['area']})
                         d.update({'rent': res['hits']['hits'][i]['_source']['rent']})
-                        j = 6
-                        while j:
-                            if(res['hits']['hits'][i]['_source']['rent'][str(j)]):
-                                return 'coming in'
-                                bhk.append(j)
-                                j -= 1
+                        for key in res['hits']['hits'][i]['_source']['bhk']:
+                            bhk.append(key)
                         d.update({'bhks': bhk})
                         x.update({i:d})
                         i += 1
