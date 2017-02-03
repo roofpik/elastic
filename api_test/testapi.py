@@ -218,7 +218,8 @@ class testclass(Resource):
                     x = []
                     while i!=-1:
                         x[i] = res['hits']['hits'][i]['_source']['projectId']
-                        i -= 1 
+                        i -= 1
+                    return 'works'
                     return x          
 
                 except:
