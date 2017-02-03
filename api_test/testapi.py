@@ -231,7 +231,7 @@ class testclass(Resource):
                         d.update({'bhks': fbhk})
                         x.update({i:d})
                         i += 1
-                    x.update({'records': es.count(index='live_index_1')})
+                    x.update({'records': es.count(index='live_index_1')['count']})
                     return x    
 
                 except:
