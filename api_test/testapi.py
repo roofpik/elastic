@@ -80,7 +80,19 @@ class testclass(Resource):
                     args = parser.parse_args()
                     _amenity = args['amenity']
                     if not _amenity:
-                            _amenity = ""                    
+                            _amenity = ""      
+
+                    parser.add_argument('page_start', type=int)
+                    args = parser.parse_args()
+                    _page_start = args['page_start']
+                    if not _page_start:
+                            _page_start = 0    
+
+                    parser.add_argument('page_size', type=int)
+                    args = parser.parse_args()
+                    _page_size = args['page_size']
+                    if not _page_size:
+                            _page_size = 10                  
 
                     query_builder = {}
                     query_builder['query'] = {}
@@ -201,7 +213,7 @@ class testclass(Resource):
                                             build_query_should("amenity."+l[i], true)
                                             i += 1
 
-                    res = es.search(index='ios1', doc_type='data', body=query_builder, from=5,size=5)
+                    res = es.search(index='ios1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     return res              
 
                 except:
