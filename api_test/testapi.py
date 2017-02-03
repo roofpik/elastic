@@ -201,7 +201,7 @@ class testclass(Resource):
                                             build_query_should("amenity."+l[i], true)
                                             i += 1
 
-                    res = es.search(index='ios1', doc_type='data', body=query_builder)
+                    res = es.search(index='ios1', doc_type='data', body=query_builder, from=5,size=5)
                     return res              
 
                 except:
