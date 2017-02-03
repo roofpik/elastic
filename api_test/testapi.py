@@ -218,6 +218,7 @@ class testclass(Resource):
                     x = {}
                     while i<_page_size:
                         d = {}
+                        return 'this'
                         d.update({'id':res['hits']['hits'][i]['_source']['projectId']})
                         d.update({'name':res['hits']['hits'][i]['_source']['details.name']})
                         d.update({'adddress':res['hits']['hits'][i]['_source']['address']})
