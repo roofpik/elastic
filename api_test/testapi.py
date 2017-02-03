@@ -217,10 +217,11 @@ class testclass(Resource):
                     i = 0
                     x = {}
                     while i<_page_size:
-                        x.update({res['hits']['hits'][i]['_source']['projectId']:{res['hits']['hits'][i]['_source']['projectId'],\
-                         res['hits']['hits'][i]['_source']['details.name']\
-                         res['hits']['hits'][i]['_source']['address']\
-                         res['hits']['hits'][i]['_source']['cover_pic']}})
+                        d = res['hits']['hits'][i]['_source']['projectId']
+                        x.update({d:res['hits']['hits'][i]['_source']['projectId']})
+                        x.update({d:res['hits']['hits'][i]['_source']['details.name']})
+                        x.update({d:res['hits']['hits'][i]['_source']['address']})
+                        x.update({d:res['hits']['hits'][i]['_source']['cover_pic']})
                         i += 1
                     return x          
 
