@@ -217,7 +217,7 @@ class testclass(Resource):
                     i = 0
                     x = []
                     while i<_page_size:
-                        x[i] = json.dumps(res['hits']['hits'][i]['_source']['projectId'])
+                        return json.dumps(res['hits']['hits'][i]['_source']['projectId'])
                         return 'no error here'
                         i += 1
                     return 'works'
