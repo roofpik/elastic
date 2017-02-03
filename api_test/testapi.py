@@ -214,7 +214,7 @@ class testclass(Resource):
                                             i += 1
 
                     res = es.search(index='ios1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
-                    return res              
+                    return res             
 
                 except:
                     pass
