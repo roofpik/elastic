@@ -216,18 +216,16 @@ class testclass(Resource):
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     i = 0
                     x = {}
-                    # while i<_page_size:
-                    #     d = {}
-                    #     d.update({'id':res['hits']['hits'][i]['_source']['projectId']})
-                    #     d.update({'name':res['hits']['hits'][i]['_source']['details.name']})
-                    #     d.update({'adddress':res['hits']['hits'][i]['_source']['address']})
-                    #     d.update({'cover':res['hits']['hits'][i]['_source']['cover_pic']})
-                    #     return 'this worked'
-                    #     return d
-                    #     x.update(d)
-                    #     i += 1
-                    # return x    
-                    return res      
+                    while i<_page_size:
+                        d = {}
+                        d.update({'id': res['hits']['hits'][i]['_source']['projectId']})
+                        # d.update({'name': res['hits']['hits'][i]['_source']['details.name']})
+                        # d.update({'adddress': res['hits']['hits'][i]['_source']['address']})
+                        # d.update({'cover': res['hits']['hits'][i]['_source']['cover_pic']})
+                        return d
+                        x.update(d)
+                        i += 1
+                    return x    
 
                 except:
                     pass
