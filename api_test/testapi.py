@@ -228,6 +228,7 @@ class testclass(Resource):
                         j = 6
                         while j:
                             if(res['hits']['hits'][i]['_source']['rent'][str(j)]):
+                                return 'coming in'
                                 bhk.append(j)
                                 j -= 1
                         d.update({'bhks': bhk})
