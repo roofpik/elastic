@@ -222,6 +222,7 @@ class testclass(Resource):
                         d.update('name': res['hits']['hits'][i]['_source']['details.name'])
                         d.update({'address': res['hits']['hits'][i]['_source']['address']})
                         d.update({'cover': res['hits']['hits'][i]['_source']['cover_pic']})
+                        return d
                         x.update({i:d})
                         i += 1
                     return x    
