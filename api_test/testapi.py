@@ -217,10 +217,8 @@ class testclass(Resource):
                     i = 0
                     x = []
                     while i<_page_size:
-                        x[0] = res['hits']['hits'][0]['_source']['projectId']
-                        return 'no error here'
+                        x.append(res['hits']['hits'][i]['_source']['projectId'])
                         i += 1
-                    return 'works'
                     return x          
 
                 except:
