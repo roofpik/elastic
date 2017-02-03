@@ -142,6 +142,9 @@ for x in data1:
 				propertyType[a] = True
 				d['propertyType'].update(propertyType)
 
+				#address
+				d['address'] = data['projectDetails']['address']['displayAddress']
+
 				#pushing in location
 				location = {}
 				location[k] = data['projectDetails']['address']['locations']['primary']['locationId']
@@ -154,7 +157,6 @@ for x in data1:
 				location.pop(k)
 				location[a] = True
 				d['location'].update(location)
-
 				
 				try:
 					for x in data['projectDetails']['address']['locations']['other']:
