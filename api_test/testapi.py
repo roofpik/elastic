@@ -216,6 +216,7 @@ class testclass(Resource):
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     i = 0
                     x = {}
+                    x.update({'records': es.count(index='live_index_1')['count']})
                     while i<_page_size:
                         bhk = []
                         d = {}
@@ -231,7 +232,6 @@ class testclass(Resource):
                         d.update({'bhks': fbhk})
                         x.update({i:d})
                         i += 1
-                    x.update({'records': es.count(index='live_index_1')['count']})
                     return x    
 
                 except:
