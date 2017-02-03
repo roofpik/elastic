@@ -217,6 +217,7 @@ class testclass(Resource):
                     i = 0
                     x = []
                     while i<_page_size:
+                        return 'no error here'
                         x[i] = res['hits']['hits'][i]['_source']['projectId']
                         i += 1
                     return 'works'
