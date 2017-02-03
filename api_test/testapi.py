@@ -227,7 +227,7 @@ class testclass(Resource):
                         d.update({'rent': res['hits']['hits'][i]['_source']['rent']})
                         j = 6
                         while j:
-                            if(res['hits']['hits'][i]['_source']['rent'][j]):
+                            if(res['hits']['hits'][i]['_source']['rent'][str(j)]):
                                 bhk.append(j)
                                 j -= 1
                         d.update({'bhks': bhk})
