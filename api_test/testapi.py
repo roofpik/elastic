@@ -171,7 +171,7 @@ class testclass(Resource):
                                     l = []
                                     i = 0
                                     while i!=count:
-                                            l[i] = _locationId.split('$')[i]
+                                            l.append(_locationId.split('$')[i])
                                             build_query_should("location."+l[i], true)
                                             i += 1
 
@@ -184,7 +184,7 @@ class testclass(Resource):
                                     l = []
                                     i = 0
                                     while i!=count:
-                                            l[i] = _propertyType.split('$')[i]
+                                            l.append(_propertyType.split('$')[i])
                                             build_query_should("propertyType."+l[i], true)
                                             i += 1
 
@@ -197,7 +197,7 @@ class testclass(Resource):
                                     l = []
                                     i = 0
                                     while i!=count:
-                                            l[i] = _amenity.split('$')[i]
+                                            l.append(_amenity.split('$')[i])
                                             build_query_should("amenity."+l[i], true)
                                             i += 1
 
