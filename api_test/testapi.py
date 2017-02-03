@@ -217,6 +217,7 @@ class testclass(Resource):
                     i = 0
                     x = {}
                     while i<_page_size:
+                        bhk = []
                         d = {}
                         d.update({'id': res['hits']['hits'][i]['_source']['projectId']})
                         d.update({'name': res['hits']['hits'][i]['_source']['details']['name']})
@@ -224,7 +225,12 @@ class testclass(Resource):
                         d.update({'cover': res['hits']['hits'][i]['_source']['cover_pic']})
                         d.update({'area': res['hits']['hits'][i]['_source']['area']})
                         d.update({'rent': res['hits']['hits'][i]['_source']['rent']})
-
+                        j = 6
+                        while j:
+                            if(res['hits']['hits'][i]['_source']['rent'][j]):
+                                bhk.append(j)
+                                j -= 1
+                        d.update({'bhks': bhk})
                         x.update({i:d})
                         i += 1
                     return x    
