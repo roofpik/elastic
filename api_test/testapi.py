@@ -218,8 +218,8 @@ class testclass(Resource):
                     x = {}
                     while i<_page_size:
                         d = {}
-                        d.update({'id': res['hits']['hits'][i]['_source']['projectId']})
-                        d.update({'name': res['hits']['hits'][i]['_source']['details.name']})
+                        d.update('id': res['hits']['hits'][i]['_source']['projectId'])
+                        d.update('name': res['hits']['hits'][i]['_source']['details.name'])
                         # d.update({'adddress': res['hits']['hits'][i]['_source']['address']})
                         # d.update({'cover': res['hits']['hits'][i]['_source']['cover_pic']})
                         x.update(d)
