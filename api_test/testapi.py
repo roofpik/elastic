@@ -12,9 +12,9 @@ true = True
 
 class testclass(Resource):
         def get(self):
-#		return 'check server'
                 try:
                         es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+
                         parser = reqparse.RequestParser()
                         parser.add_argument('style', type=str)
                         args = parser.parse_args()
@@ -33,7 +33,7 @@ class testclass(Resource):
                         _details_builder = args['details_builder']
                         if not _details_builder:
                                 _details_builder = ""
-			
+
                         parser.add_argument('area_min_range', type=str)
                         args = parser.parse_args()
                         _area_min_range = args['area_min_range']
@@ -81,7 +81,7 @@ class testclass(Resource):
                         _amenity = args['amenity']
                         if not _amenity:
                                 _amenity = ""                    
-#			return 'takes arguments'			
+
                         query_builder = {}
                         query_builder['query'] = {}
                         query_builder['query']['bool'] = {}
@@ -113,7 +113,6 @@ class testclass(Resource):
                                 i += 1
 
                         def build_query_should_range(m, lower, upper):
-#				return 'able to call range function'
                                 global j
                                 query_builder['query']['bool']['should'].append({})
                                 query_builder['query']['bool']['should'][j]['range'] = {}
@@ -128,21 +127,21 @@ class testclass(Resource):
                                 query_builder['sort'][k][m] = {}
                                 query_builder['sort'][k][m]['order'] = asc_or_dsc
                                 k+=1
-#			return 'works before function call'			
+
                         if(_style):
                                 build_query_must('style', _style)
-#			return 'calls first function'
+
                         if(_details_name):
                                 build_query_must("details.name", _details_name)
 
                         if(_details_builder):
                                 build_query_must("details.builder", _details_builder)
-#			return 'calls first 3 functions'
+
                         if(_area_min_range):
                                 a = _area_min_range.split('$')[0]
                                 b = _area_min_range.split('$')[1]
                                 build_query_should_range("area.min", a, b)
-#			return 'checking function for ranges'
+
                         if(_price_min_range):
                                 a = _price_min_range.split('$')[0]
                                 b = _price_min_range.split('$')[1]
@@ -157,41 +156,25 @@ class testclass(Resource):
                                 a = _price_max_range.split('$')[0]
                                 b = _price_max_range.split('$')[1]
                                 build_query_should_range("price.max", a, b)
-#			return 'check sorting function'
+
                         if(_sort_field):
                                 a = _sort_field.split('$')[0]
                                 b = _sort_field.split('$')[1]
                                 build_query_sort(a, b)
-#			return 'calls evrything except last 3 functions'
-#                        if(_locationId):
-#				return 'check 1'
- #                               count = _locationId.count('$')
-  #                              if(count==0):
-   #                                     build_query_should("location."+_locationId, true)
-#				return 'check 2'
- #                               else:
-  #                                      count += 1
-   #                                     l = []
-    #                                    i = 0
-     #                                   while i!=count:
-      #                                          l[i] = _locationId.split('$')[i]
-       #                                         build_query_should("location."+l[i], true)
-        #                                        i += 1
 
-			if(_locationId):
-				return 'arpit 1'
-                                #count = _locationId.count('$')
-                                #if(count==0):
-                                 #       build_query_should("location."+_locationId, true)
- #                               else:
-  #                                      count += 1
-   #                                     l = []
-    #                                    i = 0
-     #                                   while i!=count:
-      #                                          l[i] = _locationId.split('$')[i]
-       #                                         build_query_should("location."+l[i], true)
-        #                                        i += 1
-			return 'arpit'
+                        if(_locationId):
+                                count = _locationId.count('$')
+                                if(count==0):
+                                        build_query_should("location."+_locationId, true)
+                                else:
+                                        count += 1
+                                        l = []
+                                        i = 0
+                                        while i!=count:
+                                                l[i] = _locationId.split('$')[i]
+                                                build_query_should("location."+l[i], true)
+                                                i += 1
+
                         if(_propertyType):
                                 count = _propertyType.count('$')
                                 if(count==0):
@@ -217,12 +200,9 @@ class testclass(Resource):
                                                 l[i] = _amenity.split('$')[i]
                                                 build_query_should("amenity."+l[i], true)
                                                 i += 1
+
                         res = es.search(index='ti', doc_type='data', body=query_builder, size=5)
-                        return res                
-		except Exception:
-                        print str(Exception)
+                        return json.dumps(res)                
 
-
-
-
-
+                except:
+                        pass
