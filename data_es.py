@@ -63,16 +63,16 @@ for x in data1:
 						elif(a=='2'):
 							min_rent2.append(data['configurations'][k]['pricing']['rent']['min'])
 							temp[a].update({'min_price': int(min(min_rent2))})
-						if(a=='3'):
+						elif(a=='3'):
 							min_rent3.append(data['configurations'][k]['pricing']['rent']['min'])
 							temp[a].update({'min_price': int(min(min_rent3))})
-						if(a=='4'):
+						elif(a=='4'):
 							min_rent4.append(data['configurations'][k]['pricing']['rent']['min'])
 							temp[a].update({'min_price': int(min(min_rent4))})
-						if(a=='5'):
+						elif(a=='5'):
 							min_rent5.append(data['configurations'][k]['pricing']['rent']['min'])
 							temp[a].update({'min_price': int(min(min_rent5))})
-						if(a=='6'):
+						elif(a=='6'):
 							min_rent6.append(data['configurations'][k]['pricing']['rent']['min'])
 							temp[a].update({'min_price': int(min(min_rent6))})
 					price.append(json.dumps(data['configurations'][k]['pricing']['rent']['min']))
