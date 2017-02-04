@@ -7,6 +7,7 @@ from elasticsearch import Elasticsearch
 
 class testclass2(Resource):
         def get(self):
+        	try:
 			d = {}
 			d.update({'city1': 'Gurgaon'})
 			d.update({'city2': 'Faridabad'})
@@ -14,4 +15,6 @@ class testclass2(Resource):
 			d.update({'city4': 'Delhi'})
 			d.update({'city5': 'Ghaziabad'})
 			return d
+		except Exception:
+			print Exception
 
