@@ -101,43 +101,43 @@ class testclass(Resource):
                     query_builder['query']['bool']['should'] = []
                     query_builder['sort'] = []
                     
-                    def build_query_must(m, n):
+                    def build_query_must(field, value):
                             global i
                             query_builder['query']['bool']['must'].append({})
                             query_builder['query']['bool']['must'][i]['match'] = {}
-                            query_builder['query']['bool']['must'][i]['match'][m] = n
+                            query_builder['query']['bool']['must'][i]['match'][field] = value
                             i += 1
 
-                    def build_query_should(m, n):
+                    def build_query_should(field, value):
                             global j
                             query_builder['query']['bool']['should'].append({})
                             query_builder['query']['bool']['should'][j]['match'] = {}
-                            query_builder['query']['bool']['should'][j]['match'][m] = n
+                            query_builder['query']['bool']['should'][j]['match'][field] = value
                             j += 1
 
-                    def build_query_must_range(m, lower, upper):
+                    def build_query_must_range(field, lower, upper):
                             global i
                             query_builder['query']['bool']['must'].append({})
                             query_builder['query']['bool']['must'][i]['range'] = {}
-                            query_builder['query']['bool']['must'][i]['range'][m] = {}
-                            query_builder['query']['bool']['must'][i]['range'][m]['from'] = lower
-                            query_builder['query']['bool']['must'][i]['range'][m]['to'] = upper
+                            query_builder['query']['bool']['must'][i]['range'][field] = {}
+                            query_builder['query']['bool']['must'][i]['range'][field]['from'] = lower
+                            query_builder['query']['bool']['must'][i]['range'][field]['to'] = upper
                             i += 1
 
-                    def build_query_should_range(m, lower, upper):
+                    def build_query_should_range(field, lower, upper):
                             global j
                             query_builder['query']['bool']['should'].append({})
                             query_builder['query']['bool']['should'][j]['range'] = {}
-                            query_builder['query']['bool']['should'][j]['range'][m] = {}
-                            query_builder['query']['bool']['should'][j]['range'][m]['from'] = lower
-                            query_builder['query']['bool']['should'][j]['range'][m]['to'] = upper
+                            query_builder['query']['bool']['should'][j]['range'][field] = {}
+                            query_builder['query']['bool']['should'][j]['range'][field]['from'] = lower
+                            query_builder['query']['bool']['should'][j]['range'][field]['to'] = upper
                             j += 1
 
-                    def build_query_sort(m, asc_or_dsc):
+                    def build_query_sort(field, asc_or_dsc):
                             global k
                             query_builder['sort'].append({})
-                            query_builder['sort'][k][m] = {}
-                            query_builder['sort'][k][m]['order'] = asc_or_dsc
+                            query_builder['sort'][k][field] = {}
+                            query_builder['sort'][k][field]['order'] = asc_or_dsc
                             k+=1
 
                     if(_style):
@@ -150,40 +150,40 @@ class testclass(Resource):
                             build_query_must("details.builder", _details_builder)
 
                     if(_area_min_range):
-                            a = _area_min_range.split('$')[0]
-                            b = _area_min_range.split('$')[1]
-                            build_query_should_range("area.min", a, b)
+                            low = _area_min_range.split('$')[0]
+                            high = _area_min_range.split('$')[1]
+                            build_query_should_range("area.min", low, high)
 
                     if(_price_min_range):
-                            a = _price_min_range.split('$')[0]
-                            b = _price_min_range.split('$')[1]
-                            build_query_should_range("price.min", a, b)
+                            low = _price_min_range.split('$')[0]
+                            high = _price_min_range.split('$')[1]
+                            build_query_should_range("price.min", low, high)
 
                     if(_area_max_range):
-                            a = _area_max_range.split('$')[0]
-                            b = _area_max_range.split('$')[1]
-                            build_query_should_range("area.max", a, b)
+                            low = _area_max_range.split('$')[0]
+                            high = _area_max_range.split('$')[1]
+                            build_query_should_range("area.max", low, high)
 
                     if(_price_max_range):
-                            a = _price_max_range.split('$')[0]
-                            b = _price_max_range.split('$')[1]
-                            build_query_should_range("price.max", a, b)
+                            low = _price_max_range.split('$')[0]
+                            high = _price_max_range.split('$')[1]
+                            build_query_should_range("price.max", low, high)
 
                     if(_sort_field):
-                            a = _sort_field.split('$')[0]
-                            b = _sort_field.split('$')[1]
-                            build_query_sort(a, b)
+                            low = _sort_field.split('$')[0]
+                            high = _sort_field.split('$')[1]
+                            build_query_sort(low, high)
 
                     if(_locationId):
                             count = _locationId.count('$')
-                            if(count==0):
+                            if(count == 0):
                                     build_query_should("location."+_locationId, true)
                             else:
                                     count += 1
-                                    l = []
+                                    temp = []
                                     i = 0
                                     while i!=count:
-                                            l.append(_locationId.split('$')[i])
+                                            temp.append(_locationId.split('$')[i])
                                             build_query_should("location."+l[i], true)
                                             i += 1
 
@@ -193,10 +193,10 @@ class testclass(Resource):
                                     build_query_should("propertyType."+_propertyType, true)
                             else:
                                     count += 1
-                                    l = []
+                                    temp = []
                                     i = 0
                                     while i!=count:
-                                            l.append(_propertyType.split('$')[i])
+                                            temp.append(_propertyType.split('$')[i])
                                             build_query_should("propertyType."+l[i], true)
                                             i += 1
 
@@ -206,35 +206,35 @@ class testclass(Resource):
                                     build_query_should("amenity."+_amenity, true)
                             else:
                                     count += 1
-                                    l = []
+                                    temp = []
                                     i = 0
                                     while i!=count:
-                                            l.append(_amenity.split('$')[i])
+                                            temp.append(_amenity.split('$')[i])
                                             build_query_should("amenity."+l[i], true)
                                             i += 1
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
-                    i = 0
-                    x = {}
-                    d1= {}
-                    x.update({'records': es.count(index='live_index_1')['count']})
-                    while i<_page_size:
+                    index_num = 0
+                    final_res = {}
+                    temp_res = {}
+                    final_res.update({'records': es.count(index='live_index_1')['count']})
+                    while index_num<_page_size:
                         bhk = []
-                        d = {}
-                        d.update({'id': res['hits']['hits'][i]['_source']['projectId']})
-                        d.update({'name': res['hits']['hits'][i]['_source']['details']['name']})
-                        d.update({'address': res['hits']['hits'][i]['_source']['address']})
-                        d.update({'cover': res['hits']['hits'][i]['_source']['cover_pic']})
-                        d.update({'area': res['hits']['hits'][i]['_source']['area']})
-                        d.update({'rent': res['hits']['hits'][i]['_source']['rent']})
-                        for key in res['hits']['hits'][i]['_source']['bhk']:
+                        temp_temp_res = {}
+                        temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
+                        temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
+                        temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
+                        temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
+                        temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
+                        temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
+                        for key in res['hits']['hits'][index_num]['_source']['bhk']:
                             bhk.append(key)
                         fbhk = ', '.join(str(e) for e in bhk)
-                        d.update({'bhks': fbhk})
-                        d1.update({i:d})
+                        temp_temp_res.update({'bhks': fbhk})
+                        temp_res.update({i:temp_temp_res})
                         i += 1
-                    x.update({'details': d1})
-                    return x    
+                    final_res.update({'details': temp_res})
+                    return final_res    
 
                 except:
                     pass
