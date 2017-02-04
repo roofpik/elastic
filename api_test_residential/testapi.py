@@ -10,7 +10,7 @@ j = 0
 k = 0
 true = True
 
-class testclass(Resource):
+class residentialclass(Resource):
         def get(self):
                 try:
                     es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
