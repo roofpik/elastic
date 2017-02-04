@@ -203,14 +203,14 @@ class testclass(Resource):
                     if(_amenity):
                             count = _amenity.count('$')
                             if(count==0):
-                                    build_query_should("amenity."+_amenity, "Yes")
+                                    build_query_should("amenities."+_amenity, "Yes")
                             else:
                                     count += 1
                                     temp = []
                                     i = 0
                                     while i!=count:
                                             temp.append(_amenity.split('$')[i])
-                                            build_query_should("amenity."+temp[i], "Yes")
+                                            build_query_should("amenities."+temp[i], "Yes")
                                             i += 1
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
