@@ -213,8 +213,9 @@ class testclass(Resource):
                                             build_query_should("amenity."+l[i], true)
                                             i += 1
 
-                    res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     return 'works'
+
+                    res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     index_num = 0
                     final_res = {}
                     temp_res = {}
