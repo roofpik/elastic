@@ -214,10 +214,10 @@ class testclass(Resource):
                                             i += 1
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
+                    return 'works'
                     index_num = 0
                     final_res = {}
                     temp_res = {}
-                    return 'works'
                     final_res.update({'records': es.count(index='live_index_1')['count']})
                     while index_num<_page_size:
                         bhk = []
