@@ -184,7 +184,7 @@ class testclass(Resource):
                                     i = 0
                                     while i!=count:
                                             temp.append(_locationId.split('$')[i])
-                                            build_query_should("location."+l[i], true)
+                                            build_query_should("location."+temp[i], true)
                                             i += 1
 
                     if(_propertyType):
@@ -197,7 +197,7 @@ class testclass(Resource):
                                     i = 0
                                     while i!=count:
                                             temp.append(_propertyType.split('$')[i])
-                                            build_query_should("propertyType."+l[i], true)
+                                            build_query_should("propertyType."+temp[i], true)
                                             i += 1
 
                     if(_amenity):
@@ -210,7 +210,7 @@ class testclass(Resource):
                                     i = 0
                                     while i!=count:
                                             temp.append(_amenity.split('$')[i])
-                                            build_query_should("amenity."+l[i], true)
+                                            build_query_should("amenity."+temp[i], true)
                                             i += 1
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
