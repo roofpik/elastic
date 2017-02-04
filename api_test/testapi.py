@@ -217,8 +217,8 @@ class testclass(Resource):
                     index_num = 0
                     final_res = {}
                     temp_res = {}
+                    return 'works'
                     final_res.update({'records': es.count(index='live_index_1')['count']})
-                    return 'ok here'
                     while index_num<_page_size:
                         bhk = []
                         temp_temp_res = {}
