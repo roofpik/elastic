@@ -139,7 +139,7 @@ class testclass(Resource):
                             query_builder['sort'][k][field] = {}
                             query_builder['sort'][k][field]['order'] = asc_or_dsc
                             k+=1
-                    return 'no problem till here'
+                    #return 'no problem till here'
                     if(_style):
                             build_query_must('style', _style)
 
