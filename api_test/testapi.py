@@ -139,7 +139,7 @@ class testclass(Resource):
                             query_builder['sort'][k][field] = {}
                             query_builder['sort'][k][field]['order'] = asc_or_dsc
                             k+=1
-                    #return 'no problem till here'
+
                     if(_style):
                             build_query_must('style', _style)
 
@@ -212,7 +212,7 @@ class testclass(Resource):
                                             temp.append(_amenity.split('$')[i])
                                             build_query_should("amenity."+l[i], true)
                                             i += 1
-
+                    return 'no problem till here'
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     index_num = 0
                     final_res = {}
