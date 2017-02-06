@@ -34,29 +34,17 @@ class residentialclass(Resource):
                     if not _details_builder:
                             _details_builder = ""
 
-                    parser.add_argument('area_min_range', type=str)
+                    parser.add_argument('area_range', type=str)
                     args = parser.parse_args()
-                    _area_min_range = args['area_min_range']
-                    if not _area_min_range:
-                            _area_min_range = ""
+                    _area_range = args['area_range']
+                    if not _area_range:
+                            _area_range = ""
 
-                    parser.add_argument('area_max_range', type=str)
+                    parser.add_argument('price_range', type=str)
                     args = parser.parse_args()
-                    _area_max_range = args['area_max_range']
-                    if not _area_max_range:
-                            _area_max_range = ""
-
-                    parser.add_argument('price_min_range', type=str)
-                    args = parser.parse_args()
-                    _price_min_range = args['price_min_range']
-                    if not _price_min_range:
-                            _price_min_range = ""
-
-                    parser.add_argument('price_max_range', type=str)
-                    args = parser.parse_args()
-                    _price_max_range = args['price_max_range']
-                    if not _price_max_range:
-                            _price_max_range = ""
+                    _price_range = args['price_range']
+                    if not _price_range:
+                            _price_range = ""
 
                     parser.add_argument('sort_field', type=str)
                     args = parser.parse_args()
@@ -149,24 +137,16 @@ class residentialclass(Resource):
                     if(_details_builder):
                             build_query_must("details.builder", _details_builder)
 
-                    if(_area_min_range):
-                            low = _area_min_range.split('$')[0]
-                            high = _area_min_range.split('$')[1]
+                    if(_area_range):
+                            low = _area_range.split('$')[0]
+                            high = _area_range.split('$')[1]
                             build_query_should_range("area.min", low, high)
-
-                    if(_price_min_range):
-                            low = _price_min_range.split('$')[0]
-                            high = _price_min_range.split('$')[1]
-                            build_query_should_range("price.min", low, high)
-
-                    if(_area_max_range):
-                            low = _area_max_range.split('$')[0]
-                            high = _area_max_range.split('$')[1]
                             build_query_should_range("area.max", low, high)
 
-                    if(_price_max_range):
-                            low = _price_max_range.split('$')[0]
-                            high = _price_max_range.split('$')[1]
+                    if(_price_range):
+                            low = _price_range.split('$')[0]
+                            high = _price_range.split('$')[1]
+                            build_query_should_range("price.min", low, high)
                             build_query_should_range("price.max", low, high)
 
                     if(_sort_field):
