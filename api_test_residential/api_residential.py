@@ -270,5 +270,5 @@ class residentialclass(Resource):
 					final_res.update({'details': temp_res})
 					return final_res    
 
-				except:
-					pass
+				except Exception:
+					return Exception
