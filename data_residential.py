@@ -81,7 +81,7 @@ for x in data1:
 
 				#for max price
 					if(data['configurations'][k]['pricing']['rent']['max'] == 'NA'):
-						temp[a].update({'max_price': 1500000})
+						temp[a].update({'max_price': 150000})
 					else:
 						if(a=='1'):
 							max_rent1.append(data['configurations'][k]['pricing']['rent']['max'])
@@ -228,7 +228,7 @@ for x in data1:
 
 		#print json.dumps(d)
 
-			es.index(index='live_index_1', doc_type='data', id=data['projectId'], body=d)
+			es.index(index='index_res', doc_type='data', id=data['projectId'], body=d)
 			
 	except:
 		pass
