@@ -81,7 +81,7 @@ for x in data1:
 
 				#for max price
 					if(data['configurations'][k]['pricing']['rent']['max'] == 'NA'):
-						temp[a].update({'max_price': 150000})
+						temp[a].update({'max_price': 1500000})
 					else:
 						if(a=='1'):
 							max_rent1.append(data['configurations'][k]['pricing']['rent']['max'])
@@ -213,7 +213,7 @@ for x in data1:
 				#loop ends
 				#adding rent
 				price = remove_values_from_list(price, 0)
-				price = remove_values_from_list(price, 150000)
+				price = remove_values_from_list(price, 1500000)
 				d['rent'] = {}
 				d['rent']['min'] = int(min(price))
 				d['rent']['max'] = int(max(price))
