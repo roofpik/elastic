@@ -213,6 +213,7 @@ for x in data1:
 				#loop ends
 				#adding rent
 				price = remove_values_from_list(price, 0)
+				price = remove_values_from_list(price, 150000)
 				d['rent'] = {}
 				d['rent']['min'] = int(min(price))
 				d['rent']['max'] = int(max(price))
