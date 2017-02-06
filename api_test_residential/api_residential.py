@@ -212,7 +212,7 @@ class residentialclass(Resource):
 			if(_locationId):
 				count = _locationId.count('$')
 				if(count == 0):
-					query_builder = build_query_should("location."+_locationId, true, query_builder, j)
+					query_builder = build_query_should("location."+_locationId, True, query_builder, j)
 					j += 1
 				else:
 					count += 1
@@ -220,14 +220,14 @@ class residentialclass(Resource):
 					z = 0
 					while z!=count:
 						temp.append(_locationId.split('$')[z])
-						query_builder = build_query_should("location."+temp[z], true, query_builder, j)
+						query_builder = build_query_should("location."+temp[z], True, query_builder, j)
 						j += 1
 						z += 1
 
 			if(_propertyType):
 				count = _propertyType.count('$')
 				if(count==0):
-					query_builder = build_query_should("propertyType."+_propertyType, true, query_builder, j)
+					query_builder = build_query_should("propertyType."+_propertyType, True, query_builder, j)
 					j += 1
 				else:
 					count += 1
@@ -235,7 +235,7 @@ class residentialclass(Resource):
 					z = 0
 					while z!=count:
 						temp.append(_propertyType.split('$')[z])
-						query_builder = build_query_should("propertyType."+temp[z], true, query_builder, j)
+						query_builder = build_query_should("propertyType."+temp[z], True, query_builder, j)
 						j += 1
 						z += 1
 
