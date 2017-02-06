@@ -5,6 +5,12 @@ from flask_restful import reqparse
 from flask import *
 from elasticsearch import Elasticsearch
 
+def build_query_must(field, value, query_builder, i):
+	query_builder['query']['bool']['must'].append({})
+	query_builder['query']['bool']['must'][i]['match'] = {}
+	query_builder['query']['bool']['must'][i]['match'][field] = value
+	return query_builder
+
 class residentialclass(Resource):
 	def get(self):
 		try:
@@ -26,7 +32,7 @@ class residentialclass(Resource):
 			if not _style:
 					_style = ""
 			if(_style):
-				query_builder = build_query_must("style", _style, query_builder)
+				query_builder = build_query_must("style", _style, query_builder, i)
 				i+=1
 			return query_builder
 			res = es.search(index='index_res', doc_type='data', body=query_builder)
@@ -34,9 +40,3 @@ class residentialclass(Resource):
 
 		except Exception:
 			return Exception
-
-def build_query_must(field, value, query_builder):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['match'] = {}
-	query_builder['query']['bool']['must'][i]['match'][field] = value
-	return query_builder
