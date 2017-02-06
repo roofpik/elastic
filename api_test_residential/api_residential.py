@@ -254,8 +254,9 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 	
-			return query_builder
+#			return query_builder
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
+			return res
 			index_num = 0
 			final_res = {}
 			temp_res = {}
