@@ -182,15 +182,16 @@ class residentialclass(Resource):
                     if(_bhk):
                             count = _bhk.count('$')
                             if(count == 0):
-                                    build_query_exists("bhk."+_bhk)
+                                build_query_exists("bhk."+_bhk)
                             else:
-                                    count += 1
-                                    temp = []
-                                    z = 0
-                                    while z!=count:
-                                            temp.append(_bhk.split('$')[z])
-                                            build_query_should("bhk."+temp[z])
-                                            z += 1
+                                count += 1
+                                temp = []
+                                z = 0
+                                while z!=count:
+                                        temp.append(_bhk.split('$')[z])
+                                        print z
+                                        build_query_exists("bhk."+temp[z])
+                                        z += 1
 
                     if(_locationId):
                             count = _locationId.count('$')
