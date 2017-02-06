@@ -32,17 +32,7 @@ class residentialclass(Resource):
 							i += 1
 
 					if(_style):
-							count = _style.count('$')
-							if(count == 0):
-									build_query_must("style", _style)
-							else:
-									count += 1
-									temp = []
-									z = 0
-									while z!=count:
-											temp.append(_style.split('$')[z])
-											build_query_must("style", temp[z])
-											z += 1
+							build_query_must("style", _style)
 
 					#return query_builder
 					res = es.search(index='index_res', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
