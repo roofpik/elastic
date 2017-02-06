@@ -136,7 +136,6 @@ class residentialclass(Resource):
 
 					def build_query_exists(field):
 							global i
-							return field
 							query_builder['query']['bool']['must'].append({})
 							query_builder['query']['bool']['must'][i]['constant_score'] = {}
 							query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
@@ -179,7 +178,7 @@ class residentialclass(Resource):
 							low = _sort_field.split('$')[0]
 							high = _sort_field.split('$')[1]
 							build_query_sort(low, high)
-					
+					return'updated'
 					if(_bhk):
 							count = _bhk.count('$')
 							if(count == 0):
