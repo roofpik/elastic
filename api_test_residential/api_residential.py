@@ -141,7 +141,6 @@ class residentialclass(Resource):
 							query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
 							query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
 							query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
-							return 'building'
 							i += 1
 
 					if(_style):
