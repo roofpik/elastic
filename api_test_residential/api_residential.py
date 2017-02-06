@@ -139,7 +139,8 @@ class residentialclass(Resource):
                             query_builder['query']['bool']['must'].append({})
                             query_builder['query']['bool']['must'][i]['constant_score'] = {}
                             query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
-                            query_builder['query']['bool']['must'][i]['constant_score']['filter']['field'] = field
+                            query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
+                            query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
                             i += 1
 
                     if(_style):
@@ -149,11 +150,11 @@ class residentialclass(Resource):
                             else:
                                     count += 1
                                     temp = []
-                                    i = 0
-                                    while i!=count:
-                                            temp.append(_style.split('$')[i])
-                                            build_query_must("style", temp[i])
-                                            i += 1
+                                    z = 0
+                                    while z!=count:
+                                            temp.append(_style.split('$')[z])
+                                            build_query_must("style", temp[z])
+                                            z += 1
 
                     if(_details_name):
                             build_query_must("details.name", _details_name)
@@ -181,15 +182,15 @@ class residentialclass(Resource):
                     if(_bhk):
                             count = _bhk.count('$')
                             if(count == 0):
-                                    build_query_exists("bhk."+int(_bhk))
+                                    build_query_exists("bhk."+_bhk)
                             else:
                                     count += 1
                                     temp = []
-                                    i = 0
-                                    while i!=count:
-                                            temp.append(_bhk.split('$')[i])
-                                            build_query_should("bhk."+int(temp[i]))
-                                            i += 1
+                                    z = 0
+                                    while z!=count:
+                                            temp.append(_bhk.split('$')[z])
+                                            build_query_should("bhk."+temp[z])
+                                            z += 1
 
                     if(_locationId):
                             count = _locationId.count('$')
@@ -198,11 +199,11 @@ class residentialclass(Resource):
                             else:
                                     count += 1
                                     temp = []
-                                    i = 0
-                                    while i!=count:
-                                            temp.append(_locationId.split('$')[i])
-                                            build_query_should("location."+temp[i], true)
-                                            i += 1
+                                    z = 0
+                                    while z!=count:
+                                            temp.append(_locationId.split('$')[z])
+                                            build_query_should("location."+temp[z], true)
+                                            z += 1
 
                     if(_propertyType):
                             count = _propertyType.count('$')
@@ -211,11 +212,11 @@ class residentialclass(Resource):
                             else:
                                     count += 1
                                     temp = []
-                                    i = 0
-                                    while i!=count:
-                                            temp.append(_propertyType.split('$')[i])
-                                            build_query_should("propertyType."+temp[i], true)
-                                            i += 1
+                                    z = 0
+                                    while z!=count:
+                                            temp.append(_propertyType.split('$')[z])
+                                            build_query_should("propertyType."+temp[z], true)
+                                            z += 1
 
                     if(_amenity):
                             count = _amenity.count('$')
@@ -224,11 +225,11 @@ class residentialclass(Resource):
                             else:
                                     count += 1
                                     temp = []
-                                    i = 0
-                                    while i!=count:
-                                            temp.append(_amenity.split('$')[i])
-                                            build_query_should("amenities."+temp[i], "Yes")
-                                            i += 1
+                                    z = 0
+                                    while z!=count:
+                                            temp.append(_amenity.split('$')[z])
+                                            build_query_should("amenities."+temp[z], "Yes")
+                                            z += 1
 
                     res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
                     index_num = 0
