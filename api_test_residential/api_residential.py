@@ -147,15 +147,15 @@ class residentialclass(Resource):
 							global j
 							query_builder['query']['bool']['must'].append({})
 							query_builder['query']['bool']['must'][j]['bool'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'] = []
-							query_builder['query']['bool']['must'][j]['bool']['should'].append({})
-							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min']['gte'] = lower
-							query_builder['query']['bool']['must'][j]['bool']['should'].append({})
-							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max']['lte'] = upper
+							query_builder['query']['bool']['must'][j]['bool']['must'] = []
+							query_builder['query']['bool']['must'][j]['bool']['must'].append({})
+							query_builder['query']['bool']['must'][j]['bool']['must'][0]['range'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['must'][0]['range']['rent.min'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['must'][0]['range']['rent.min']['gte'] = lower
+							query_builder['query']['bool']['must'][j]['bool']['must'].append({})
+							query_builder['query']['bool']['must'][j]['bool']['must'][1]['range'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['must'][1]['range']['rent.max'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['must'][1]['range']['rent.max']['lte'] = upper
 							j += 1
 
 					if(_style):
