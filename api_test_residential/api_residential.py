@@ -244,30 +244,31 @@ class residentialclass(Resource):
 											temp.append(_amenity.split('$')[z])
 											build_query_should("amenities."+temp[z], "Yes")
 											z += 1
-					return query_builder
+
+					return query_builder			
 					res = es.search(index='live_index_1', doc_type='data', body=query_builder)
-					# index_num = 0
-					# final_res = {}
-					# temp_res = {}
-					# final_res.update({'records': es.count(index='live_index_1')['count']})
-					# final_res.update({'hits': res['hits']['total']})
-					# while index_num<_page_size:
-					# 	bhk = []
-					# 	temp_temp_res = {}
-					# 	temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
-					# 	temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
-					# 	temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
-					# 	temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
-					# 	temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
-					# 	temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
-					# 	for key in res['hits']['hits'][index_num]['_source']['bhk']:
-					# 		bhk.append(key)
-					# 	bhk.sort()
-					# 	fbhk = ', '.join(str(e) for e in bhk)
-					# 	temp_temp_res.update({'bhks': fbhk})
-					# 	temp_res.update({index_num : temp_temp_res})
-					# 	index_num += 1
-					# final_res.update({'details': temp_res})
+					index_num = 0
+					final_res = {}
+					temp_res = {}
+					final_res.update({'records': es.count(index='live_index_1')['count']})
+					final_res.update({'hits': res['hits']['total']})
+					while index_num<_page_size:
+						bhk = []
+						temp_temp_res = {}
+						temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
+						temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
+						temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
+						temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
+						temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
+						temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
+						for key in res['hits']['hits'][index_num]['_source']['bhk']:
+							bhk.append(key)
+						bhk.sort()
+						fbhk = ', '.join(str(e) for e in bhk)
+						temp_temp_res.update({'bhks': fbhk})
+						temp_res.update({index_num : temp_temp_res})
+						index_num += 1
+					final_res.update({'details': temp_res})
 					return res    
 
 				except Exception:
