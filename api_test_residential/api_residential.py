@@ -245,7 +245,7 @@ class residentialclass(Resource):
 											build_query_should("amenities."+temp[z], "Yes")
 											z += 1
 
-					return query_builder			
+					#return query_builder			
 					res = es.search(index='live_index_1', doc_type='data', body=query_builder)
 					index_num = 0
 					final_res = {}
