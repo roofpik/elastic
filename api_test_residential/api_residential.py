@@ -52,6 +52,12 @@ class residentialclass(Resource):
                     if not _sort_field:
                             _sort_field = ""
 
+                    parser.add_argument('bhk', type=int)
+                    args = parser.parse_args()
+                    _bhk = args['bhk']
+                    if not _bhk:
+                            _bhk = ""
+
                     parser.add_argument('locationId', type=str)
                     args = parser.parse_args()
                     _locationId = args['locationId']
@@ -128,8 +134,26 @@ class residentialclass(Resource):
                             query_builder['sort'][k][field]['order'] = asc_or_dsc
                             k+=1
 
+                    def build_query_exists(field):
+                            global i
+                            query_builder['query']['bool']['must'].append({})
+                            query_builder['query']['bool']['must'][i]['constant_score'] = {}
+                            query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
+                            query_builder['query']['bool']['must'][i]['constant_score']['filter']['field'] = field
+                            i += 1
+
                     if(_style):
-                            build_query_must('style', _style)
+                            count = _style.count('$')
+                            if(count == 0):
+                                    build_query_must("style", _style)
+                            else:
+                                    count += 1
+                                    temp = []
+                                    i = 0
+                                    while i!=count:
+                                            temp.append(_style.split('$')[i])
+                                            build_query_must("style", temp[i])
+                                            i += 1
 
                     if(_details_name):
                             build_query_must("details.name", _details_name)
@@ -153,6 +177,19 @@ class residentialclass(Resource):
                             low = _sort_field.split('$')[0]
                             high = _sort_field.split('$')[1]
                             build_query_sort(low, high)
+                    
+                    if(_bhk):
+                            count = _bhk.count('$')
+                            if(count == 0):
+                                    build_query_exists("bhk."+_bhk)
+                            else:
+                                    count += 1
+                                    temp = []
+                                    i = 0
+                                    while i!=count:
+                                            temp.append(_bhk.split('$')[i])
+                                            build_query_should("bhk."+temp[i])
+                                            i += 1
 
                     if(_locationId):
                             count = _locationId.count('$')
