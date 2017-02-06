@@ -151,13 +151,11 @@ class residentialclass(Resource):
 							query_builder['query']['bool']['must'][j]['bool']['should'].append({})
 							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range'] = {}
 							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min']['from'] = lower
-							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min']['to'] = upper
+							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min']['gte'] = lower
 							query_builder['query']['bool']['must'][j]['bool']['should'].append({})
 							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range'] = {}
 							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max'] = {}
-							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max']['from'] = lower
-							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max']['to'] = upper
+							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max']['lte'] = upper
 							j += 1
 
 					if(_style):
