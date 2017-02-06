@@ -269,7 +269,7 @@ class residentialclass(Resource):
 						temp_res.update({index_num : temp_temp_res})
 						index_num += 1
 					final_res.update({'details': temp_res})
-					return res    
+					return final_res    
 
 				except Exception:
 					return Exception
