@@ -15,32 +15,145 @@ class residentialclass(Resource):
 
 					es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
-					# #return query_builder
-					# res = es.search(index='index_res', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
-					# index_num = 0
-					# final_res = {}
-					# temp_res = {}
-					# final_res.update({'records': es.count(index='index_res')['count']})
-					# final_res.update({'hits': res['hits']['total']})
-					# while index_num<_page_size:
-					# 	bhk = []
-					# 	temp_temp_res = {}
-					# 	temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
-					# 	temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
-					# 	temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
-					# 	temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
-					# 	temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
-					# 	temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
-					# 	for key in res['hits']['hits'][index_num]['_source']['bhk']:
-					# 		bhk.append(key)
-					# 	bhk.sort()
-					# 	fbhk = ', '.join(str(e) for e in bhk)
-					# 	temp_temp_res.update({'bhks': fbhk})
-					# 	temp_res.update({index_num : temp_temp_res})
-					# 	index_num += 1
-					# final_res.update({'details': temp_res})
-#					return final_res   
-					return 'works' 
+					query_builder = {}
+					query_builder['query'] = {}
+					query_builder['query']['bool'] = {}
+					query_builder['query']['bool']['must'] = []
+					query_builder['query']['bool']['should'] = []
+					query_builder['sort'] = []					
+
+
+					parser = reqparse.RequestParser()
+					parser.add_argument('style', type=str)
+					args = parser.parse_args()
+					_style = args['style']
+					if not _style:
+							_style = ""
+
+					parser.add_argument('details_name', type=str)
+					args = parser.parse_args()
+					_details_name = args['details_name']
+					if not _details_name:
+							_details_name = ""
+
+					parser.add_argument('details_builder', type=str)
+					args = parser.parse_args()
+					_details_builder = args['details_builder']
+					if not _details_builder:
+							_details_builder = ""
+
+					parser.add_argument('area_range', type=str)
+					args = parser.parse_args()
+					_area_range = args['area_range']
+					if not _area_range:
+							_area_range = ""
+
+					parser.add_argument('price_range', type=str)
+					args = parser.parse_args()
+					_price_range = args['price_range']
+					if not _price_range:
+							_price_range = ""
+
+					parser.add_argument('sort_field', type=str)
+					args = parser.parse_args()
+					_sort_field = args['sort_field']
+					if not _sort_field:
+							_sort_field = ""
+
+					parser.add_argument('bhk', type=str)
+					args = parser.parse_args()
+					_bhk = args['bhk']
+					if not _bhk:
+							_bhk = ""
+
+					parser.add_argument('locationId', type=str)
+					args = parser.parse_args()
+					_locationId = args['locationId']
+					if not _locationId:
+							_locationId = ""
+
+					parser.add_argument('propertyType', type=str)
+					args = parser.parse_args()
+					_propertyType = args['propertyType']
+					if not _propertyType:
+							_propertyType = ""
+
+					parser.add_argument('amenity', type=str)
+					args = parser.parse_args()
+					_amenity = args['amenity']
+					if not _amenity:
+							_amenity = ""      
+
+					parser.add_argument('page_start', type=int)
+					args = parser.parse_args()
+					_page_start = args['page_start']
+					if not _page_start:
+							_page_start = 0    
+
+					parser.add_argument('page_size', type=int)
+					args = parser.parse_args()
+					_page_size = args['page_size']
+					if not _page_size:
+							_page_size = 10  
+
+
+					def build_query_must(field, value):
+							global i
+							query_builder['query']['bool']['must'].append({})
+							query_builder['query']['bool']['must'][i]['match'] = {}
+							query_builder['query']['bool']['must'][i]['match'][field] = value
+							i += 1
+
+
+
+					if(_style):
+							build_query_must("style", _style)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					#return query_builder
+					res = es.search(index='index_res', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
+					index_num = 0
+					final_res = {}
+					temp_res = {}
+					final_res.update({'records': es.count(index='index_res')['count']})
+					final_res.update({'hits': res['hits']['total']})
+					while index_num<_page_size:
+						bhk = []
+						temp_temp_res = {}
+						temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
+						temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
+						temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
+						temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
+						temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
+						temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
+						for key in res['hits']['hits'][index_num]['_source']['bhk']:
+							bhk.append(key)
+						bhk.sort()
+						fbhk = ', '.join(str(e) for e in bhk)
+						temp_temp_res.update({'bhks': fbhk})
+						temp_res.update({index_num : temp_temp_res})
+						index_num += 1
+					final_res.update({'details': temp_res})
+					return final_res   
+
 
 				except Exception:
 					return Exception
