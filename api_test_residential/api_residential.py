@@ -143,6 +143,21 @@ class residentialclass(Resource):
 							query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
 							i += 1
 
+					def build_query_price(lower, upper):
+							global j
+							query_builder['query']['bool']['should'].append({})
+							query_builder['query']['bool']['should'][j]['bool'] = {}
+							query_builder['query']['bool']['should'][j]['bool']['must'] = []
+							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
+							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min'] = {}
+							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['from'] = lower
+							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['to'] = upper
+							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
+							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max'] = {}
+							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['from'] = lower
+							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['to'] = upper
+							j += 1
+
 					if(_style):
 							count = _style.count('$')
 							if(count == 0):
@@ -171,8 +186,7 @@ class residentialclass(Resource):
 					if(_price_range):
 							low = _price_range.split('$')[0]
 							high = _price_range.split('$')[1]
-							build_query_should_range("rent.min", low, low)
-							build_query_should_range("rent.max", high, high)
+							build_query_price(low, high)
 
 					if(_sort_field):
 							low = _sort_field.split('$')[0]
