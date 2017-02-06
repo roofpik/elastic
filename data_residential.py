@@ -81,7 +81,7 @@ for x in data1:
 
 				#for max price
 					if(data['configurations'][k]['pricing']['rent']['max'] == 'NA'):
-						temp[a].update({'max_price': 15000})
+						temp[a].update({'max_price': 150000})
 					else:
 						if(a=='1'):
 							max_rent1.append(data['configurations'][k]['pricing']['rent']['max'])
