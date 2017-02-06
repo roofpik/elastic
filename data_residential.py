@@ -228,7 +228,7 @@ for x in data1:
 
 		#print json.dumps(d)
 
-			es.index(index='live_index_1', doc_type='data', id=data['projectId'], body=d)
+			es.index(index='index_res', doc_type='data', id=data['projectId'], body=d)
 			
 	except:
 		pass
