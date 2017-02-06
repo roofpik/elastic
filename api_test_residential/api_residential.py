@@ -172,7 +172,7 @@ class residentialclass(Resource):
 							low = _price_range.split('$')[0]
 							high = _price_range.split('$')[1]
 							build_query_must_range("rent.min", low, high)
-							build_query_must_range("rent.max", low, high)
+							build_query_should_range("rent.max", low, high)
 
 					if(_sort_field):
 							low = _sort_field.split('$')[0]
