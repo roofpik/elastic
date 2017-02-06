@@ -145,17 +145,19 @@ class residentialclass(Resource):
 
 					def build_query_price(lower, upper):
 							global j
-							query_builder['query']['bool']['should'].append({})
-							query_builder['query']['bool']['should'][j]['bool'] = {}
-							query_builder['query']['bool']['should'][j]['bool']['must'] = []
-							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
-							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min'] = {}
-							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['from'] = lower
-							query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['to'] = upper
-							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
-							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max'] = {}
-							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['from'] = lower
-							query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['to'] = upper
+							query_builder['query']['bool']['must'].append({})
+							query_builder['query']['bool']['must'][j]['bool'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['should'] = []
+							query_builder['query']['bool']['must'][j]['bool']['should'].append({})
+							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min']['from'] = lower
+							query_builder['query']['bool']['must'][j]['bool']['should'][0]['range']['rent.min']['to'] = upper
+							query_builder['query']['bool']['must'][j]['bool']['should'].append({})
+							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max'] = {}
+							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max']['from'] = lower
+							query_builder['query']['bool']['must'][j]['bool']['should'][1]['range']['rent.max']['to'] = upper
 							j += 1
 
 					if(_style):
