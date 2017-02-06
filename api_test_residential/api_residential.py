@@ -52,7 +52,7 @@ class residentialclass(Resource):
                     if not _sort_field:
                             _sort_field = ""
 
-                    parser.add_argument('bhk', type=int)
+                    parser.add_argument('bhk', type=str)
                     args = parser.parse_args()
                     _bhk = args['bhk']
                     if not _bhk:
@@ -181,14 +181,14 @@ class residentialclass(Resource):
                     if(_bhk):
                             count = _bhk.count('$')
                             if(count == 0):
-                                    build_query_exists("bhk."+_bhk)
+                                    build_query_exists("bhk."+int(_bhk))
                             else:
                                     count += 1
                                     temp = []
                                     i = 0
                                     while i!=count:
                                             temp.append(_bhk.split('$')[i])
-                                            build_query_should("bhk."+temp[i])
+                                            build_query_should("bhk."+int(temp[i]))
                                             i += 1
 
                     if(_locationId):
