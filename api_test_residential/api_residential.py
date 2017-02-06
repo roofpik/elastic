@@ -244,7 +244,7 @@ class residentialclass(Resource):
 											temp.append(_amenity.split('$')[z])
 											build_query_should("amenities."+temp[z], "Yes")
 											z += 1
-
+					return query_builder
 					res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 					index_num = 0
 					final_res = {}
