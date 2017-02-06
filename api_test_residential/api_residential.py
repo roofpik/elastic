@@ -254,7 +254,7 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 	
-			return query_builder
+			#return query_builder
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 			index_num = 0
 			final_res = {}
@@ -273,6 +273,7 @@ class residentialclass(Resource):
 				for key in res['hits']['hits'][index_num]['_source']['bhk']:
 					bhk.append(key)
 				bhk.sort()
+				return bhk
 				fbhk = ', '.join(str(e) for e in bhk)
 				temp_temp_res.update({'bhks': fbhk})
 				temp_res.update({index_num : temp_temp_res})
