@@ -19,7 +19,7 @@ def exception(func):
 class Resource(BaseResource):
 	method_decorators = [exception, ]
 
-	@property
-	def conn(self):
-		es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
-		return es
+	# @property
+	# def conn(self):
+	# 	es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+	# 	return es
