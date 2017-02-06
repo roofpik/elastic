@@ -175,24 +175,24 @@ class residentialclass(Resource):
 				i += 1
 
 			if(_area_range):
-					low = _area_range.split('$')[0]
-					high = _area_range.split('$')[1]
-					query_builder = build_query_should_range("area.min", low, high, query_builder, j)
-					j += 1
-					query_builder = build_query_should_range("area.max", low, high, query_builder, j)
-					j += 1
+				low = _area_range.split('$')[0]
+				high = _area_range.split('$')[1]
+				query_builder = build_query_should_range("area.min", low, high, query_builder, j)
+				j += 1
+				query_builder = build_query_should_range("area.max", low, high, query_builder, j)
+				j += 1
 
 			if(_price_range):
-					low = _price_range.split('$')[0]
-					high = _price_range.split('$')[1]
-					query_builder = build_query_price(low, high, query_builder, j)
-					j += 1
+				low = _price_range.split('$')[0]
+				high = _price_range.split('$')[1]
+				query_builder = build_query_price(low, high, query_builder, j)
+				j += 1
 
 			if(_sort_field):
-					low = _sort_field.split('$')[0]
-					high = _sort_field.split('$')[1]
-					query_builder = build_query_sort(low, high, query_builder, k)
-					k += 1
+				low = _sort_field.split('$')[0]
+				high = _sort_field.split('$')[1]
+				query_builder = build_query_sort(low, high, query_builder, k)
+				k += 1
 
 			if(_bhk):
 				count = _bhk.count('$')
