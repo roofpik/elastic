@@ -136,6 +136,7 @@ class residentialclass(Resource):
 
 					def build_query_exists(field):
 							global i
+							return field
 							query_builder['query']['bool']['must'].append({})
 							query_builder['query']['bool']['must'][i]['constant_score'] = {}
 							query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
@@ -189,7 +190,6 @@ class residentialclass(Resource):
 								z = 0
 								while z!=count:
 										temp.append(_bhk.split('$')[z])
-										print z
 										build_query_exists("bhk."+temp[z])
 										z += 1
 
