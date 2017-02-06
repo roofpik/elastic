@@ -29,15 +29,19 @@ class residentialclass(Resource):
 					if not _style:
 							_style = ""
 
-					def build_query_must(field, value):
-							global i
-							query_builder['query']['bool']['must'].append({})
-							query_builder['query']['bool']['must'][i]['match'] = {}
-							query_builder['query']['bool']['must'][i]['match'][field] = value
-							i += 1
+					# def build_query_must(field, value):
+					# 		global i
+					# 		query_builder['query']['bool']['must'].append({})
+					# 		query_builder['query']['bool']['must'][i]['match'] = {}
+					# 		query_builder['query']['bool']['must'][i]['match'][field] = value
+					# 		i += 1
 
-					if(_style):
-							build_query_must("style", _style)
+					# if(_style):
+					# 		build_query_must("style", _style)
+
+					query_builder['query']['bool']['must'].append({})
+					query_builder['query']['bool']['must'][0]['match'] = {}
+					query_builder['query']['bool']['must'][0]['match']['style'] = _style
 
 
 
@@ -59,10 +63,7 @@ class residentialclass(Resource):
 
 
 					#return query_builder
-					try:
-						res = es.search(index='index_res', doc_type='data', body=query_builder)
-					except Exception:
-						print Exception
+					res = es.search(index='index_res', doc_type='data', body=query_builder)
 					return res
 
 				except Exception:
