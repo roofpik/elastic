@@ -7,6 +7,9 @@ es = Elasticsearch([{'host':'localhost', 'port':9200}])
 r = requests.request('get', 'https://roofpik-948d0.firebaseio.com/projects/-KYJONgh0P98xoyPPYm9/residential/.json')
 data1 = r.json()
 
+def remove_values_from_list(the_list, val):
+   return [value for value in the_list if value != val]
+
 for x in data1:
 	
 	data = data1[x]
@@ -75,7 +78,6 @@ for x in data1:
 						elif(a=='6'):
 							min_rent6.append(data['configurations'][k]['pricing']['rent']['min'])
 							temp[a].update({'min_price': int(min(min_rent6))})
-					price.append(json.dumps(data['configurations'][k]['pricing']['rent']['min']))
 
 				#for max price
 					if(data['configurations'][k]['pricing']['rent']['max'] == 'NA'):
@@ -99,7 +101,6 @@ for x in data1:
 						elif(a=='6'):
 							max_rent6.append(data['configurations'][k]['pricing']['rent']['max'])
 							temp[a].update({'max_price': int(max(max_rent6))})
-					price.append(json.dumps(data['configurations'][k]['pricing']['rent']['max']))
 					
 					#area
 					if(data['configurations'][k]['superBuiltArea'] == 'NA'):
@@ -134,6 +135,12 @@ for x in data1:
 						area.append(0)
 					else:
 						area.append(json.dumps(int(data['configurations'][k]['superBuiltArea'])))
+
+					for p_bhk in temp:
+						if(temp[p_bhk]['min_price'] != "'NA'"):
+							price.append(temp[p_bhk]['min_price'])
+						price.append(temp[p_bhk]['max_price'])
+					
 					d['bhk'].update(temp)
 					
 					#adding propertyType in the format propertyType : true
@@ -205,15 +212,10 @@ for x in data1:
 
 				#loop ends
 				#adding rent
+				price = remove_values_from_list(price, 0)
 				d['rent'] = {}
-				if(min(price) == '"NA"'):
-					d['rent']['min'] = 0
-				else:		
-					d['rent']['min'] = int(min(price))
-				if(max(price) == '"NA"'):
-					d['rent']['max'] = 15000
-				else:
-					d['rent']['max'] = int(max(price))
+				d['rent']['min'] = int(min(price))
+				d['rent']['max'] = int(max(price))
 
 				#adding area
 				d['area'] = {}
@@ -228,4 +230,4 @@ for x in data1:
 			es.index(index='live_index_1', doc_type='data', id=data['projectId'], body=d)
 			
 	except:
-		print str(Exception)
+		pass
