@@ -16,7 +16,7 @@ class residentialclass(Resource):
 					es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
 					parser = reqparse.RequestParser()
-					
+
 					parser.add_argument('style', type=str)
 					args = parser.parse_args()
 					_style = args['style']
@@ -245,8 +245,8 @@ class residentialclass(Resource):
 											temp.append(_amenity.split('$')[z])
 											build_query_should("amenities."+temp[z], "Yes")
 											z += 1
-
-					res = es.search(index='live_index_1', doc_type='data', body=query_builder)
+					return query_builder
+					res = es.search(index='live_index_1', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 					# index_num = 0
 					# final_res = {}
 					# temp_res = {}
