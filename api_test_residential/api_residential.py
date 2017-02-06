@@ -24,6 +24,13 @@ class residentialclass(Resource):
 					if not _style:
 							_style = ""
 
+					query_builder = {}
+					query_builder['query'] = {}
+					query_builder['query']['bool'] = {}
+					query_builder['query']['bool']['must'] = []
+					query_builder['query']['bool']['should'] = []
+					query_builder['sort'] = []
+
 					def build_query_must(field, value):
 							global i
 							query_builder['query']['bool']['must'].append({})
@@ -31,8 +38,6 @@ class residentialclass(Resource):
 							query_builder['query']['bool']['must'][i]['match'][field] = value
 							i += 1
 
-					if(_style):
-							build_query_must("style", _style)
 
 					#return query_builder
 					res = es.search(index='index_res', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
