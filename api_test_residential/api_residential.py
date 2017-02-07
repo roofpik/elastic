@@ -39,12 +39,12 @@ def build_query_sort(field, asc_or_dsc, query_builder, k):
 	query_builder['sort'][k][field]['order'] = asc_or_dsc
 	return query_builder
 
-def build_query_exists(field, query_builder, i):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['constant_score'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
+def build_query_exists(field, query_builder, j):
+	query_builder['query']['bool']['should'].append({})
+	query_builder['query']['bool']['should'][j]['constant_score'] = {}
+	query_builder['query']['bool']['should'][j]['constant_score']['filter'] = {}
+	query_builder['query']['bool']['should'][j]['constant_score']['filter']['exists'] = {}
+	query_builder['query']['bool']['should'][j]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
 def build_query_price(lower, upper, query_builder, j):
@@ -211,16 +211,16 @@ class residentialclass(Resource):
 			if(_bhk):
 				count = _bhk.count('$')
 				if(count == 0):
-					query_builder = build_query_exists("bhk."+_bhk, query_builder, i)
-					i += 1
+					query_builder = build_query_exists("bhk."+_bhk, query_builder, j)
+					j += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_bhk.split('$')[z])
-						query_builder = build_query_exists("bhk."+temp[z], query_builder, i)
-						i += 1
+						query_builder = build_query_exists("bhk."+temp[z], query_builder, j)
+						j += 1
 						z += 1
 
 			if(_locationId):
