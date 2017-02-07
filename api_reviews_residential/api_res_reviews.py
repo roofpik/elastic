@@ -96,8 +96,8 @@ class resReviewclass(Resource):
 			q = []
 			while p<8:
 				q.append(checkExistance(query_builder, 'ratings.'+ratingParams[p]))
-				return q
 				query_builder = instantiate(query_builder)
+				return query_builder
 				p += 1
 
 			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[0])[0]})
