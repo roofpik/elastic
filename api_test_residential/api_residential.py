@@ -54,11 +54,25 @@ def build_query_price(lower, upper, query_builder, j):
 	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['gte'] = lower
+	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['lte'] = upper
 	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['lte'] = upper
+	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['gte'] = lower
+	return query_builder
+
+def build_query_area(lower, upper, query_builder, j):
+	query_builder['query']['bool']['should'].append({})
+	query_builder['query']['bool']['should'][j]['bool'] = {}
+	query_builder['query']['bool']['should'][j]['bool']['must'] = []
+	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
+	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
+	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['area.min'] = {}
+	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['area.min']['lte'] = upper
+	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
+	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
+	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['area.max'] = {}
+	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['area.max']['gte'] = lower
 	return query_builder
 
 class residentialclass(Resource):
@@ -177,9 +191,9 @@ class residentialclass(Resource):
 			if(_area_range):
 				low = _area_range.split('$')[0]
 				high = _area_range.split('$')[1]
-				query_builder = build_query_should_range("area.min", low, high, query_builder, j)
+				query_builder = build_query_area(low, high, query_builder, j)
 				j += 1
-				query_builder = build_query_should_range("area.max", low, high, query_builder, j)
+				query_builder = build_query_area(low, high, query_builder, j)
 				j += 1
 
 			if(_price_range):
