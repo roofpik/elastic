@@ -36,7 +36,6 @@ def getParamsRating(query_builder, temp_num_reviews, ratingParams, q):
 	finParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	k = 0
 	while k<8:
-		return '00000000'
 		temp_s = es.search(index='res_reviews', doc_type='reviews', body=q, size=temp_num_reviews)
 		j = 0
 		while j<temp_s['hits']['total']: 
@@ -88,7 +87,7 @@ class resReviewclass(Resource):
 			while p<8:
 				q.append(checkExistance(query_builder, 'ratings.'+ratingParams[p]))
 				p += 1
-
+			return q
 			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[0])[0]})
 			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[1])[1]})
 			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[2])[2]})
