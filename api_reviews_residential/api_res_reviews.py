@@ -56,7 +56,7 @@ class resReviewclass(Resource):
 			parser.add_argument('projectId', type=str)
 			args = parser.parse_args()
 			_projectId = args['projectId']
-			
+			return 'api works'
 			getPid = {'query':{'match':{'pid':_projectId}}}
 			temp_temp_res = es.search(index='res_reviews', doc_type='reviews', body=getPid)
 			temp_num_reviews = temp_temp_res['hits']['total']
