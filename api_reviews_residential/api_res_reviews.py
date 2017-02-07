@@ -73,6 +73,7 @@ class resReviewclass(Resource):
 
 			result = {}
 			result.update({'overallRating' : getAverageRating(temp_res, t_reviews)})
+			return 'works'
 			result.update({'numberOfReviews' : t_reviews})
 			result.update({'oneStar' : getIndividualRatingCount(temp_res)[0]})
 			result.update({'twoStar' : getIndividualRatingCount(temp_res)[1]})
