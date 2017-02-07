@@ -80,6 +80,7 @@ class resReviewclass(Resource):
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
 			paramsRating = getParamsRating(query_builder, temp_num_reviews)
+			return 'works'
 			result.update({'layoutOfApartment' : paramsRating[0]})
 			result.update({'electricityAndWaterSupply' : paramsRating[1]})
 			result.update({'convenienceOfParking' : paramsRating[2]})
