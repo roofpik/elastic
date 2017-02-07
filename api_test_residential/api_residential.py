@@ -191,7 +191,7 @@ class residentialclass(Resource):
 			if(_details_builder):
 				count = _details_builder.count('$')
 				if(count == 0):
-					query_builder = build_query_should("details.builder", _details_builder, query_builder, j)
+					query_builder = build_query_must("details.builder", _details_builder, query_builder, j)
 					j += 1
 				else:
 					count += 1
