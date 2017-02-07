@@ -78,7 +78,7 @@ def build_query_area(lower, upper, query_builder, j):
 class residentialclass(Resource):
 	def get(self):
 		try:
-		
+			return 'works'
 			i = 0
 			j = 0
 			k = 0
@@ -268,9 +268,12 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 			return 'works'
+=======
+>>>>>>> 2f3c144cc827309a9352827a9bdc2a701474db4f
 			#return query_builder
 >>>>>>> 5e71dfc237e5331a681e59ff1d03f51dbd85e3ec
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)

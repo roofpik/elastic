@@ -7586,3 +7586,68 @@
 [Tue Feb 07 15:48:13.889644 2017] [:error] [pid 15125:tid 140240052274944] [client 110.224.12.61:41910]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
 [Tue Feb 07 15:48:13.889646 2017] [:error] [pid 15125:tid 140240052274944] [client 110.224.12.61:41910]     raise TypeError(repr(o) + " is not JSON serializable")
 [Tue Feb 07 15:48:13.889648 2017] [:error] [pid 15125:tid 140240052274944] [client 110.224.12.61:41910] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Tue Feb 07 15:50:13.103418 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922] mod_wsgi (pid=15335): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Tue Feb 07 15:50:13.103457 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922] mod_wsgi (pid=15335): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Tue Feb 07 15:50:13.103486 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922] Traceback (most recent call last):
+[Tue Feb 07 15:50:13.103508 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Tue Feb 07 15:50:13.103566 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]     from app import app as application
+[Tue Feb 07 15:50:13.103587 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]   File "/var/www/api/app.py", line 7, in <module>
+[Tue Feb 07 15:50:13.103606 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]     from api_test_residential import *
+[Tue Feb 07 15:50:13.103613 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]   File "/var/www/api/api_test_residential/__init__.py", line 1, in <module>
+[Tue Feb 07 15:50:13.103641 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]     from api_residential import *
+[Tue Feb 07 15:50:13.103684 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]   File "/var/www/api/api_test_residential/api_residential.py", line 270
+[Tue Feb 07 15:50:13.103689 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]     <<<<<<< HEAD
+[Tue Feb 07 15:50:13.103692 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922]                ^
+[Tue Feb 07 15:50:13.103695 2017] [:error] [pid 15335:tid 140352006645504] [client 110.224.12.61:41922] IndentationError: unexpected unindent
+[Tue Feb 07 15:50:14.664635 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924] mod_wsgi (pid=15336): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Tue Feb 07 15:50:14.664681 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924] mod_wsgi (pid=15336): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Tue Feb 07 15:50:14.664710 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924] Traceback (most recent call last):
+[Tue Feb 07 15:50:14.664732 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Tue Feb 07 15:50:14.664787 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]     from app import app as application
+[Tue Feb 07 15:50:14.664797 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]   File "/var/www/api/app.py", line 7, in <module>
+[Tue Feb 07 15:50:14.664813 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]     from api_test_residential import *
+[Tue Feb 07 15:50:14.664819 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]   File "/var/www/api/api_test_residential/__init__.py", line 1, in <module>
+[Tue Feb 07 15:50:14.664843 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]     from api_residential import *
+[Tue Feb 07 15:50:14.664883 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]   File "/var/www/api/api_test_residential/api_residential.py", line 270
+[Tue Feb 07 15:50:14.664888 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]     <<<<<<< HEAD
+[Tue Feb 07 15:50:14.664890 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924]                ^
+[Tue Feb 07 15:50:14.664892 2017] [:error] [pid 15336:tid 140352121448192] [client 110.224.12.61:41924] IndentationError: unexpected unindent
+[Tue Feb 07 15:50:15.574503 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926] mod_wsgi (pid=15335): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Tue Feb 07 15:50:15.574551 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926] mod_wsgi (pid=15335): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Tue Feb 07 15:50:15.574585 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926] Traceback (most recent call last):
+[Tue Feb 07 15:50:15.574608 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Tue Feb 07 15:50:15.574644 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]     from app import app as application
+[Tue Feb 07 15:50:15.574652 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]   File "/var/www/api/app.py", line 7, in <module>
+[Tue Feb 07 15:50:15.574663 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]     from api_test_residential import *
+[Tue Feb 07 15:50:15.574669 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]   File "/var/www/api/api_test_residential/__init__.py", line 1, in <module>
+[Tue Feb 07 15:50:15.574679 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]     from api_residential import *
+[Tue Feb 07 15:50:15.574719 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]   File "/var/www/api/api_test_residential/api_residential.py", line 270
+[Tue Feb 07 15:50:15.574723 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]     <<<<<<< HEAD
+[Tue Feb 07 15:50:15.574726 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926]                ^
+[Tue Feb 07 15:50:15.574728 2017] [:error] [pid 15335:tid 140351998252800] [client 110.224.12.61:41926] IndentationError: unexpected unindent
+[Tue Feb 07 15:50:49.723857 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932] mod_wsgi (pid=15335): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Tue Feb 07 15:50:49.723917 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932] mod_wsgi (pid=15335): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Tue Feb 07 15:50:49.723941 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932] Traceback (most recent call last):
+[Tue Feb 07 15:50:49.723962 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Tue Feb 07 15:50:49.723996 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]     from app import app as application
+[Tue Feb 07 15:50:49.724003 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]   File "/var/www/api/app.py", line 7, in <module>
+[Tue Feb 07 15:50:49.724013 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]     from api_test_residential import *
+[Tue Feb 07 15:50:49.724020 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]   File "/var/www/api/api_test_residential/__init__.py", line 1, in <module>
+[Tue Feb 07 15:50:49.724029 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]     from api_residential import *
+[Tue Feb 07 15:50:49.724068 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]   File "/var/www/api/api_test_residential/api_residential.py", line 270
+[Tue Feb 07 15:50:49.724073 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]     <<<<<<< HEAD
+[Tue Feb 07 15:50:49.724075 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932]                ^
+[Tue Feb 07 15:50:49.724078 2017] [:error] [pid 15335:tid 140351989860096] [client 110.224.12.61:41932] IndentationError: unexpected unindent
+[Tue Feb 07 15:50:53.384960 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934] mod_wsgi (pid=15335): Target WSGI script '/var/www/flaskapp.wsgi' cannot be loaded as Python module.
+[Tue Feb 07 15:50:53.385002 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934] mod_wsgi (pid=15335): Exception occurred processing WSGI script '/var/www/flaskapp.wsgi'.
+[Tue Feb 07 15:50:53.385025 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934] Traceback (most recent call last):
+[Tue Feb 07 15:50:53.385045 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]   File "/var/www/flaskapp.wsgi", line 7, in <module>
+[Tue Feb 07 15:50:53.385078 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]     from app import app as application
+[Tue Feb 07 15:50:53.385086 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]   File "/var/www/api/app.py", line 7, in <module>
+[Tue Feb 07 15:50:53.385096 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]     from api_test_residential import *
+[Tue Feb 07 15:50:53.385103 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]   File "/var/www/api/api_test_residential/__init__.py", line 1, in <module>
+[Tue Feb 07 15:50:53.385112 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]     from api_residential import *
+[Tue Feb 07 15:50:53.385151 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]   File "/var/www/api/api_test_residential/api_residential.py", line 270
+[Tue Feb 07 15:50:53.385155 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]     <<<<<<< HEAD
+[Tue Feb 07 15:50:53.385158 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934]                ^
+[Tue Feb 07 15:50:53.385160 2017] [:error] [pid 15335:tid 140351981467392] [client 110.224.12.61:41934] IndentationError: unexpected unindent

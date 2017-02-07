@@ -2052,3 +2052,8 @@
 110.224.12.61 - - [07/Feb/2017:15:47:54 +0530] "GET /api/residential?price_range=2000000$100 HTTP/1.1" 200 269 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
 110.224.12.61 - - [07/Feb/2017:15:48:06 +0530] "GET /api/residential?style=high%20end HTTP/1.1" 500 246 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
 110.224.12.61 - - [07/Feb/2017:15:48:13 +0530] "GET /api/residential?style=high HTTP/1.1" 500 246 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+110.224.12.61 - - [07/Feb/2017:15:50:12 +0530] "GET /api/residential?style=high HTTP/1.1" 500 803 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+110.224.12.61 - - [07/Feb/2017:15:50:14 +0530] "GET /api/residential?style=high HTTP/1.1" 500 803 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+110.224.12.61 - - [07/Feb/2017:15:50:15 +0530] "GET /api/residential?style=high HTTP/1.1" 500 803 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+110.224.12.61 - - [07/Feb/2017:15:50:49 +0530] "GET /api/residential HTTP/1.1" 500 803 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+110.224.12.61 - - [07/Feb/2017:15:50:53 +0530] "GET /api/residential HTTP/1.1" 500 803 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
