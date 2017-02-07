@@ -254,15 +254,13 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 	
-#			return query_builder
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
-			return res
 			index_num = 0
 			final_res = {}
 			temp_res = {}
 			final_res.update({'records': es.count(index='res_index')['count']})
 			final_res.update({'hits': res['hits']['total']})
-			while index_num<_page_size:
+			while index_num<res['hits']['total']:
 				bhk = []
 				temp_temp_res = {}
 				temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})

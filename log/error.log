@@ -4705,3 +4705,759 @@
 [Mon Feb 06 19:38:51.406572 2017] [:error] [pid 31073:tid 139758529390336] [client 110.224.12.61:54722]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
 [Mon Feb 06 19:38:51.406574 2017] [:error] [pid 31073:tid 139758529390336] [client 110.224.12.61:54722]     raise TypeError(repr(o) + " is not JSON serializable")
 [Mon Feb 06 19:38:51.406576 2017] [:error] [pid 31073:tid 139758529390336] [client 110.224.12.61:54722] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:50:46.405426 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756] [2017-02-06 19:50:46,404] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:50:46.405453 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756] Traceback (most recent call last):
+[Mon Feb 06 19:50:46.405456 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:50:46.405459 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     rv = self.dispatch_request()
+[Mon Feb 06 19:50:46.405469 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:50:46.405471 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:50:46.405474 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:50:46.405476 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:50:46.405479 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:50:46.405490 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:50:46.405493 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:50:46.405495 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:50:46.405497 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:50:46.405499 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:50:46.405501 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:50:46.405502 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:50:46.405504 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:50:46.405506 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     return _iterencode(o, 0)
+[Mon Feb 06 19:50:46.405508 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:50:46.405510 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:50:46.405512 2017] [:error] [pid 31762:tid 140004089083648] [client 110.224.12.61:54756] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:50:47.920875 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760] [2017-02-06 19:50:47,919] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:50:47.920900 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760] Traceback (most recent call last):
+[Mon Feb 06 19:50:47.920903 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:50:47.920906 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     rv = self.dispatch_request()
+[Mon Feb 06 19:50:47.920908 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:50:47.920911 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:50:47.920913 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:50:47.920915 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:50:47.920917 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:50:47.920919 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:50:47.920921 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:50:47.920932 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:50:47.920934 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:50:47.920936 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:50:47.920938 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:50:47.920940 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:50:47.920942 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:50:47.920944 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     return _iterencode(o, 0)
+[Mon Feb 06 19:50:47.920946 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:50:47.920948 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:50:47.920949 2017] [:error] [pid 31763:tid 140004267546368] [client 110.224.12.61:54760] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:53:30.250633 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764] [2017-02-06 19:53:30,249] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:53:30.250668 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764] Traceback (most recent call last):
+[Mon Feb 06 19:53:30.250671 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:53:30.250674 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     rv = self.dispatch_request()
+[Mon Feb 06 19:53:30.250676 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:53:30.250679 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:53:30.250681 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:53:30.250683 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:53:30.250685 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:53:30.250688 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:53:30.250690 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:53:30.250692 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:53:30.250694 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:53:30.250696 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:53:30.250698 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:53:30.250719 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:53:30.250722 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:53:30.250724 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     return _iterencode(o, 0)
+[Mon Feb 06 19:53:30.250726 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:53:30.250728 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:53:30.250731 2017] [:error] [pid 32002:tid 139883293161216] [client 110.224.12.61:54764] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:56:56.880436 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772] [2017-02-06 19:56:56,879] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:56:56.880470 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772] Traceback (most recent call last):
+[Mon Feb 06 19:56:56.880473 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:56:56.880476 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     rv = self.dispatch_request()
+[Mon Feb 06 19:56:56.880478 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:56:56.880480 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:56:56.880482 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:56:56.880484 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:56:56.880486 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:56:56.880488 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:56:56.880491 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:56:56.880493 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:56:56.880495 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:56:56.880497 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:56:56.880499 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:56:56.880501 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:56:56.880503 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:56:56.880505 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     return _iterencode(o, 0)
+[Mon Feb 06 19:56:56.880516 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:56:56.880518 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:56:56.880520 2017] [:error] [pid 32231:tid 139998226740992] [client 110.224.12.61:54772] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:56:58.004551 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774] [2017-02-06 19:56:58,003] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:56:58.004584 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774] Traceback (most recent call last):
+[Mon Feb 06 19:56:58.004587 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:56:58.004589 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     rv = self.dispatch_request()
+[Mon Feb 06 19:56:58.004591 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:56:58.004593 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:56:58.004595 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:56:58.004597 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:56:58.004599 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:56:58.004601 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:56:58.004604 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:56:58.004606 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:56:58.004608 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:56:58.004610 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:56:58.004611 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:56:58.004613 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:56:58.004615 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:56:58.004617 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     return _iterencode(o, 0)
+[Mon Feb 06 19:56:58.004618 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:56:58.004620 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:56:58.004622 2017] [:error] [pid 32232:tid 139998116427520] [client 110.224.12.61:54774] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:58:17.457532 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780] [2017-02-06 19:58:17,456] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:58:17.457566 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780] Traceback (most recent call last):
+[Mon Feb 06 19:58:17.457569 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:58:17.457571 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     rv = self.dispatch_request()
+[Mon Feb 06 19:58:17.457574 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:58:17.457576 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:58:17.457578 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:58:17.457581 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:58:17.457583 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:58:17.457585 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:58:17.457587 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:58:17.457589 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:58:17.457591 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:58:17.457593 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:58:17.457595 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:58:17.457597 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:58:17.457598 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:58:17.457600 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     return _iterencode(o, 0)
+[Mon Feb 06 19:58:17.457602 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:58:17.457604 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:58:17.457606 2017] [:error] [pid 32346:tid 140216580957952] [client 110.224.12.61:54780] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:58:19.149353 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782] [2017-02-06 19:58:19,148] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:58:19.149414 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782] Traceback (most recent call last):
+[Mon Feb 06 19:58:19.149419 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:58:19.149434 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     rv = self.dispatch_request()
+[Mon Feb 06 19:58:19.149436 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:58:19.149437 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:58:19.149439 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:58:19.149441 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:58:19.149443 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:58:19.149445 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:58:19.149447 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:58:19.149449 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:58:19.149450 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:58:19.149452 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:58:19.149454 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:58:19.149456 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:58:19.149457 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:58:19.149459 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     return _iterencode(o, 0)
+[Mon Feb 06 19:58:19.149461 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:58:19.149462 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:58:19.149464 2017] [:error] [pid 32345:tid 140216580957952] [client 110.224.12.61:54782] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:59:30.858028 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788] [2017-02-06 19:59:30,857] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:59:30.858072 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788] Traceback (most recent call last):
+[Mon Feb 06 19:59:30.858076 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:59:30.858078 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     rv = self.dispatch_request()
+[Mon Feb 06 19:59:30.858080 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:59:30.858083 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:59:30.858085 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:59:30.858096 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:59:30.858098 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:59:30.858100 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:59:30.858102 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:59:30.858104 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:59:30.858106 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:59:30.858108 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:59:30.858109 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:59:30.858111 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:59:30.858113 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:59:30.858114 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     return _iterencode(o, 0)
+[Mon Feb 06 19:59:30.858116 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:59:30.858118 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:59:30.858120 2017] [:error] [pid 32462:tid 140679464331008] [client 110.224.12.61:54788] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 19:59:31.966892 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790] [2017-02-06 19:59:31,965] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 19:59:31.966921 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790] Traceback (most recent call last):
+[Mon Feb 06 19:59:31.966924 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 19:59:31.966926 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     rv = self.dispatch_request()
+[Mon Feb 06 19:59:31.966928 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 19:59:31.966930 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 19:59:31.966932 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 19:59:31.966934 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 19:59:31.966936 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 19:59:31.966949 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 19:59:31.966951 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 19:59:31.966953 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 19:59:31.966955 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 19:59:31.966957 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     return _default_encoder.encode(obj)
+[Mon Feb 06 19:59:31.966958 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 19:59:31.966960 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 19:59:31.966962 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 19:59:31.966964 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     return _iterencode(o, 0)
+[Mon Feb 06 19:59:31.966965 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 19:59:31.966967 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 19:59:31.966969 2017] [:error] [pid 32461:tid 140679405582080] [client 110.224.12.61:54790] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:07:32.965766 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828] [2017-02-06 20:07:32,964] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:07:32.965804 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828] Traceback (most recent call last):
+[Mon Feb 06 20:07:32.965807 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:07:32.965809 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     rv = self.dispatch_request()
+[Mon Feb 06 20:07:32.965812 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:07:32.965814 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:07:32.965816 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:07:32.965819 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:07:32.965821 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:07:32.965823 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:07:32.965825 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:07:32.965828 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:07:32.965830 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:07:32.965841 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:07:32.965842 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:07:32.965844 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:07:32.965846 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:07:32.965854 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     return _iterencode(o, 0)
+[Mon Feb 06 20:07:32.965857 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:07:32.965859 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:07:32.965860 2017] [:error] [pid 797:tid 139919078971136] [client 110.224.12.61:54828] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:07:34.299916 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830] [2017-02-06 20:07:34,299] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:07:34.299962 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830] Traceback (most recent call last):
+[Mon Feb 06 20:07:34.299965 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:07:34.299967 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     rv = self.dispatch_request()
+[Mon Feb 06 20:07:34.299969 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:07:34.299971 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:07:34.299973 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:07:34.299975 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:07:34.299977 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:07:34.299979 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:07:34.299981 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:07:34.299983 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:07:34.299984 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:07:34.299986 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:07:34.299988 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:07:34.299989 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:07:34.300003 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:07:34.300005 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     return _iterencode(o, 0)
+[Mon Feb 06 20:07:34.300006 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:07:34.300008 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:07:34.300010 2017] [:error] [pid 797:tid 139919070578432] [client 110.224.12.61:54830] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:08:32.706082 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832] [2017-02-06 20:08:32,704] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:08:32.706118 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832] Traceback (most recent call last):
+[Mon Feb 06 20:08:32.706121 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:08:32.706124 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     rv = self.dispatch_request()
+[Mon Feb 06 20:08:32.706126 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:08:32.706129 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:08:32.706131 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:08:32.706134 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:08:32.706136 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:08:32.706138 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:08:32.706140 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:08:32.706143 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:08:32.706145 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:08:32.706147 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:08:32.706149 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:08:32.706151 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:08:32.706152 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:08:32.706154 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     return _iterencode(o, 0)
+[Mon Feb 06 20:08:32.706156 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:08:32.706158 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:08:32.706169 2017] [:error] [pid 931:tid 140289268217600] [client 110.224.12.61:54832] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:08:33.779773 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834] [2017-02-06 20:08:33,779] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:08:33.779906 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834] Traceback (most recent call last):
+[Mon Feb 06 20:08:33.780136 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:08:33.780142 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     rv = self.dispatch_request()
+[Mon Feb 06 20:08:33.780144 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:08:33.780146 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:08:33.780148 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:08:33.780150 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:08:33.780152 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:08:33.780154 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:08:33.780156 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:08:33.780158 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:08:33.780160 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:08:33.780162 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:08:33.780164 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:08:33.780165 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:08:33.780167 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:08:33.780169 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     return _iterencode(o, 0)
+[Mon Feb 06 20:08:33.780171 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:08:33.780172 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:08:33.780174 2017] [:error] [pid 931:tid 140289259824896] [client 110.224.12.61:54834] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:10:48.031567 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846] [2017-02-06 20:10:48,030] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:10:48.031608 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846] Traceback (most recent call last):
+[Mon Feb 06 20:10:48.031621 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:10:48.031623 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     rv = self.dispatch_request()
+[Mon Feb 06 20:10:48.031625 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:10:48.031627 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:10:48.031629 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:10:48.031630 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:10:48.031632 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:10:48.031634 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:10:48.031636 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:10:48.031638 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:10:48.031640 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:10:48.031641 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:10:48.031643 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:10:48.031645 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:10:48.031646 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:10:48.031648 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     return _iterencode(o, 0)
+[Mon Feb 06 20:10:48.031650 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:10:48.031652 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:10:48.031653 2017] [:error] [pid 1175:tid 139740485465856] [client 110.224.12.61:54846] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:11:15.916116 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852] [2017-02-06 20:11:15,915] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:11:15.916162 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852] Traceback (most recent call last):
+[Mon Feb 06 20:11:15.916165 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:11:15.916167 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     rv = self.dispatch_request()
+[Mon Feb 06 20:11:15.916169 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:11:15.916171 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:11:15.916185 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:11:15.916187 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:11:15.916188 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:11:15.916190 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:11:15.916192 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:11:15.916194 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:11:15.916196 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:11:15.916198 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:11:15.916200 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:11:15.916201 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:11:15.916203 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:11:15.916205 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     return _iterencode(o, 0)
+[Mon Feb 06 20:11:15.916206 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:11:15.916208 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:11:15.916210 2017] [:error] [pid 1175:tid 139740468680448] [client 110.224.12.61:54852] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:11:17.237876 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854] [2017-02-06 20:11:17,236] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:11:17.237913 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854] Traceback (most recent call last):
+[Mon Feb 06 20:11:17.237916 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:11:17.237919 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     rv = self.dispatch_request()
+[Mon Feb 06 20:11:17.237921 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:11:17.237923 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:11:17.237925 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:11:17.237927 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:11:17.237929 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:11:17.237941 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:11:17.237943 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:11:17.237945 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:11:17.237947 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:11:17.237949 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:11:17.237951 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:11:17.237952 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:11:17.237954 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:11:17.237956 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     return _iterencode(o, 0)
+[Mon Feb 06 20:11:17.237957 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:11:17.237959 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:11:17.237961 2017] [:error] [pid 1176:tid 139740527429376] [client 110.224.12.61:54854] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 20:12:07.778528 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856] [2017-02-06 20:12:07,777] ERROR in app: Exception on /residential [GET]
+[Mon Feb 06 20:12:07.778556 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856] Traceback (most recent call last):
+[Mon Feb 06 20:12:07.778559 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Mon Feb 06 20:12:07.778562 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     rv = self.dispatch_request()
+[Mon Feb 06 20:12:07.778564 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Mon Feb 06 20:12:07.778566 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     return self.view_functions[rule.endpoint](**req.view_args)
+[Mon Feb 06 20:12:07.778568 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper
+[Mon Feb 06 20:12:07.778570 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     return self.make_response(data, code, headers=headers)
+[Mon Feb 06 20:12:07.778572 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response
+[Mon Feb 06 20:12:07.778574 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     resp = self.representations[mediatype](data, *args, **kwargs)
+[Mon Feb 06 20:12:07.778576 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json
+[Mon Feb 06 20:12:07.778589 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     dumped = dumps(data, **settings) + "\\n"
+[Mon Feb 06 20:12:07.778591 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps
+[Mon Feb 06 20:12:07.778593 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     return _default_encoder.encode(obj)
+[Mon Feb 06 20:12:07.778603 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode
+[Mon Feb 06 20:12:07.778606 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     chunks = self.iterencode(o, _one_shot=True)
+[Mon Feb 06 20:12:07.778607 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode
+[Mon Feb 06 20:12:07.778609 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     return _iterencode(o, 0)
+[Mon Feb 06 20:12:07.778611 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default
+[Mon Feb 06 20:12:07.778613 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856]     raise TypeError(repr(o) + " is not JSON serializable")
+[Mon Feb 06 20:12:07.778614 2017] [:error] [pid 1311:tid 140493732140800] [client 110.224.12.61:54856] TypeError: <type 'exceptions.Exception'> is not JSON serializable
+[Mon Feb 06 22:05:36.457317 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276] [2017-02-06 22:05:36,456] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457354 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457358 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457361 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457363 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457365 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457367 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457370 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457372 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457374 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457376 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457378 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457380 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457391 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457393 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457395 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457397 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457398 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457400 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457402 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:36.457404 2017] [:error] [pid 1311:tid 140493639821056] [client 150.242.62.213:8276] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034466 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310] [2017-02-06 22:05:44,034] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034585 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034768 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034775 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034777 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034780 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034782 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034785 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034787 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034789 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034791 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034793 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034805 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034808 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034809 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034811 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034813 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034815 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034816 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034818 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:05:44.034820 2017] [:error] [pid 1311:tid 140493799282432] [client 150.242.62.213:8310] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699805 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446] [2017-02-06 22:34:56,698] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699848 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699851 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699854 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699856 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699858 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699861 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699863 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699865 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699867 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699870 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699882 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699884 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699886 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699888 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699889 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699891 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699893 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699895 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699896 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:34:56.699898 2017] [:error] [pid 1312:tid 140493790889728] [client 150.242.62.213:8446] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000209 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595] [2017-02-06 22:35:38,999] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000265 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000270 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000273 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000275 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000277 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000280 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000282 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000284 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000286 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000288 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000300 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000302 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000304 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000306 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000307 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000309 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000311 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000313 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000314 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:35:39.000316 2017] [:error] [pid 1312:tid 140493782497024] [client 150.242.62.213:8595] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523092 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872] [2017-02-06 22:36:54,522] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523140 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523143 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523146 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523148 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523150 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523153 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523155 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523157 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523159 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523172 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523174 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523176 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523178 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523180 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523181 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523183 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523185 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523187 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523189 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:36:54.523190 2017] [:error] [pid 1312:tid 140493765711616] [client 150.242.62.213:8872] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127281 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182] [2017-02-06 22:45:10,126] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127327 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127330 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127333 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127335 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127338 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127340 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127342 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127344 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127356 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127358 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127360 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127362 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127364 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127366 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127367 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127369 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127371 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127373 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127374 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:45:10.127376 2017] [:error] [pid 1312:tid 140493757318912] [client 150.242.62.213:8182] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076321 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954] [2017-02-06 22:48:32,075] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076372 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076377 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076382 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076385 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076389 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076393 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076397 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076400 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076417 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076420 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076424 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076427 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076430 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076433 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076437 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076440 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076443 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076446 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076449 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:48:32.076452 2017] [:error] [pid 1311:tid 140493774104320] [client 150.242.62.213:8954] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121861 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198] [2017-02-06 22:49:52,121] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121909 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121913 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121915 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121917 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121920 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121922 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121924 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121936 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121938 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121940 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121942 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121944 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121946 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121948 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121950 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121951 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121953 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121955 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121957 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:49:52.121958 2017] [:error] [pid 1312:tid 140493748926208] [client 150.242.62.213:5198] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.022963 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520] [2017-02-06 22:50:37,022] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023009 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023013 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023016 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023018 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023020 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023023 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023035 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023037 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023039 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023041 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023043 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023045 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023046 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023048 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023050 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023052 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023053 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023055 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023057 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 22:50:37.023059 2017] [:error] [pid 1312:tid 140493740533504] [client 150.242.62.213:5520] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.104962 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885] [2017-02-06 23:10:07,104] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105005 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105008 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105011 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105013 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105016 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105018 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105030 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105033 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105035 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105037 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105038 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105040 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105042 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105044 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105046 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105047 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105049 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105051 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105053 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Mon Feb 06 23:10:07.105055 2017] [:error] [pid 1312:tid 140493732140800] [client 150.242.62.213:5885] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857357 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454] [2017-02-07 09:38:37,857] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857415 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857421 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857425 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857428 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857432 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857449 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857452 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857455 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857457 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857461 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857464 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857466 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857469 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857472 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857474 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857477 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857480 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857482 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857485 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:38:37.857488 2017] [:error] [pid 1312:tid 140493673391872] [client 182.69.109.87:43454] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682693 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524] [2017-02-07 09:41:49,682] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682739 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682743 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682745 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682748 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682762 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682764 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682766 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682768 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682770 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682772 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682774 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682776 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682777 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682779 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682781 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682783 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682784 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682786 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682788 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:41:49.682790 2017] [:error] [pid 1312:tid 140493664999168] [client 182.69.109.87:43524] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851060 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554] [2017-02-07 09:42:55,850] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851098 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851102 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851104 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851107 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851118 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851121 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851122 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851124 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851126 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851128 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851130 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851132 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851134 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851136 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851138 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851139 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851141 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851143 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851145 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 09:42:55.851147 2017] [:error] [pid 1312:tid 140493656606464] [client 182.69.109.87:43554] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111695 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022] [2017-02-07 10:05:59,111] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111740 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111744 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111747 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111759 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111761 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111763 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111765 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111767 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111769 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111771 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111772 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111774 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111776 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111778 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111780 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111782 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111783 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111785 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111787 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:05:59.111789 2017] [:error] [pid 1312:tid 140493648213760] [client 182.69.109.87:44022] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268350 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078] [2017-02-07 10:08:21,267] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268394 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268398 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268411 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268413 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268415 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268417 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268419 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268421 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268423 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268425 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268427 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268429 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268430 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268432 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268434 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268436 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268438 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268439 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268441 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 10:08:21.268443 2017] [:error] [pid 1312:tid 140493639821056] [client 182.69.109.87:44078] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521026 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760] [2017-02-07 11:11:28,520] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521110 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521116 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521127 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521129 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521131 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521133 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521135 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521136 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521138 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521140 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521142 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521144 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521146 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521147 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521149 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521151 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521153 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521155 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521156 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:11:28.521158 2017] [:error] [pid 1311:tid 140493748926208] [client 182.69.109.87:44760] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.009013 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838] [2017-02-07 11:15:07,008] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010906 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010939 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010942 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010944 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010946 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010948 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010950 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010952 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010954 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010956 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010958 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010960 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010961 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010963 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010965 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010967 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010969 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010970 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010972 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:15:07.010974 2017] [:error] [pid 1312:tid 140493891958528] [client 182.69.109.87:44838] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235142 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884] [2017-02-07 11:16:30,234] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235199 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235203 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235205 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235207 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235209 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235211 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235212 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235214 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235216 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235218 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235220 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235222 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235224 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235226 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235228 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235230 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235231 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235233 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235235 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:16:30.235237 2017] [:error] [pid 1311:tid 140493681784576] [client 182.69.109.87:44884] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918486 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392] [2017-02-07 11:52:40,918] ERROR in app: Exception on /residential [GET], referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918526 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392] Traceback (most recent call last):, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918529 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918532 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     rv = self.dispatch_request(), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918534 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918537 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918539 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 481, in wrapper, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918541 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     return self.make_response(data, code, headers=headers), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918543 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/__init__.py", line 510, in make_response, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918545 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     resp = self.representations[mediatype](data, *args, **kwargs), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918547 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/local/lib/python2.7/dist-packages/flask_restful/representations/json.py", line 20, in output_json, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918549 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     dumped = dumps(data, **settings) + "\\n", referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918551 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/lib/python2.7/json/__init__.py", line 243, in dumps, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918553 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     return _default_encoder.encode(obj), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918555 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/lib/python2.7/json/encoder.py", line 207, in encode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918557 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     chunks = self.iterencode(o, _one_shot=True), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918559 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/lib/python2.7/json/encoder.py", line 270, in iterencode, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918561 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     return _iterencode(o, 0), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918563 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]   File "/usr/lib/python2.7/json/encoder.py", line 184, in default, referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918565 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392]     raise TypeError(repr(o) + " is not JSON serializable"), referer: http://127.0.0.1:8080/
+[Tue Feb 07 11:52:40.918567 2017] [:error] [pid 1312:tid 140493790889728] [client 182.69.109.87:45392] TypeError: <type 'exceptions.Exception'> is not JSON serializable, referer: http://127.0.0.1:8080/
