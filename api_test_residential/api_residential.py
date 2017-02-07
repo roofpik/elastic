@@ -185,23 +185,19 @@ class residentialclass(Resource):
 				i += 1
 
 			if(_details_builder):
-				query_builder = build_query_must("details.builder", _details_builder, query_builder, i)
-				i += 1
-
-			# if(_details_builder):
-			# 	count = _details_builder.count('$')
-			# 	if(count == 0):
-			# 		query_builder = build_query_must("details.builder", _details_builder, query_builder, i)
-			# 		i += 1
-			# 	else:
-			# 		count += 1
-			# 		temp = []
-			# 		z = 0
-			# 		while z!=count:
-			# 			temp.append(_details_builder.split('$')[z])
-			# 			query_builder = build_query_should("details.builder", temp[z], query_builder, j)
-			# 			j += 1
-			# 			z += 1
+				count = _details_builder.count('$')
+				if(count == 0):
+					query_builder = build_query_must("details.builder", _details_builder, query_builder, i)
+					i += 1
+				else:
+					count += 1
+					temp = []
+					z = 0
+					while z!=count:
+						temp.append(_details_builder.split('$')[z])
+						query_builder = build_query_should("details.builder", temp[z], query_builder, j)
+						j += 1
+						z += 1
 
 			if(_area_range):
 				low = _area_range.split('$')[0]
@@ -283,7 +279,7 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 			
-			return query_builder
+			#return query_builder
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 			
 			index_num = 0
