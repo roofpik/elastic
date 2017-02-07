@@ -29,6 +29,7 @@ def getParamsRating(query_builder, temp_num_reviews, es):
 		query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists'] = {}
 		query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
 		return query_builder
+	return 'this doesnt matter'
 	ratingParamsNum = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	finParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
