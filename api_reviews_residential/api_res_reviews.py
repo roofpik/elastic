@@ -79,14 +79,15 @@ class resReviewclass(Resource):
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
-			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews)[0]})
-			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews)[1]})
-			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews)[2]})
-			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews)[3]})
-			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews)[4]})
-			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews)[5]})
-			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews)[6]})
-			result.update({'security' : getParamsRating(query_builder, temp_num_reviews)[7]})
+			paramsRating = getParamsRating(query_builder, temp_num_reviews)
+			result.update({'layoutOfApartment' : paramsRating[0]})
+			result.update({'electricityAndWaterSupply' : paramsRating[1]})
+			result.update({'convenienceOfParking' : paramsRating[2]})
+			result.update({'openAndGreenAreas' : paramsRating[3]})
+			result.update({'convenienceOfHouseMaids' : paramsRating[4]})
+			result.update({'infrastructure': paramsRating[5]})
+			result.update({'amenities' : paramsRating[6]})
+			result.update({'security' : paramsRating[7]})
 			return result
 		
 		except Exception:
