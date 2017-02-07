@@ -29,13 +29,12 @@ def checkExistance(query_builder, field):
 	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
-def getParamsRating(query_builder, temp_num_reviews):
+def getParamsRating(query_builder, temp_num_reviews, es):
 	ratingParamsNum = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	finParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParams = ['layoutOfApartment', 'electricityAndWaterSupply', 'convenienceOfParking', 'openAndGreenAreas', 'convenienceOfHouseMaids', 'infrastructure', 'amenities', 'security']
 	k = 0
-	return finParamsRating
 	while k<8:
 		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistance(query_builder, 'ratings.'+ratingParams[k]), size=temp_num_reviews)
 		j = 0
@@ -80,14 +79,14 @@ class resReviewclass(Resource):
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
-			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews)[0]})
-			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews)[1]})
-			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews)[2]})
-			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews)[3]})
-			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews)[4]})
-			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews)[5]})
-			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews)[6]})
-			result.update({'security' : getParamsRating(query_builder, temp_num_reviews)[7]})
+			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, es)[0]})
+			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, es)[1]})
+			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews, es)[2]})
+			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews, es)[3]})
+			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews, es)[4]})
+			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews, es)[5]})
+			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews, es)[6]})
+			result.update({'security' : getParamsRating(query_builder, temp_num_reviews, es)[7]})
 			return result
 		
 		except Exception:
