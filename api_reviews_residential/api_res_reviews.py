@@ -8,6 +8,7 @@ from elasticsearch import Elasticsearch
 def getAverageRating(temp_res, t_reviews):
 	sum = 0.0
 	k = 0
+	return 'function called'
 	while k<temp_res['hits']['total']:
 		sum = sum + int(temp_res['hits']['hits'][k]['_source']['overallRating'])
 		k += 1
@@ -74,7 +75,6 @@ class resReviewclass(Resource):
 			result = {}
 			result.append({'overallRating' : getAverageRating(temp_res, t_reviews)})
 			result.append({'numberOfReviews' : t_reviews})
-			return 'works till here'
 			result.append({'oneStar' : getIndividualRatingCount(temp_res)[0]})
 			result.append({'twoStar' : getIndividualRatingCount(temp_res)[1]})
 			result.append({'threeStar' : getIndividualRatingCount(temp_res)[2]})
