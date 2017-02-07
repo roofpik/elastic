@@ -76,7 +76,7 @@ class resReviewclass(Resource):
 			while p<8:
 				q.append(checkExistence(query_builder, 'ratings.'+ratingParams[p]))
 				p += 1
-
+			return q
 			result = {}
 			result.update({'overallRating' : getAverageRating(temp_res, t_reviews)})
 			result.update({'numberOfReviews' : t_reviews})
