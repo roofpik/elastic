@@ -29,6 +29,16 @@ def checkExistance(query_builder, field):
 	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
+def instantiate():
+	query_builder = {}
+	query_builder['query'] = {}
+	query_builder['query']['bool'] = {}
+	query_builder['query']['bool']['must'] = []
+	query_builder['query']['bool']['must'].append({})
+	query_builder['query']['bool']['must'][0]['match'] = {}
+	query_builder['query']['bool']['must'][0]['match']['pid'] = _projectId
+	return query_builder
+
 def getParamsRating(query_builder, temp_num_reviews, es):
 	ratingParamsNum = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -36,7 +46,7 @@ def getParamsRating(query_builder, temp_num_reviews, es):
 	ratingParams = ['layoutOfApartment', 'electricityAndWaterSupply', 'convenienceOfParking', 'openAndGreenAreas', 'convenienceOfHouseMaids', 'infrastructure', 'amenities', 'security']
 	k = 0
 	while k<8:
-		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistance(query_builder, 'ratings.'+ratingParams[k]), size=temp_num_reviews)
+		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistance(instantiate(), 'ratings.'+ratingParams[k]), size=temp_num_reviews)
 		j = 0
 		while j<temp_s['hits']['total']: 
 			ratingParamsRating[k] = ratingParamsRating[k] + int(temp_s['hits']['hits'][j]['_source']['ratings'][ratingParams[k]])
@@ -62,14 +72,6 @@ class resReviewclass(Resource):
 			temp_num_reviews = temp_temp_res['hits']['total']
 			temp_res = es.search(index='res_reviews', doc_type='reviews', body=getPid, size=temp_num_reviews)
 			t_reviews = temp_res['hits']['total']
-
-			query_builder = {}
-			query_builder['query'] = {}
-			query_builder['query']['bool'] = {}
-			query_builder['query']['bool']['must'] = []
-			query_builder['query']['bool']['must'].append({})
-			query_builder['query']['bool']['must'][0]['match'] = {}
-			query_builder['query']['bool']['must'][0]['match']['pid'] = _projectId
 
 			result = {}
 			result.update({'overallRating' : getAverageRating(temp_res, t_reviews)})
