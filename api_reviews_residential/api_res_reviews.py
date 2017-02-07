@@ -21,15 +21,15 @@ def getIndividualRatingCount(temp_res):
 		k += 1
 	return l
 
+def checkExistance(query_builder, field):
+	query_builder['query']['bool']['must'].append({})
+	query_builder['query']['bool']['must'][1]['constant_score'] = {}
+	query_builder['query']['bool']['must'][1]['constant_score']['filter'] = {}
+	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists'] = {}
+	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
+	return query_builder
+
 def getParamsRating(query_builder, temp_num_reviews, es):
-	def checkExistance(query_builder, field):
-		query_builder['query']['bool']['must'].append({})
-		query_builder['query']['bool']['must'][1]['constant_score'] = {}
-		query_builder['query']['bool']['must'][1]['constant_score']['filter'] = {}
-		query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists'] = {}
-		query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
-		return query_builder
-	return 'this doesnt matter'
 	ratingParamsNum = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	finParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -44,7 +44,7 @@ def getParamsRating(query_builder, temp_num_reviews, es):
 		ratingParamsNum[k] = temp_s['hits']['total']
 		finParamsRating[k] = ratingParamsRating[k] / ratingParamsNum[k]
 		finParamsRating[k] = round(finParamsRating[k], 2)
-		k += 1
+		k+=1
 	return finParamsRating
 
 class resReviewclass(Resource):
