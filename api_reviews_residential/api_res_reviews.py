@@ -21,12 +21,12 @@ def getIndividualRatingCount(temp_res):
 		k += 1
 	return l
 
-def checkExistance(query_builder, field, i):
+def checkExistance(query_builder, field):
 	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['constant_score'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
+	query_builder['query']['bool']['must'][1]['constant_score'] = {}
+	query_builder['query']['bool']['must'][1]['constant_score']['filter'] = {}
+	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists'] = {}
+	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
 def getParamsRating(query_builder, temp_num_reviews, ratingParams, q):
@@ -85,9 +85,9 @@ class resReviewclass(Resource):
 			p = 0
 			q = []
 			while p<8:
-				q.append(checkExistance(query_builder, 'ratings.'+ratingParams[p], p+1))
+				q.append(checkExistance(query_builder, 'ratings.'+ratingParams[p]))
 				p += 1
-			return q
+
 			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[0])[0]})
 			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[1])[1]})
 			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[2])[2]})
