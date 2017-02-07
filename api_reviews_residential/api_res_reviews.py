@@ -29,7 +29,7 @@ def checkExistance(query_builder, field):
 	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
-def getParamsRating(query_builder, temp_num_reviews):
+def getParamsRating(query_builder, temp_num_reviews, es):
 	ratingParamsNum = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	finParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -79,8 +79,7 @@ class resReviewclass(Resource):
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
-			paramsRating = getParamsRating(query_builder, temp_num_reviews)
-			return 'works'
+			paramsRating = getParamsRating(query_builder, temp_num_reviews, es)
 			result.update({'layoutOfApartment' : paramsRating[0]})
 			result.update({'electricityAndWaterSupply' : paramsRating[1]})
 			result.update({'convenienceOfParking' : paramsRating[2]})
