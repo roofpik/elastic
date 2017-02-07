@@ -5,75 +5,75 @@ from flask_restful import reqparse
 from flask import *
 from elasticsearch import Elasticsearch
 
-def build_query_must(field, value, query_builder, i):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['match'] = {}
-	query_builder['query']['bool']['must'][i]['match'][field] = value
-	return query_builder
+# def build_query_must(field, value, query_builder, i):
+# 	query_builder['query']['bool']['must'].append({})
+# 	query_builder['query']['bool']['must'][i]['match'] = {}
+# 	query_builder['query']['bool']['must'][i]['match'][field] = value
+# 	return query_builder
 
-def build_query_should(field, value, query_builder, j):
-	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['match'] = {}
-	query_builder['query']['bool']['should'][j]['match'][field] = value
-	return query_builder
+# def build_query_should(field, value, query_builder, j):
+# 	query_builder['query']['bool']['should'].append({})
+# 	query_builder['query']['bool']['should'][j]['match'] = {}
+# 	query_builder['query']['bool']['should'][j]['match'][field] = value
+# 	return query_builder
 
-def build_query_must_range(field, lower, upper, query_builder, i):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['range'] = {}
-	query_builder['query']['bool']['must'][i]['range'][field] = {}
-	query_builder['query']['bool']['must'][i]['range'][field]['from'] = lower
-	query_builder['query']['bool']['must'][i]['range'][field]['to'] = upper
-	return query_builder
+# def build_query_must_range(field, lower, upper, query_builder, i):
+# 	query_builder['query']['bool']['must'].append({})
+# 	query_builder['query']['bool']['must'][i]['range'] = {}
+# 	query_builder['query']['bool']['must'][i]['range'][field] = {}
+# 	query_builder['query']['bool']['must'][i]['range'][field]['from'] = lower
+# 	query_builder['query']['bool']['must'][i]['range'][field]['to'] = upper
+# 	return query_builder
 
-def build_query_should_range(field, lower, upper, query_builder, j):
-	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['range'] = {}
-	query_builder['query']['bool']['should'][j]['range'][field] = {}
-	query_builder['query']['bool']['should'][j]['range'][field]['from'] = lower
-	query_builder['query']['bool']['should'][j]['range'][field]['to'] = upper
-	return query_builder
+# def build_query_should_range(field, lower, upper, query_builder, j):
+# 	query_builder['query']['bool']['should'].append({})
+# 	query_builder['query']['bool']['should'][j]['range'] = {}
+# 	query_builder['query']['bool']['should'][j]['range'][field] = {}
+# 	query_builder['query']['bool']['should'][j]['range'][field]['from'] = lower
+# 	query_builder['query']['bool']['should'][j]['range'][field]['to'] = upper
+# 	return query_builder
 
-def build_query_sort(field, asc_or_dsc, query_builder, k):
-	query_builder['sort'].append({})
-	query_builder['sort'][k][field] = {}
-	query_builder['sort'][k][field]['order'] = asc_or_dsc
-	return query_builder
+# def build_query_sort(field, asc_or_dsc, query_builder, k):
+# 	query_builder['sort'].append({})
+# 	query_builder['sort'][k][field] = {}
+# 	query_builder['sort'][k][field]['order'] = asc_or_dsc
+# 	return query_builder
 
-def build_query_exists(field, query_builder, i):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['constant_score'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
-	return query_builder
+# def build_query_exists(field, query_builder, i):
+# 	query_builder['query']['bool']['must'].append({})
+# 	query_builder['query']['bool']['must'][i]['constant_score'] = {}
+# 	query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
+# 	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
+# 	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
+# 	return query_builder
 
-def build_query_price(lower, upper, query_builder, j):
-	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['bool'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'] = []
-	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['lte'] = upper
-	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['gte'] = lower
-	return query_builder
+# def build_query_price(lower, upper, query_builder, j):
+# 	query_builder['query']['bool']['should'].append({})
+# 	query_builder['query']['bool']['should'][j]['bool'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'] = []
+# 	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['rent.min']['lte'] = upper
+# 	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['rent.max']['gte'] = lower
+# 	return query_builder
 
-def build_query_area(lower, upper, query_builder, j):
-	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['bool'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'] = []
-	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['area.min'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['area.min']['lte'] = upper
-	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['area.max'] = {}
-	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['area.max']['gte'] = lower
-	return query_builder
+# def build_query_area(lower, upper, query_builder, j):
+# 	query_builder['query']['bool']['should'].append({})
+# 	query_builder['query']['bool']['should'][j]['bool'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'] = []
+# 	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['area.min'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][0]['range']['area.min']['lte'] = upper
+# 	query_builder['query']['bool']['should'][j]['bool']['must'].append({})
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['area.max'] = {}
+# 	query_builder['query']['bool']['should'][j]['bool']['must'][1]['range']['area.max']['gte'] = lower
+# 	return query_builder
 
 class residentialclass(Resource):
 	def get(self):
