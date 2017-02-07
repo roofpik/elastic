@@ -73,13 +73,13 @@ class resReviewclass(Resource):
 
 			result = {}
 			result.update({'overallRating' : getAverageRating(temp_res, t_reviews)})
-			return 'works'
 			result.update({'numberOfReviews' : t_reviews})
 			result.update({'oneStar' : getIndividualRatingCount(temp_res)[0]})
 			result.update({'twoStar' : getIndividualRatingCount(temp_res)[1]})
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
+			return 'works'
 			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews)[0]})
 			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews)[1]})
 			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews)[2]})
