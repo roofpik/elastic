@@ -44,7 +44,7 @@ def getParamsRating(query_builder, temp_num_reviews):
 		ratingParamsNum[k] = temp_s['hits']['total']
 		finParamsRating[k] = ratingParamsRating[k] / ratingParamsNum[k]
 		finParamsRating[k] = round(finParamsRating[k], 2)
-		k+=1
+		k += 1
 	return finParamsRating
 
 class resReviewclass(Resource):

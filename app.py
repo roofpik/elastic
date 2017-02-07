@@ -18,7 +18,7 @@ api.add_resource(anuapi,'/anu-my-api')
 api.add_resource(residentialclass,'/residential')
 api.add_resource(cghsclass,'/cghs')
 api.add_resource(testclass2,'/test-api-2')
-api.add_resource(resReviewClass,'/residential-reviews')
+api.add_resource(resReviewclass,'/residential-reviews')
 
 if __name__ == "__main__":
 	app.debug = True
