@@ -38,6 +38,7 @@ def getParamsRating(query_builder, temp_num_reviews):
 	k = 0
 	while k<8:
 		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistance(query_builder, 'ratings.'+ratingParams[k]), size=temp_num_reviews)
+		return '00000000'
 		j = 0
 		while j<temp_s['hits']['total']: 
 			ratingParamsRating[k] = ratingParamsRating[k] + int(temp_s['hits']['hits'][j]['_source']['ratings'][ratingParams[k]])
