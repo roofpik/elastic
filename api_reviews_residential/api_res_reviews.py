@@ -29,14 +29,14 @@ def checkExistance(query_builder, field):
 	query_builder['query']['bool']['must'][1]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
-def getParamsRating(query_builder, temp_num_reviews, ratingParams, q):
-	es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+def getParamsRating(query_builder, temp_num_reviews):
 	ratingParamsNum = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	ratingParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	finParamsRating = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	ratingParams = ['layoutOfApartment', 'electricityAndWaterSupply', 'convenienceOfParking', 'openAndGreenAreas', 'convenienceOfHouseMaids', 'infrastructure', 'amenities', 'security']
 	k = 0
 	while k<8:
-		temp_s = es.search(index='res_reviews', doc_type='reviews', body=q, size=temp_num_reviews)
+		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistance(query_builder, 'ratings.'+ratingParams[k]), size=temp_num_reviews)
 		j = 0
 		while j<temp_s['hits']['total']: 
 			ratingParamsRating[k] = ratingParamsRating[k] + int(temp_s['hits']['hits'][j]['_source']['ratings'][ratingParams[k]])
@@ -46,16 +46,6 @@ def getParamsRating(query_builder, temp_num_reviews, ratingParams, q):
 		finParamsRating[k] = round(finParamsRating[k], 2)
 		k+=1
 	return finParamsRating
-
-def instantiate(query_builder):
-	query_builder = {}
-	query_builder['query'] = {}
-	query_builder['query']['bool'] = {}
-	query_builder['query']['bool']['must'] = []
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][0]['match'] = {}
-	query_builder['query']['bool']['must'][0]['match']['pid'] = _projectId
-	return query_builder
 
 class resReviewclass(Resource):
 	def get(self):
@@ -89,27 +79,15 @@ class resReviewclass(Resource):
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
-
-			ratingParams = ['layoutOfApartment', 'electricityAndWaterSupply', 'convenienceOfParking', 'openAndGreenAreas', 'convenienceOfHouseMaids', 'infrastructure', 'amenities', 'security']
-
-			p = 0
-			q = []
-			while p<8:
-				q.append(checkExistance(query_builder, 'ratings.'+ratingParams[p]))
-				query_builder = instantiate(query_builder)
-				return query_builder
-				p += 1
-
-			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[0])[0]})
-			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[1])[1]})
-			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[2])[2]})
-			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[3])[3]})
-			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[4])[4]})
-			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews, ratingParams, q[5])[5]})
-			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[6])[6]})
-			result.update({'security' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[7])[7]})
+			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews)[0]})
+			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews)[1]})
+			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews)[2]})
+			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews)[3]})
+			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews)[4]})
+			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews)[5]})
+			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews)[6]})
+			result.update({'security' : getParamsRating(query_builder, temp_num_reviews)[7]})
 			return result
 		
 		except Exception:
 			return Exception
-
