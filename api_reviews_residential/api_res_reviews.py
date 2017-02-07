@@ -38,7 +38,7 @@ def getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q):
 		temp_s = es.search(index='res_reviews', doc_type='reviews', body=q, size=temp_num_reviews)
 		j = 0
 		while j<temp_s['hits']['total']: 
-			ratingParamsRating[k] = ratingParamsRating[k] + int(temp_s['hits']['hits'][j]['_source']['ratings'][ratingParams[k]])
+			ratingParamsRating[k] = ratingParamsRating[k] + int(temp_s['hits']['hits'][j]['_source']['ratings'][ratingParams])
 			j+=1
 		ratingParamsNum[k] = temp_s['hits']['total']
 		finParamsRating[k] = ratingParamsRating[k] / ratingParamsNum[k]
@@ -85,14 +85,14 @@ class resReviewclass(Resource):
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
-			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[0])[0]})
-			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[1])[1]})
-			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[2])[2]})
-			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[3])[3]})
-			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[4])[4]})
-			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[5])[5]})
-			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[6])[6]})
-			result.update({'security' : getParamsRating(query_builder, temp_num_reviews, ratingParams, es, q[7])[7]})
+			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, 'layoutOfApartment', es, q[0])[0]})
+			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, 'electricityAndWaterSupply', es, q[1])[1]})
+			result.update({'convenienceOfParking' : getParamsRating(query_builder, temp_num_reviews, 'convenienceOfParking', es, q[2])[2]})
+			result.update({'openAndGreenAreas' : getParamsRating(query_builder, temp_num_reviews, 'openAndGreenAreas', es, q[3])[3]})
+			result.update({'convenienceOfHouseMaids' : getParamsRating(query_builder, temp_num_reviews, 'convenienceOfHouseMaids', es, q[4])[4]})
+			result.update({'infrastructure': getParamsRating(query_builder, temp_num_reviews, 'infrastructure', es, q[5])[5]})
+			result.update({'amenities' : getParamsRating(query_builder, temp_num_reviews, 'amenities', es, q[6])[6]})
+			result.update({'security' : getParamsRating(query_builder, temp_num_reviews, 'security', es, q[7])[7]})
 			return result
 		
 		except Exception:
