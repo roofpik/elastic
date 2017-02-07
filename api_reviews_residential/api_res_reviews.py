@@ -72,9 +72,9 @@ class resReviewclass(Resource):
 			query_builder['query']['bool']['must'][0]['match']['pid'] = _projectId
 
 			result = {}
-			return 'works'
-			result.append({'overallRating' : getAverageRating(temp_res, t_reviews)})
+			#result.append({'overallRating' : getAverageRating(temp_res, t_reviews)})
 			result.append({'numberOfReviews' : t_reviews})
+			
 			result.append({'oneStar' : getIndividualRatingCount(temp_res)[0]})
 			result.append({'twoStar' : getIndividualRatingCount(temp_res)[1]})
 			result.append({'threeStar' : getIndividualRatingCount(temp_res)[2]})
