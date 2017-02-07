@@ -267,7 +267,12 @@ class residentialclass(Resource):
 						query_builder = build_query_should("amenities."+temp[z], "Yes", query_builder, j)
 						j += 1
 						z += 1
+<<<<<<< HEAD
 	
+=======
+			return 'works'
+			#return query_builder
+>>>>>>> 5e71dfc237e5331a681e59ff1d03f51dbd85e3ec
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 			index_num = 0
 			final_res = {}

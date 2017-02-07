@@ -21,7 +21,7 @@ def getIndividualRatingCount(temp_res):
 		k += 1
 	return l
 
-def checkExistance(query_builder, field):
+def checkExistence(query_builder, field):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][1]['constant_score'] = {}
 	query_builder['query']['bool']['must'][1]['constant_score']['filter'] = {}
@@ -46,8 +46,7 @@ def getParamsRating(query_builder, temp_num_reviews, es):
 	ratingParams = ['layoutOfApartment', 'electricityAndWaterSupply', 'convenienceOfParking', 'openAndGreenAreas', 'convenienceOfHouseMaids', 'infrastructure', 'amenities', 'security']
 	k = 0
 	while k<8:
-		return '00000000'
-		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistance(instantiate(), 'ratings.'+ratingParams[k]), size=temp_num_reviews)
+		temp_s = es.search(index='res_reviews', doc_type='reviews', body=checkExistence(instantiate(), 'ratings.'+ratingParams[k]), size=temp_num_reviews)
 		j = 0
 		while j<temp_s['hits']['total']: 
 			ratingParamsRating[k] = ratingParamsRating[k] + int(temp_s['hits']['hits'][j]['_source']['ratings'][ratingParams[k]])
@@ -82,8 +81,7 @@ class resReviewclass(Resource):
 			result.update({'threeStar' : getIndividualRatingCount(temp_res)[2]})
 			result.update({'fourStar' : getIndividualRatingCount(temp_res)[3]})
 			result.update({'fiveStar' : getIndividualRatingCount(temp_res)[4]})
-			return 'works'
-			paramsRating = getParamsRating(query_builder, temp_num_reviews, es)
+			paramsRating = getParamsRating(query_builder, t_reviews, es)
 			result.update({'layoutOfApartment' : paramsRating[0]})
 			result.update({'electricityAndWaterSupply' : paramsRating[1]})
 			result.update({'convenienceOfParking' : paramsRating[2]})
