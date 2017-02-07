@@ -78,7 +78,7 @@ def build_query_area(lower, upper, query_builder, j):
 class residentialclass(Resource):
 	def get(self):
 		try:
-		
+			return 'works'
 			i = 0
 			j = 0
 			k = 0
@@ -267,7 +267,6 @@ class residentialclass(Resource):
 						query_builder = build_query_should("amenities."+temp[z], "Yes", query_builder, j)
 						j += 1
 						z += 1
-			return 'works'
 			#return query_builder
 			res = es.search(index='res_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 			index_num = 0
