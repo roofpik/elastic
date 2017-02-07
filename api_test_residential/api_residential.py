@@ -277,10 +277,10 @@ class residentialclass(Resource):
 			final_res.update({'records': es.count(index='res_index')['count']})
 			final_res.update({'hits': res['hits']['total']})
 			
-			if(res['hits']['total']<=10):
+			if(res['hits']['total'] <= 10):
 				page_counter = res['hits']['total']
 			else:
-				page_conter = _page_size
+				page_counter = _page_size
 
 			while index_num<page_counter:
 				bhk = []
