@@ -47,6 +47,16 @@ def getParamsRating(query_builder, temp_num_reviews, ratingParams, q):
 		k+=1
 	return finParamsRating
 
+def instantiate(query_builder):
+	query_builder = {}
+	query_builder['query'] = {}
+	query_builder['query']['bool'] = {}
+	query_builder['query']['bool']['must'] = []
+	query_builder['query']['bool']['must'].append({})
+	query_builder['query']['bool']['must'][0]['match'] = {}
+	query_builder['query']['bool']['must'][0]['match']['pid'] = _projectId
+	return query_builder
+
 class resReviewclass(Resource):
 	def get(self):
 		try:
@@ -86,8 +96,8 @@ class resReviewclass(Resource):
 			q = []
 			while p<8:
 				q.append(checkExistance(query_builder, 'ratings.'+ratingParams[p]))
+				query_builder = instantiate(query_builder)
 				p += 1
-			return q
 
 			result.update({'layoutOfApartment' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[0])[0]})
 			result.update({'electricityAndWaterSupply' : getParamsRating(query_builder, temp_num_reviews, ratingParams, q[1])[1]})
