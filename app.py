@@ -4,7 +4,7 @@ from flask.ext.cors import CORS
 
 from search import *
 from anu import *
-#from api_test_residential import * 
+from api_test_residential import * 
 from api_test_cghs import *
 from api_test_2 import *
 from api_reviews_residential import *
@@ -15,7 +15,7 @@ CORS(app)
 
 api.add_resource(test,'/test')
 api.add_resource(anuapi,'/anu-my-api')
-##api.add_resource(residentialclass,'/residential')
+api.add_resource(residentialclass,'/residential')
 api.add_resource(cghsclass,'/cghs')
 api.add_resource(testclass2,'/test-api-2')
 api.add_resource(resReviewclass,'/residential-reviews')
