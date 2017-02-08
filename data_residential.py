@@ -15,7 +15,7 @@ def remove_values_from_list(the_list, val):
    return [value for value in the_list if value != val]
 
 for x in data1:
-	
+	print 'initializing creation of index'
 	data = data1[x]
 	d = {}
 	details = {}
@@ -45,15 +45,15 @@ for x in data1:
 	max_rent6 = []
 
 	try:
-		print 'initializing creation of index'
 		if(data['live'] == True):
+
+			print 'creating index for ' + data['projectId']
 			
 			for j in data:
 	#for project id
 		#j has ids of projects
 				for k in data['configurations']:
 			#k has all objects that were inside config
-					print 'creating index for ' + data['projectId']
 
 				#adding bhks in the format bhk : {}
 					temp = {}
@@ -233,8 +233,9 @@ for x in data1:
 				d['details'] = details
 
 		#print json.dumps(d)
-
+			print 'creating index'
 			es.index(index='residential_index', doc_type='data', id=data['projectId'], body=d)
+			print 'created index'
 			
 	except Exception:
 		print Exception
