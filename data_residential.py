@@ -8,7 +8,8 @@ print 'connection to es created'
 
 r = requests.request('get', 'https://roofpik-948d0.firebaseio.com/projects/-KYJONgh0P98xoyPPYm9/residential/.json')
 data1 = r.json()
-
+c1=0
+c2=0
 print 'data fetched from firebase' 
 
 def remove_values_from_list(the_list, val):
@@ -234,8 +235,12 @@ for x in data1:
 
 		#print json.dumps(d)
 			print 'creating index'
+			c1+=1
 			es.index(index='res_index', doc_type='data', id=data['projectId'], body=d)
 			print 'created index'
+			c2+=1
 			
 	except Exception:
+		print c1
 		print Exception
+		print c2
