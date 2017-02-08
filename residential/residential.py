@@ -84,7 +84,7 @@ class residentialclass(Resource):
 			k = 0
 			
 			try:		
-				es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])			
+				es = requests.get('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com')		
 			except:
 				return 'connection to es not established'
 
@@ -284,13 +284,19 @@ class residentialclass(Resource):
 			
 #			return query_builder
 			try:
-				res = es.search(index='residential_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
+				res = requests.post(index='https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+				res = json.dumps(res)
+				#, from_=_page_start, size=_page_size)
 			except:
 				return 'unable to call es.search'
+
 			try:
-				r_count = es.count(index='residential_index')['count']
+				r_count = requests.post(index='https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+				r_count = r_count['hits']['total']
+				r_count = json.dumps(r_count)
 			except:
 				return 'unable to count records'
+
 			index_num = 0
 			final_res = {}
 			temp_res = {}
