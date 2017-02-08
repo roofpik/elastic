@@ -4,8 +4,12 @@ import requests
 
 es = Elasticsearch([{'host':'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/'}])
 
+print 'connection created'
+
 r = requests.request('get', 'https://roofpik-948d0.firebaseio.com/projects/-KYJONgh0P98xoyPPYm9/residential/.json')
 data1 = r.json()
+
+print 'data fetched from firebase' 
 
 def remove_values_from_list(the_list, val):
    return [value for value in the_list if value != val]
