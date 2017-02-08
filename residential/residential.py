@@ -82,8 +82,8 @@ class residentialclass(Resource):
 			i = 0
 			j = 0
 			k = 0
-			
-			es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])
+						
+			es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com:80'])
 			return es			
 			query_builder = {}
 			query_builder['query'] = {}
