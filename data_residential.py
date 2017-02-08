@@ -47,7 +47,7 @@ for x in data1:
 	try:
 		if(data['live'] == True):
 
-			print 'creating index for ' + data['projectId']
+			#print 'creating index for ' + data['projectId']
 			
 			for j in data:
 	#for project id
