@@ -82,9 +82,12 @@ class residentialclass(Resource):
 			i = 0
 			j = 0
 			k = 0
-			return 'called'
-			es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])
-			return es			
+			
+			try:
+				es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])
+			except Exception:
+				print Exception
+
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
