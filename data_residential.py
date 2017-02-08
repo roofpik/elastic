@@ -2,7 +2,7 @@ import json
 from elasticsearch import Elasticsearch
 import requests
 
-es = Elasticsearch([{'host':'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/'}])
+es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])
 
 print 'connection to es created'
 
@@ -236,7 +236,7 @@ for x in data1:
 		#print json.dumps(d)
 			print 'creating index'
 			c1+=1
-			es.index(index='res_index', doc_type='data', id=data['projectId'], body=d)
+			es.index(index='residential_index', doc_type='data', id=data['projectId'], body=d)
 			print 'created index'
 			c2+=1
 			
