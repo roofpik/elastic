@@ -230,5 +230,5 @@ for x in data1:
 
 			es.index(index='residential_index', doc_type='data', id=data['projectId'], body=d)
 			
-	except:
-		pass
+	except Exception:
+		print Exception
