@@ -78,13 +78,13 @@ def build_query_area(lower, upper, query_builder, j):
 class residentialclass(Resource):
 	def get(self):
 		try:
-
+#			return 'api called'
 			i = 0
 			j = 0
 			k = 0
 			
 			es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])
-			
+			return es			
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
@@ -279,7 +279,7 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 			
-			#return query_builder
+			return query_builder
 			res = es.search(index='residential_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
 			
 			index_num = 0
