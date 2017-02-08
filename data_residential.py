@@ -16,7 +16,6 @@ def remove_values_from_list(the_list, val):
    return [value for value in the_list if value != val]
 
 for x in data1:
-	print 'initializing creation of index'
 	data = data1[x]
 	d = {}
 	details = {}
@@ -234,13 +233,7 @@ for x in data1:
 				d['details'] = details
 
 		#print json.dumps(d)
-			print 'creating index'
-			c1+=1
 			es.index(index='residential_index', doc_type='data', id=data['projectId'], body=d)
-			print 'created index'
-			c2+=1
 			
 	except Exception:
-		print c1
 		print Exception
-		print c2
