@@ -82,9 +82,10 @@ class residentialclass(Resource):
 			i = 0
 			j = 0
 			k = 0
-						
-			es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com:80'])
-			return es			
+			try:		
+				es = Elasticsearch(['https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com'])			
+			except:
+				return 'connection to es not established'
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
@@ -279,13 +280,19 @@ class residentialclass(Resource):
 						j += 1
 						z += 1
 			
-			return query_builder
-			res = es.search(index='residential_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
-			
+#			return query_builder
+			try:
+				res = es.search(index='residential_index', doc_type='data', body=query_builder, from_=_page_start, size=_page_size)
+			except:
+				return 'unable to call es.search'
+			try:
+				r_count = es.count(index='residential_index')['count']
+			except:
+				return 'unable to count records'
 			index_num = 0
 			final_res = {}
 			temp_res = {}
-			final_res.update({'records': es.count(index='residential_index')['count']})
+			final_res.update({'records': r_count})
 			final_res.update({'hits': res['hits']['total']})
 			
 			if(res['hits']['total'] <= 10):
