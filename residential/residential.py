@@ -283,17 +283,21 @@ class residentialclass(Resource):
 						z += 1
 			
 #			return query_builder
+			query_builder = json.dumps(query_builder)
 			try:
-				res = requests.post(index='https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
-				res = json.dumps(res)
+				res = requests.post('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+#				return 'request made'
+				res = json.loads(res.text)
+#				return res
 				#, from_=_page_start, size=_page_size)
 			except:
 				return 'unable to call es.search'
 
 			try:
-				r_count = requests.post(index='https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+				r_count = requests.post('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+				r_count = json.loads(r_count.text)
 				r_count = r_count['hits']['total']
-				r_count = json.dumps(r_count)
+#				return r_count
 			except:
 				return 'unable to count records'
 
