@@ -2,7 +2,7 @@ import json
 from elasticsearch import Elasticsearch
 import requests
 
-es = Elasticsearch([{'host':'localhost', 'port':9200}])
+es = Elasticsearch([{'host':'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/'}])
 
 r = requests.request('get', 'https://roofpik-948d0.firebaseio.com/projects/-KYJONgh0P98xoyPPYm9/residential/.json')
 data1 = r.json()
