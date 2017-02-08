@@ -234,7 +234,7 @@ for x in data1:
 
 		#print json.dumps(d)
 			print 'creating index'
-			es.index(index='residential_index', doc_type='data', id=data['projectId'], body=d)
+			es.index(index='res_index', doc_type='data', id=data['projectId'], body=d)
 			print 'created index'
 			
 	except Exception:
