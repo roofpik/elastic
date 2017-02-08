@@ -4,7 +4,7 @@ import requests
 
 es = Elasticsearch([{'host':'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/'}])
 
-print 'connection created'
+print 'connection to es created'
 
 r = requests.request('get', 'https://roofpik-948d0.firebaseio.com/projects/-KYJONgh0P98xoyPPYm9/residential/.json')
 data1 = r.json()
@@ -45,6 +45,7 @@ for x in data1:
 	max_rent6 = []
 
 	try:
+		print 'initializing creation of index'
 		if(data['live'] == True):
 			
 			for j in data:
@@ -52,6 +53,7 @@ for x in data1:
 		#j has ids of projects
 				for k in data['configurations']:
 			#k has all objects that were inside config
+					print 'creating index for ' + data['projectId']
 
 				#adding bhks in the format bhk : {}
 					temp = {}
