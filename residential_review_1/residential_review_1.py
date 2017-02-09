@@ -29,9 +29,10 @@ class residentialreview1class(Resource):
  		d.update({'amenities':0})
  		d.update({'security':0})
 
-		query = {"query": {"match": {"_id": _id}}}
+		query = {"query": {"match": {"_id": str(_id)}}}
 
 		r = requests.post(url, data=query)
+		return r
 		try:
 			return r['hits']['hits'][0]['_source']
 		except:
