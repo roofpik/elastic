@@ -13,7 +13,7 @@ api = Api(app)
 CORS(app)
 
 api.add_resource(test,'/test')
-api.add_resource(residentialclass,'/residential')
+api.add_resource(residentialclass,'/residentialProjects')
 api.add_resource(residentialreview1class,'/reviewSummary')
 api.add_resource(residentialreview2class,'/reviewDetails')
 api.add_resource(residentialreview3class,'/projectReviews')
