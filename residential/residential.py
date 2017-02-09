@@ -294,7 +294,7 @@ class residentialclass(Resource):
 				return 'unable to call es.search'
 
 			try:
-				r_count = requests.post('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+				r_count = requests.post('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search')
 				r_count = json.loads(r_count.text)
 				r_count = r_count['hits']['total']
 #				return r_count
