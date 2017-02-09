@@ -56,7 +56,7 @@ class residentialreview3class(Resource):
 				i += 1
 
 			if(_overallRating):
-				query_builder = build_query_must(_overallRating, query_builder, i)
+				query_builder = build_query_must_range(_overallRating, query_builder, i)
 				i += 1
 
 			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search'
