@@ -7,7 +7,7 @@ from flask import *
 class residentialreview1class(Resource):
 	def get(self):
 		url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/_search'
-
+		parser = reqparse.RequestParser()
 		parser.add_argument('id', type=str)
 		args = parser.parse_args()
 		_id = args['id']
