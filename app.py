@@ -14,11 +14,11 @@ api = Api(app)
 CORS(app)
 
 api.add_resource(test,'/test')
-api.add_resource(residentialclass,'/residentialProjects')
-api.add_resource(cghsclass,'/cghsProjects')
-api.add_resource(residentialreview1class,'/reviewSummary')
-api.add_resource(residentialreview2class,'/reviewDetails')
-api.add_resource(residentialreview3class,'/projectReviews')
+api.add_resource(residentialclass,'/GetResidential_1.0')
+api.add_resource(cghsclass,'/GetCghs_1.0')
+api.add_resource(residentialreview1class,'/ReviewSummary_1.0')
+api.add_resource(residentialreview2class,'/ReviewDetails_1.0')
+api.add_resource(residentialreview3class,'/ProjectReviews_1.0')
 
 if __name__ == "__main__":
 	app.debug = True
