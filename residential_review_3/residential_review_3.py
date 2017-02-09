@@ -96,7 +96,7 @@ class residentialreview3class(Resource):
 				d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
 				d.update({'reviewTitle':r['hits']['hits'][index]['_source']['reviewTitle']})
 				d.update({'reviewId':r['hits']['hits'][index]['_id']})
-				d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText']})
+				d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText'][:400]})
 				d_res.update({index : d})
 				index += 1
 			final_res.update({'details' : d_res})
