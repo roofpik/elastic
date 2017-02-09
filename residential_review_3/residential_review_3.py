@@ -47,6 +47,18 @@ class residentialreview3class(Resource):
 			if not _overallRating:
 					_overallRating = 0
 
+			parser.add_argument('page_start', type=str)
+			args = parser.parse_args()
+			_page_start = args['page_start']
+			if not _page_start:
+					_page_start = '0'
+
+			parser.add_argument('page_size', type=str)
+			args = parser.parse_args()
+			_page_size = args['page_size']
+			if not _page_size:
+					_page_size = '10'
+
 			if(_pid):
 				query_builder = build_query_must("pid", _pid, query_builder, i)
 				i += 1
@@ -59,10 +71,34 @@ class residentialreview3class(Resource):
 				query_builder = build_query_must_range(_overallRating, query_builder, i)
 				i += 1
 
-			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search'		
+			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search?size='+_page_size+'&from='_page_start		
 			query_builder = json.dumps(query_builder)
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
-			return r
+			r_count = r['hits']['total']
+
+			final_res = {}
+			d_res = {}
+			final_res.update({'hits': r_count})
+
+			if(res['hits']['total'] <= 10):
+				page_counter = res['hits']['total']
+			else:
+				page_counter = _page_size
+
+			index = 0
+			while index<page_counter:
+				d = {}
+				d.update({'userId':res['hits']['hits'][index_num]['_source']['userId']})
+				d.update({'userId':res['hits']['hits'][index_num]['_source']['userName']})
+				d.update({'userId':res['hits']['hits'][index_num]['_source']['overallRating']})
+				d.update({'userId':res['hits']['hits'][index_num]['_source']['createdDate']})
+				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewTitle']})
+				d.update({'userId':res['hits']['hits'][index_num]['_id']})
+				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewText']})
+				d_res.update({index_num : d})
+			final_res.update('details' : d_res)
+			return final_res
+
 		except:
 			pass
