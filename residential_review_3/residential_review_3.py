@@ -41,11 +41,11 @@ class residentialreview3class(Resource):
 			if not _userType:
 				_userType = ""
 
-			parser.add_argument('overallRating', type=str)
+			parser.add_argument('overallRating', type=int)
 			args = parser.parse_args()
 			_overallRating = args['overallRating']
 			if not _overallRating:
-					_overallRating = ""
+					_overallRating = 0
 
 			if(_pid):
 				query_builder = build_query_must("pid", _pid, query_builder, i)
