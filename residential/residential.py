@@ -171,16 +171,16 @@ class residentialclass(Resource):
 			if(_style):
 				count = _style.count('$')
 				if(count == 0):
-					query_builder = build_query_should("style", _style, query_builder, j)
-					j += 1
+					query_builder = build_query_must("style", _style, query_builder, i)
+					i += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_style.split('$')[z])
-						query_builder = build_query_should("style", temp[z], query_builder, j)
-						j += 1
+						query_builder = build_query_must("style", temp[z], query_builder, i)
+						i += 1
 						z += 1
 
 			if(_details_name):
@@ -198,15 +198,13 @@ class residentialclass(Resource):
 					z = 0
 					while z!=count:
 						temp.append(_details_builder.split('$')[z])
-						query_builder = build_query_should("details.builder", temp[z], query_builder, j)
-						j += 1
+						query_builder = build_query_must("details.builder", temp[z], query_builder, i)
+						i += 1
 						z += 1
 
 			if(_area_range):
 				low = _area_range.split('$')[0]
 				high = _area_range.split('$')[1]
-				query_builder = build_query_area(low, high, query_builder, j)
-				j += 1
 				query_builder = build_query_area(low, high, query_builder, j)
 				j += 1
 
@@ -240,46 +238,46 @@ class residentialclass(Resource):
 			if(_locationId):
 				count = _locationId.count('$')
 				if(count == 0):
-					query_builder = build_query_should("location."+_locationId, True, query_builder, j)
-					j += 1
+					query_builder = build_query_must("location."+_locationId, True, query_builder, i)
+					i += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_locationId.split('$')[z])
-						query_builder = build_query_should("location."+temp[z], True, query_builder, j)
-						j += 1
+						query_builder = build_query_must("location."+temp[z], True, query_builder, i)
+						i += 1
 						z += 1
 
 			if(_propertyType):
 				count = _propertyType.count('$')
 				if(count==0):
-					query_builder = build_query_should("propertyType."+_propertyType, True, query_builder, j)
-					j += 1
+					query_builder = build_query_must("propertyType."+_propertyType, True, query_builder, i)
+					i += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_propertyType.split('$')[z])
-						query_builder = build_query_should("propertyType."+temp[z], True, query_builder, j)
-						j += 1
+						query_builder = build_query_must("propertyType."+temp[z], True, query_builder, i)
+						i += 1
 						z += 1
 
 			if(_amenity):
 				count = _amenity.count('$')
 				if(count==0):
-					query_builder = build_query_should("amenities."+_amenity, "Yes", query_builder, j)
-					j += 1
+					query_builder = build_query_must("amenities."+_amenity, "Yes", query_builder, i)
+					i += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_amenity.split('$')[z])
-						query_builder = build_query_should("amenities."+temp[z], "Yes", query_builder, j)
-						j += 1
+						query_builder = build_query_must("amenities."+temp[z], "Yes", query_builder, i)
+						i += 1
 						z += 1
 			
 #			return query_builder
