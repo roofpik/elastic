@@ -86,8 +86,6 @@ class residentialreview3class(Resource):
 				page_counter = r_count
 			else:
 				page_counter = _page_size
-
-			return r_count
 			
 			index = 0
 			while index<page_counter:
@@ -99,7 +97,8 @@ class residentialreview3class(Resource):
 				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewTitle']})
 				d.update({'userId':res['hits']['hits'][index_num]['_id']})
 				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewText']})
-				d_res.update({index_num : d})
+				d_res.update({index : d})
+				index += 1
 			final_res.update({'details' : d_res})
 			return final_res
 
