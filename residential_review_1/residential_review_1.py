@@ -6,7 +6,7 @@ from flask import *
 
 class residentialreview1class(Resource):
 	def get(self):
-		url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/_search'
+
 		parser = reqparse.RequestParser()
 		parser.add_argument('id', type=str)
 		args = parser.parse_args()
@@ -28,12 +28,12 @@ class residentialreview1class(Resource):
  		d.update({'infrastructure':0})
  		d.update({'amenities':0})
  		d.update({'security':0})
-
-		query = {"query": {"match": {"_id": str(_id)}}}
-		query = json.dumps(query)
-		r = requests.post(url, data=query)
-
+		
+		url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/' + _id
+		
+		r = requests.get(url)
+		r = json.loads(r.text)
 		try:
-			return r['hits']['hits'][0]['_source']
+			return r['_source']
 		except:
 			return d		
