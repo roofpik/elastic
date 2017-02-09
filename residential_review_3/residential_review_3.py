@@ -21,7 +21,7 @@ class residentialreview3class(Resource):
 	def get(self):
 		try:
 			i = 0
-
+			return 'this is called'
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
