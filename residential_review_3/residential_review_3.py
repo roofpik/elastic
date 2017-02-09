@@ -86,7 +86,7 @@ class residentialreview3class(Resource):
 				page_counter = res['hits']['total']
 			else:
 				page_counter = _page_size
-
+			return r_count
 			index = 0
 			while index<page_counter:
 				d = {}
