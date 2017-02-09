@@ -16,9 +16,9 @@ CORS(app)
 api.add_resource(test,'/test')
 api.add_resource(residentialclass,'/GetResidential_1.0')
 api.add_resource(cghsclass,'/GetCghs_1.0')
-api.add_resource(residentialreview1class,'/ReviewSummary_1.0')
-api.add_resource(residentialreview2class,'/ReviewDetails_1.0')
-api.add_resource(residentialreview3class,'/ProjectReviews_1.0')
+api.add_resource(residentialreview1class,'/GetReviewSummary_1.0')
+api.add_resource(residentialreview2class,'/GetReviewDetails_1.0')
+api.add_resource(residentialreview3class,'/GetProjectReviews_1.0')
 
 if __name__ == "__main__":
 	app.debug = True
