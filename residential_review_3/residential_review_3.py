@@ -70,13 +70,13 @@ class residentialreview3class(Resource):
 			if(_overallRating):
 				query_builder = build_query_must_range(_overallRating, query_builder, i)
 				i += 1
-
+			return 'works'
 			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search?size='+_page_size+'&from='_page_start		
 			query_builder = json.dumps(query_builder)
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
 			r_count = r['hits']['total']
-
+			
 			final_res = {}
 			d_res = {}
 			final_res.update({'hits': r_count})
