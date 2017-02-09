@@ -82,11 +82,11 @@ class residentialreview3class(Resource):
 			d_res = {}
 			final_res.update({'hits': r_count})
 
-			if(res['hits']['total'] <= 10):
-				page_counter = res['hits']['total']
+			if(r_count <= 10):
+				page_counter = r_count
 			else:
 				page_counter = _page_size
-			return r_count
+
 			index = 0
 			while index<page_counter:
 				d = {}
