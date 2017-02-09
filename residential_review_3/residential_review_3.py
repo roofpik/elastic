@@ -77,7 +77,7 @@ class residentialreview3class(Resource):
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
 			r_count = r['hits']['total']
-			return r_count
+
 			final_res = {}
 			d_res = {}
 			final_res.update({'hits': r_count})
@@ -87,6 +87,8 @@ class residentialreview3class(Resource):
 			else:
 				page_counter = _page_size
 
+			return r_count
+			
 			index = 0
 			while index<page_counter:
 				d = {}
