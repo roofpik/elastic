@@ -59,9 +59,8 @@ class residentialreview3class(Resource):
 				query_builder = build_query_must_range(_overallRating, query_builder, i)
 				i += 1
 
-			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search'
-			return query_builder			
-			query_builder = json.loads(query_builder)
+			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search'		
+			query_builder = json.dumps(query_builder)
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
 			return r
