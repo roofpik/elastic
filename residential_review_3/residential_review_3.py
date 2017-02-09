@@ -21,7 +21,7 @@ class residentialreview3class(Resource):
 	def get(self):
 		try:
 			i = 0
-			return 'this is called'
+			
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
@@ -60,8 +60,8 @@ class residentialreview3class(Resource):
 				i += 1
 
 			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search'
+			return query_builder			
 			query_builder = json.loads(query_builder)
-			return query_builder
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
 			return r
