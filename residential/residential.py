@@ -156,17 +156,17 @@ class residentialclass(Resource):
 			if not _amenity:
 					_amenity = ""      
 
-			parser.add_argument('page_start', type=int)
+			parser.add_argument('page_start', type=str)
 			args = parser.parse_args()
 			_page_start = args['page_start']
 			if not _page_start:
-					_page_start = 0    
+					_page_start = '0'    
 
-			parser.add_argument('page_size', type=int)
+			parser.add_argument('page_size', type=str)
 			args = parser.parse_args()
 			_page_size = args['page_size']
 			if not _page_size:
-					_page_size = 10
+					_page_size = '10'
 			
 			if(_style):
 				count = _style.count('$')
@@ -285,7 +285,7 @@ class residentialclass(Resource):
 #			return query_builder
 			query_builder = json.dumps(query_builder)
 			try:
-				res = requests.post('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search', data=query_builder)
+				res = requests.post('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search?size='+_page_size+'&from='+_page_start, data=query_builder)
 #				return 'request made'
 				res = json.loads(res.text)
 #				return res
@@ -310,7 +310,7 @@ class residentialclass(Resource):
 			if(res['hits']['total'] <= 10):
 				page_counter = res['hits']['total']
 			else:
-				page_counter = _page_size
+				page_counter = int(_page_size)
 
 			while index_num<page_counter:
 				bhk = []
