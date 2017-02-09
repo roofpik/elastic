@@ -95,6 +95,7 @@ class residentialreview3class(Resource):
 				d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
 				d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
 				d.update({'reviewTitle':r['hits']['hits'][index]['_source']['reviewTitle']})
+				d.update({'wordCount':r['hits']['hits'][index]['_source']['wordCount']})
 				d.update({'reviewId':r['hits']['hits'][index]['_id']})
 				d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText'][:400]})
 				d_res.update({index : d})
