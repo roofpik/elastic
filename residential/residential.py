@@ -171,16 +171,16 @@ class residentialclass(Resource):
 			if(_style):
 				count = _style.count('$')
 				if(count == 0):
-					query_builder = build_query_must("style", _style, query_builder, i)
-					i += 1
+					query_builder = build_query_should("style", _style, query_builder, j)
+					j += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_style.split('$')[z])
-						query_builder = build_query_must("style", temp[z], query_builder, i)
-						i += 1
+						query_builder = build_query_should("style", temp[z], query_builder, j)
+						j += 1
 						z += 1
 
 			if(_details_name):
