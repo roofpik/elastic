@@ -5,6 +5,7 @@ from flask.ext.cors import CORS
 from search import *
 from residential import *
 from residential_review_1 import *
+from residential_review_2 import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,6 +14,7 @@ CORS(app)
 api.add_resource(test,'/test')
 api.add_resource(residentialclass,'/residential')
 api.add_resource(residentialreview1class,'/r-review-1')
+api.add_resource(residentialreview2class,'/r-review-2')
 
 if __name__ == "__main__":
 	app.debug = True
