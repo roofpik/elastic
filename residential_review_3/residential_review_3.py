@@ -90,13 +90,13 @@ class residentialreview3class(Resource):
 			index = 0
 			while index<page_counter:
 				d = {}
-				d.update({'userId':res['hits']['hits'][index_num]['_source']['userId']})
-				d.update({'userId':res['hits']['hits'][index_num]['_source']['userName']})
-				d.update({'userId':res['hits']['hits'][index_num]['_source']['overallRating']})
-				d.update({'userId':res['hits']['hits'][index_num]['_source']['createdDate']})
-				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewTitle']})
-				d.update({'userId':res['hits']['hits'][index_num]['_id']})
-				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewText']})
+				d.update({'userId':r['hits']['hits'][index]['_source']['userId']})
+				d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
+				d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
+				d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
+				d.update({'reviewTitle':r['hits']['hits'][index]['_source']['reviewTitle']})
+				d.update({'reviewId':r['hits']['hits'][index]['_id']})
+				d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText']})
 				d_res.update({index : d})
 				index += 1
 			final_res.update({'details' : d_res})
