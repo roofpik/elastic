@@ -18,6 +18,6 @@ class residentialreview2class(Resource):
 		r = json.loads(r.text)
 		try:		
 			return r['_source']
-		else:
+		except:
 			return 'record not found'
 
