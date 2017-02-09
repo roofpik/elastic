@@ -64,3 +64,5 @@ class residentialreview3class(Resource):
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
 			return r
+		except:
+			pass
