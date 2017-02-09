@@ -85,10 +85,10 @@ class residentialreview3class(Resource):
 			if(r_count <= 10):
 				page_counter = r_count
 			else:
-				page_counter = _page_size
-			
+				page_counter = int(_page_size)
+
 			index = 0
-			while index<5:
+			while index<page_counter:
 				d = {}
 				d.update({'userId':r['hits']['hits'][index]['_source']['userId']})
 				d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
