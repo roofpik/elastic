@@ -72,7 +72,7 @@ class residentialreview3class(Resource):
 				i += 1
 			return 'works'
 			
-			url = 'dsad'	
+			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search?size='+_page_size+'&from='+_page_start	
 
 			query_builder = json.dumps(query_builder)
 			r = requests.post(url, data=query_builder)
@@ -99,7 +99,7 @@ class residentialreview3class(Resource):
 				d.update({'userId':res['hits']['hits'][index_num]['_id']})
 				d.update({'userId':res['hits']['hits'][index_num]['_source']['reviewText']})
 				d_res.update({index_num : d})
-			final_res.update('details' : d_res)
+			final_res.update({'details' : d_res})
 			return final_res
 
 		except:
