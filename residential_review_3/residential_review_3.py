@@ -13,8 +13,8 @@ def build_query_must(field, value, query_builder, i):
 def build_query_must_range(value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['range'] = {}
-	query_builder['query']['bool']['must'][i]['range']["overallRating"] = {}
-	query_builder['query']['bool']['must'][i]['range']["overallRating"]['gte'] = value
+	query_builder['query']['bool']['must'][i]['range']['overallRating'] = {}
+	query_builder['query']['bool']['must'][i]['range']['overallRating']['gte'] = value
 	return query_builder
 
 class residentialreview3class(Resource):
