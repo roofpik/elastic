@@ -11,7 +11,7 @@ from decoder import decodeArgs
 def sendMail(email):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
-	subject = ""
+	subject = "subject"
 	to_email = Email(email)
 	content = Content("text/plain", "Hi")
 	mail = Mail(from_email, subject, to_email, content)
