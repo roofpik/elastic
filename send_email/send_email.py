@@ -5,6 +5,7 @@ from flask_restful import reqparse
 from flask import *
 import urllib
 import sendgrid
+from sendgrid.helpers.mail import Email, Content, Mail
 
 def decodeArgs(_args):
 	_args = _args.decode('base64')
@@ -22,16 +23,14 @@ def decodeArgs(_args):
 	return final_list
 
 def sendMail(email):
-	client = sendgrid.SendGridAPIClient("v74fCAiLR4qOtvWYl5OC0A")
-	return client
-	message = sendgrid.Mail()
-
-	message.add_to(email)
-	message.set_from("contact@roofpik.com")
-	message.set_subject("[Team Roofpik]Email verification code")
-	message.set_html("<html><body>hi" + email + "</body></html>")
-	result = client.send(message)
-	return result
+	sg = sendgrid.SendGridAPIClient(apikey='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')
+	from_email = Email("noreply@roofpik.com")
+	from_name = Name("Roofpik Team")
+	subject = "Hello World from the SendGrid Python Library on Heroku!"
+	to_email = Email(email)
+	content = Content("text/plain", "Hi")
+	mail = Mail(from_email, subject, to_email, content)
+	response = sg.client.mail.send.post(request_body=mail.get())
 
 class sendemailclass(Resource):
 	def get(self):
@@ -43,4 +42,4 @@ class sendemailclass(Resource):
 
 		all_args = decodeArgs(_args)
 
-		return sendMail(all_args[0])
+		sendMail(all_args[0])
