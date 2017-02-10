@@ -13,4 +13,4 @@ class sendemailclass(Resource):
 		_email = args['email']
 
 		_email = _email.decode('base64')
-		return email
+		return _email
