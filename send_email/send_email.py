@@ -45,4 +45,4 @@ class sendemailclass(Resource):
 		all_args = decodeArgs(_args)
 		return all_args
 		
-		sendmail(all_args[0], all_args[1])
+		#sendmail(all_args[0], all_args[1])
