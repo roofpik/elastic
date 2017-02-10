@@ -7,14 +7,14 @@ from elasticsearch import Elasticsearch
 
 def build_query_must(field, value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['prefix'] = {}
-	query_builder['query']['bool']['must'][i]['prefix'][field] = value
+	query_builder['query']['bool']['must'][i]['match'] = {}
+	query_builder['query']['bool']['must'][i]['match'][field] = value
 	return query_builder
 
 def build_query_should(field, value, query_builder, j):
 	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['prefix'] = {}
-	query_builder['query']['bool']['should'][j]['prefix'][field] = value
+	query_builder['query']['bool']['should'][j]['match'] = {}
+	query_builder['query']['bool']['should'][j]['match'][field] = value
 	return query_builder
 
 def build_query_must_range(field, lower, upper, query_builder, i):
