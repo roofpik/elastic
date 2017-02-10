@@ -6,19 +6,22 @@ from flask import *
 import urllib
 
 def decodeArgs(_args):
-		_args = _args.decode('base64')
-		count = _args.count('&')
-		count += 1
-		index = 0
-		split_list = []
-		temp_list = []
-		final_list = []
-		while index < count:
-			split_list.append(_args.split('&')[index])
-			temp_list.append(urllib.unquote(split_list[index]).decode('utf8'))
-			final_list.append(temp_list.split('=')[1])
-			index += 1
-		return final_list
+	_args = _args.decode('base64')
+	count = _args.count('&')
+	count += 1
+	index = 0
+	split_list = []
+	temp_list = []
+	final_list = []
+	while index < count:
+		split_list.append(_args.split('&')[index])
+		temp_list.append(split_list[index].split('=')[1])
+		final_list.append(urllib.unquote(temp_list[index]).decode('utf8'))
+		index += 1
+	return final_list
+
+#def sendmail(email, conf):
+	
 
 class sendemailclass(Resource):
 	def get(self):
@@ -31,4 +34,4 @@ class sendemailclass(Resource):
 		all_args = decodeArgs(_args)
 		return all_args
 		
-		
+#		sendmail(all_args[0], all_args[1])
