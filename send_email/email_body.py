@@ -16,9 +16,6 @@ def _body1():
                 <div style="font-size: 14px; font-weight: 700; line-height: 42px">
                     <a href="http://www.roofpik.com/" target="blank" style="padding:5px;color: #666; text-decoration: none;">Home</a>|
                     <a href="http://www.roofpik.com/#/blogs/gurgaon/-KYJONgh0P98xoyPPYm9/1" target="blank" style="padding:0 5px; color: #666; text-decoration: none;">
-"""
-def _body2():
-	return """
 </a>|
                     <a href="http://www.roofpik.com/#/cover-stories/gurgaon/-KYJONgh0P98xoyPPYm9/1" target="blank" style="padding:5px; color: #666; text-decoration: none;">Cover Stories</a>
                 </div>
