@@ -15,7 +15,7 @@ def sendMail(email, name):
 	#do not send any empty field
 	subject = "Welcome!"
 	to_email = Email(email)
-	content = Content("text/html", _body(name))
+	content = Content("text/html", 'hi')
 	mail = Mail(from_email, subject, to_email, content)
 	response = sg.client.mail.send.post(request_body=mail.get())
 
