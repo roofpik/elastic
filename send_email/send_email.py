@@ -7,7 +7,6 @@ import urllib
 
 def decodeArgs(_args):
 	_args = _args.decode('base64')
-	return _args
 	count = _args.count('&')
 	count += 1
 	index = 0
