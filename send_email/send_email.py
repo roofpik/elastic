@@ -23,6 +23,7 @@ def decodeArgs(_args):
 
 def sendMail(email):
 	client = sendgrid.SendGridAPIClient("v74fCAiLR4qOtvWYl5OC0A")
+	return client
 	message = sendgrid.Mail()
 
 	message.add_to(email)
@@ -41,5 +42,5 @@ class sendemailclass(Resource):
 		_args = args['args']
 
 		all_args = decodeArgs(_args)
-		return all_args[0]
+
 		return sendMail(all_args[0])
