@@ -4,7 +4,7 @@ import json
 from flask_restful import reqparse
 from flask import *
 import sendgrid
-from sendgrid.helpers.mail import Email, Content, Mail
+from sendgrid.helpers.mail import Email, Content, Mail, Substitution
 from decoder import decodeArgs
 
 #sending mail via sendgrid
