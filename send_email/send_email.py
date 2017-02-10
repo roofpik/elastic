@@ -7,6 +7,7 @@ import urllib
 import sendgrid
 from sendgrid.helpers.mail import Email, Content, Mail
 
+#parsing the recorded argument
 def decodeArgs(_args):
 	_args = _args.decode('base64')
 	count = _args.count('&')
@@ -22,10 +23,10 @@ def decodeArgs(_args):
 		index += 1
 	return final_list
 
+#sending mail via sendgrid
 def sendMail(email):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
-	from_name = Name("Roofpik Team")
 	subject = "Hello World from the SendGrid Python Library on Heroku!"
 	to_email = Email(email)
 	content = Content("text/plain", "Hi")
