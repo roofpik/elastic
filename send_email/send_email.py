@@ -3,7 +3,6 @@ import requests
 import json
 from flask_restful import reqparse
 from flask import *
-import urllib
 import sendgrid
 from sendgrid.helpers.mail import Email, Content, Mail
 from decoder import decodeArgs
