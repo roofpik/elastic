@@ -14,5 +14,13 @@ class sendemailclass(Resource):
 		_email = args['email']
 
 		_email = _email.decode('base64')
-		_email = urllib.unquote(_email).decode('utf8')
-		return _email
+		count = _email.count('&')
+		count += 1
+		i=0
+		l = []
+		l1= []
+		while i<count:
+			l.append(_email.split('&')[i])
+			l1.append(urllib.unquote(l[i]).decode('utf8'))
+			i+=1
+		return l1
