@@ -4,8 +4,6 @@ import json
 from flask_restful import reqparse
 from flask import *
 
-
-class emailclass(Resource):
+class sendemailclass(Resource):
 	def get(self):
 		return 'this works'
-
