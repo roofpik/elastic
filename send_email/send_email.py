@@ -6,7 +6,7 @@ from flask import *
 import sendgrid
 from sendgrid.helpers.mail import Email, Content, Mail
 from decoder import decodeArgs
-from email_body import _body1, _body2
+from email_body import _body1
 
 #sending mail via sendgrid
 def sendMail(email, name):
@@ -15,7 +15,7 @@ def sendMail(email, name):
 	#do not send any empty field
 	subject = "Welcome!"
 	to_email = Email(email)
-	content = Content("text/html", _body1()+name+_body2())
+	content = Content("text/html", _body1())
 	mail = Mail(from_email, subject, to_email, content)
 	response = sg.client.mail.send.post(request_body=mail.get())
 
