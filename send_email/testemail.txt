@@ -1,5 +1,4 @@
-def _body(name):
-	return """
+"""
 <html>
 
 <head>
@@ -60,3 +59,4 @@ def _body(name):
 
 </html>
 """
+
