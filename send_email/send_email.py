@@ -14,8 +14,9 @@ def sendMail(email, name):
 	#do not send any empty field
 	subject = "Welcome!"
 	to_email = Email(email)
-	content = Content("text/html", "hi"+name)
+	content = Content("text/html", "hi")
 	mail = Mail(from_email, subject, to_email, content)
+	mail.set_template_id("a029e13d-b169-4bc5-891c-356b80d23a6f")
 	response = sg.client.mail.send.post(request_body=mail.get())
 
 class sendemailclass(Resource):
