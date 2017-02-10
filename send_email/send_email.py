@@ -3,7 +3,7 @@ import requests
 import json
 from flask_restful import reqparse
 from flask import *
-from urllib import parse
+import urllib
 
 class sendemailclass(Resource):
 	def get(self):
