@@ -6,7 +6,6 @@ from flask import *
 import sendgrid
 from sendgrid.helpers.mail import Email, Content, Mail
 from decoder import decodeArgs
-from email_body import _body1
 
 #sending mail via sendgrid
 def sendMail(email, name):
