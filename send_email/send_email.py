@@ -4,6 +4,7 @@ import json
 from flask_restful import reqparse
 from flask import *
 import urllib
+import sendgrid
 
 def decodeArgs(_args):
 	_args = _args.decode('base64')
@@ -29,10 +30,7 @@ def sendMail(email):
 	message.set_subject("[Team Roofpik]Email verification code")
 	message.set_html("<html><body>hi" + email + "</body></html>")
 	result = client.send(message)
-	if str(result[0]) == '200':
-		return True
-	return False
-	
+	return result
 
 class sendemailclass(Resource):
 	def get(self):
@@ -44,4 +42,4 @@ class sendemailclass(Resource):
 
 		all_args = decodeArgs(_args)
 		
-		sendMail(all_args[0])
+		return sendMail(all_args[0])
