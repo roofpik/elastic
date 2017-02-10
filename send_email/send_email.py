@@ -22,7 +22,7 @@ def decodeArgs(_args):
 	return final_list
 
 def sendMail(email):
-	client = sendgrid.SendGridClient("v74fCAiLR4qOtvWYl5OC0A")
+	client = sendgrid.SendGridAPIClient("v74fCAiLR4qOtvWYl5OC0A")
 	message = sendgrid.Mail()
 
 	message.add_to(email)
