@@ -9,13 +9,13 @@ from decoder import decodeArgs
 from email_body import _body
 
 #sending mail via sendgrid
-def sendMail(email,name):
+def sendMail(email, name):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
 	#do not send any empty field
 	subject = "subject"
 	to_email = Email(email)
-	content = Content("text/plain", _body(name))
+	content = Content("text/plain", 'hi')
 	mail = Mail(from_email, subject, to_email, content)
 	response = sg.client.mail.send.post(request_body=mail.get())
 
