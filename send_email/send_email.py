@@ -20,7 +20,18 @@ def decodeArgs(_args):
 		index += 1
 	return final_list
 
-#def sendmail(email, conf):
+def sendMail(email, conf):
+	client = sendgrid.SendGridClient("v74fCAiLR4qOtvWYl5OC0A")
+	message = sendgrid.Mail()
+
+	message.add_to(email)
+	message.set_from("contact@roofpik.com")
+	message.set_subject("[Team Roofpik]Email verification code")
+	message.set_html("<html><body>hi" + email + "</body></html>")
+	result = client.send(message)
+	if str(result[0]) == '200':
+		return True
+	return False
 	
 
 class sendemailclass(Resource):
@@ -34,4 +45,4 @@ class sendemailclass(Resource):
 		all_args = decodeArgs(_args)
 		return all_args
 		
-#		sendmail(all_args[0], all_args[1])
+		sendmail(all_args[0], all_args[1])
