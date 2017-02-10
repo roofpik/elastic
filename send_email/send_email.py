@@ -14,5 +14,5 @@ class sendemailclass(Resource):
 		_email = args['email']
 
 		_email = _email.decode('base64')
-		_email = parse.unquote(_email)
+		_email = urllib.unquote(_email).decode('utf8')
 		return _email
