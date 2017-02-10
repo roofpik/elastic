@@ -11,6 +11,7 @@ from decoder import decodeArgs
 def sendMail(email):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
+	#do not send any empty field
 	subject = "subject"
 	to_email = Email(email)
 	content = Content("text/plain", "Hi")
@@ -24,7 +25,7 @@ class sendemailclass(Resource):
 		parser.add_argument('args', type=str)
 		args = parser.parse_args()
 		_args = args['args']
-
+		#decoding coded args
 		all_args = decodeArgs(_args)
 
 		sendMail(all_args[0])
