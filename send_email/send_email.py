@@ -7,6 +7,7 @@ import urllib
 
 def decodeArgs(_args):
 	_args = _args.decode('base64')
+	return _args
 	count = _args.count('&')
 	count += 1
 	index = 0
@@ -16,7 +17,7 @@ def decodeArgs(_args):
 	while index < count:
 		split_list.append(_args.split('&')[index])
 		temp_list.append(split_list[index].split('=')[1])
-		final_list.append(temp_list[index])
+		final_list.append(str(urllib.unquote(temp_list[index]).decode('utf8')))
 		index += 1
 	return final_list
 
