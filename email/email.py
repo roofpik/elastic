@@ -15,8 +15,6 @@ class emailclass(Resource):
 		parser.add_argument('email', type=str)
 		args = parser.parse_args()
 		_email = args['email']
-		if not _email:
-			_email = ""
 
-		_email = _email.decode('base64')
+		#_email = _email.decode('base64')
 		return _email
