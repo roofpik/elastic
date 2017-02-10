@@ -3,7 +3,7 @@ import requests
 import json
 from flask_restful import reqparse
 from flask import *
-import smtplib
+#import smtplib
 
 #def send_mail(_email, _configuration):
 	
@@ -19,3 +19,4 @@ class emailclass(Resource):
 			_email = ""
 
 		_email = _email.decode('base64')
+		return _email
