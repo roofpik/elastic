@@ -5,7 +5,7 @@ from flask_restful import reqparse
 from flask import *
 
 def checkIfLocation():
-	return True
+	return False
 
 def checkRecentlyVisited():
 	return False
