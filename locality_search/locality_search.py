@@ -18,7 +18,7 @@ class localityclass(Resource):
 		url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_index/data/_search'
 
 		query = {"query": {"match": {"name": _id}}}
-		return 'do'
-		res = requests(url, d = query)
+		#return 'do'
+		res = requests.post(url, d = query)
 		res = json.loads(res.text)
 		return res
