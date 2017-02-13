@@ -86,7 +86,7 @@ class locationdistanceclass(Resource):
 		_args = args['args']
 
 		if not _args:
-			sendMostSearched('0', '5')
+			answer = sendMostSearched('0', '5')
 
 		_args = decodeArgs(_args)
 		if 'lon' in _args.keys():
