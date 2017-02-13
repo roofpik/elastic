@@ -44,4 +44,15 @@ class localityclass(Resource):
 		query = json.dumps(query)
 		res = requests.post(url, data = query)
 		res = json.loads(res.text)
-		return res['hits']['hits'][0]['_source']
+		count = res['hits']['total']
+		index = 0
+		r_temp = {}
+		d_temp = {}
+		d_temp.update({'hits' : count})
+		if(count>int(_page_size)):
+			count = int(_page_size) 
+		while index<count:
+			r_temp.update({index : res['hits']['hits'][index]['_source']})
+			index += 1
+		d_temp.update({'details' : r_temp})
+		return d_temp
