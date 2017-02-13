@@ -107,7 +107,7 @@ class locationdistanceclass(Resource):
 		if not 'page_size' in _args.keys():
 			_page_size = "5"
 
-		if not uid in _args.keys():
+		if not 'uid' in _args.keys():
 			if(location_flag == True):
 				answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 			else:
