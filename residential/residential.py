@@ -7,8 +7,8 @@ from elasticsearch import Elasticsearch
 
 def build_query_must(field, value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['match'] = {}
-	query_builder['query']['bool']['must'][i]['match'][field] = value
+	query_builder['query']['bool']['must'][i]['match_phrase_prefix'] = {}
+	query_builder['query']['bool']['must'][i]['match_phrase_prefix'][field] = value
 	return query_builder
 
 def build_query_should(field, value, query_builder, j):
