@@ -103,8 +103,12 @@ class locationdistanceclass(Resource):
 
 		if not 'page_start' in _args.keys():
 			_page_start = "0"
+		else:
+			_page_start = _args['page_start']
 		if not 'page_size' in _args.keys():
 			_page_size = "5"
+		else:
+			_page_size = 
 
 		if not 'uid' in _args.keys():
 			if(location_flag == True):
@@ -112,6 +116,7 @@ class locationdistanceclass(Resource):
 			else:
 				answer = sendMostSearched(_page_start, _page_size)
 		else:
+			_uid = _args['uid']
 			flag = checkRecentlyVisited()
 			if(flag == True):
 				answer = sendRecentlyVisited(_uid, _page_start, _page_size)
