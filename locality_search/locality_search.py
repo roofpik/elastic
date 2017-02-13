@@ -24,6 +24,7 @@ class localityclass(Resource):
 			d_temp.update({'hits' : count})
 			while index<count:
 				r_temp.update({index : res['hits']['hits'][index]['_source']})
+				index += 1
 			d_temp.update({'details' : r_temp})
 			return d_temp
 
