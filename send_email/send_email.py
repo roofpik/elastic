@@ -31,4 +31,4 @@ class sendemailclass(Resource):
 		#decoding coded args
 		all_args = decodeArgs(_args)
 
-		sendMail(all_args[1][0], all_args[1][1])
+		sendMail(all_args[0], all_args[1])
