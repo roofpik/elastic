@@ -287,7 +287,6 @@ class residentialclass(Resource):
 #				return 'request made'
 				res = json.loads(res.text)
 #				return res
-				#, from_=_page_start, size=_page_size)
 			except:
 				return 'unable to call es.search'
 

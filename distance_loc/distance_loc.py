@@ -5,6 +5,7 @@ from flask_restful import reqparse
 from flask import *
 from decoder import decodeArgs
 
+#check if data exists for user
 def checkRecentlyVisited():
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_1/data/_search'
 	query = {"query":{"match":{"uid":_uid}}}
@@ -16,6 +17,7 @@ def checkRecentlyVisited():
 	else:
 		return False
 
+#calculate results based on parameters
 def calculateResult(res, _page_start, _page_size):
 	res_count = res['hits']['total']
 
@@ -26,13 +28,16 @@ def calculateResult(res, _page_start, _page_size):
 	index=0
 	display_result = {}
 	temp_result = {}
+	#push number of hits
 	display_result.update({'hits' : res['hits']['total']})
+	#push records into the object	
 	while index<page_counter:
 		temp_result.update({index : res['hits']['hits'][index]['_source']})
 		index += 1
 	display_result.update({'details' : temp_result})
 	return display_result
-	
+
+#send data wrt location
 def sortByLocation(_page_start, _page_size, _lat, _lon):
 	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ] }
 		
@@ -44,12 +49,14 @@ def sortByLocation(_page_start, _page_size, _lat, _lon):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+#send general data for most searched localities
 def sendMostSearched(_page_start, _page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_2/data/_search?size='+_page_size+'&from='+_page_start
 	res = requests.post(url)
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+#send recently visited localities of user
 def sendRecentlyVisited(_uid, _page_start, _page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_1/data/_search?size='+_page_size+'&from='+_page_start
 	query = {"query":{"match":{"uid":_uid}}}
@@ -60,7 +67,8 @@ def sendRecentlyVisited(_uid, _page_start, _page_size):
 
 class locationdistanceclass(Resource):
 	def get(self):
-
+		
+		#generate single argument, decode later
 		parser = reqparse.RequestParser()		
 		
 		parser.add_argument('args', type=str)
@@ -69,8 +77,10 @@ class locationdistanceclass(Resource):
 
 		if not _args:
 			return sendMostSearched('0', '5')
-
+		#call decoder to decode arguments
 		_args = decodeArgs(_args)
+
+		#check and map variables
 		if 'lon' in _args.keys():
 			_lon = _args['lon']
 			location_flag = True
@@ -92,21 +102,27 @@ class locationdistanceclass(Resource):
 		else:
 			_page_size = _args['page_size']
 
+		#call functions according to condition
 		if not 'uid' in _args.keys():
 			if(location_flag == True):
+				#no user, given location, send locations sorted wrt given location
 				answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 			else:
+				#no user, no location, send most searched locations
 				answer = sendMostSearched(_page_start, _page_size)
 		else:
 			_uid = _args['uid']
+			#check if user id exists
 			flag = checkRecentlyVisited(_uid)
 			if(flag == True):
+				#if user id exists, send recently visited of that user
 				answer = sendRecentlyVisited(_uid, _page_start, _page_size)
 			else:
-				flag = checkIfLocation()
-				if(flag == True):
+				if(location_flag == True):
+					#if user exists, and so does location, sort by location
 					answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 				else:
+					#if user exists, but no data and no location, send most searched
 					answer = sendMostSearched(_page_start, _page_size)		
 		
 		return answer

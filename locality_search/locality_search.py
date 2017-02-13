@@ -23,9 +23,9 @@ class localityclass(Resource):
 	def get(self):
 
 		parser = reqparse.RequestParser()
-		parser.add_argument('id', type=str)
+		parser.add_argument('args', type=str)
 		args = parser.parse_args()
-		_id = args['id']
+		_id = args['args']
 
 		#_page_start = _id[1]
 		#_page_size = _id[2]
