@@ -89,7 +89,6 @@ class locationdistanceclass(Resource):
 			sendMostSearched(_page_start, _page_size)
 
 		_args = decodeArgs(_args)
-		return _args
 		if 'lon' in _args.keys():
 			_lon = _args['lon']
 			location_flag = True
