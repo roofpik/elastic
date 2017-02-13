@@ -45,7 +45,7 @@ class locationdistanceclass(Resource):
 			page_counter = res_count
 		else:
 			page_counter = int(_page_size)
-		return 'works'
+
 		index=0
 		display_result = {}
 		display_result.update({'hits' : res['hits']['total']})
