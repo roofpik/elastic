@@ -4,9 +4,6 @@ import json
 from flask_restful import reqparse
 from flask import *
 
-def checkIfLocation():
-	return True
-
 def checkRecentlyVisited():
 	return True
 
@@ -83,38 +80,37 @@ class locationdistanceclass(Resource):
 
 		parser = reqparse.RequestParser()		
 		
-		#parser.add_argument('args', type=str)
-		#args = parser.parse_args()
-		#_args = args['args']
-
-		#if not _args:
-		#	return 'provide arguments'
-
-		parser.add_argument('lat', type=str)
+		parser.add_argument('args', type=str)
 		args = parser.parse_args()
-		_lat = args['lat']
-		if not _lat:
-			_lat = "0"
+		_args = args['args']
 
-		parser.add_argument('lon', type=str)
-		args = parser.parse_args()
-		_lon = args['lon']
-		if not _lon:
-			_lon = "0"
+		if not _args:
+			sendMostSearched(_page_start, _page_size)
 
-		_page_start = "0"
-		_page_size = "5"
+		_args = decodeArgs(_args)
 
-		parser.add_argument('uid', type=str)
-		args = parser.parse_args()
-		_uid = args['uid']
-		if not _uid:
-			flag = checkIfLocation()
-			if(flag == True):
+		if lon in _args.keys():
+			_lon = _args['lon']
+			location_flag = True
+		else:
+			location_flag = False
+		
+		if lat in _args.keys():
+			_lat = _args['lat']
+			location_flag = True
+		else:
+			location_flag = False
+
+		if not page_start in _args.keys():
+			_page_start = "0"
+		if not page_size in _args.keys():
+			_page_size = "5"
+
+		if not uid in _args.keys():
+			if(location_flag == True):
 				answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 			else:
 				answer = sendMostSearched(_page_start, _page_size)
-
 		else:
 			flag = checkRecentlyVisited()
 			if(flag == True):
