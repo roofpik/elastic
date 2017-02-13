@@ -8,7 +8,7 @@ def checkIfLocation():
 	return False
 
 def checkRecentlyVisited():
-	return False
+	return True
 
 def sortByLocation(_page_start, _page_size, _lat, _lon):
 	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ] }
