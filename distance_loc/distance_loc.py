@@ -48,9 +48,9 @@ class locationdistanceclass(Resource):
 
 		index=0
 		display_result = {}
+		temp_result = {}
 		display_result.update({'hits' : res['hits']['total']})
 		while index<page_counter:
-			temp_result = {}
 			temp_result.update({index : res['hits']['hits'][index]['_source']})
 			index += 1
 		display_result.update({'details' : temp_result})
