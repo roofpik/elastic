@@ -31,7 +31,7 @@ class locationdistanceclass(Resource):
 		_page_start = '0'
 		_page_size = '5'
 
-		query = { "sort": [ { "_geo_distance": { "location": { "lat": float(lat), "lon": float(lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ] }
+		query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ] }
 		
 		query = json.dumps(query)
 
