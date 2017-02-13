@@ -108,7 +108,7 @@ class locationdistanceclass(Resource):
 		if not 'page_size' in _args.keys():
 			_page_size = "5"
 		else:
-			_page_size = 
+			_page_size = _args['page_size']
 
 		if not 'uid' in _args.keys():
 			if(location_flag == True):
