@@ -38,6 +38,7 @@ class locationdistanceclass(Resource):
 		url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search?size='+_page_size+'&from='+_page_start
 
 		res = requests.post(url, data=query)
+		return res
 		res = json.loads(res.text)
 		res_count = res['hits']['total']
 
