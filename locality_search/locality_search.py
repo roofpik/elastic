@@ -19,6 +19,6 @@ class localityclass(Resource):
 
 		query = {"query": {"match": {"name": _id}}}
 		#return 'do'
-		res = requests.post(url, d = query)
+		res = requests.post(url, data = query)
 		res = json.loads(res.text)
 		return res
