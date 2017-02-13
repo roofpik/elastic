@@ -10,7 +10,7 @@ def checkIfLocation():
 def checkRecentlyVisited():
 	return False
 
-def sortByLocation(_page_start, _page_size):
+def sortByLocation(_page_start, _page_size, _lat, _lon):
 	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ] }
 		
 	query = json.dumps(query)
@@ -111,7 +111,7 @@ class locationdistanceclass(Resource):
 		if not _uid:
 			flag = checkIfLocation()
 			if(flag == True):
-				answer = sortByLocation(_page_start, _page_size)
+				answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 			else:
 				answer = sendMostSearched(_page_start, _page_size)
 
@@ -122,7 +122,7 @@ class locationdistanceclass(Resource):
 			else:
 				flag = checkIfLocation()
 				if(flag == True):
-					answer = sortByLocation(_page_start, _page_size)
+					answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 				else:
 					answer = sendMostSearched(_page_start, _page_size)		
 		
