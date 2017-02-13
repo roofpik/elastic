@@ -90,21 +90,21 @@ class locationdistanceclass(Resource):
 
 		_args = decodeArgs(_args)
 
-		if lon in _args.keys():
+		if 'lon' in _args.keys():
 			_lon = _args['lon']
 			location_flag = True
 		else:
 			location_flag = False
 		
-		if lat in _args.keys():
+		if 'lat' in _args.keys():
 			_lat = _args['lat']
 			location_flag = True
 		else:
 			location_flag = False
 
-		if not page_start in _args.keys():
+		if not 'page_start' in _args.keys():
 			_page_start = "0"
-		if not page_size in _args.keys():
+		if not 'page_size' in _args.keys():
 			_page_size = "5"
 
 		if not uid in _args.keys():
