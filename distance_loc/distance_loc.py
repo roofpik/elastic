@@ -55,9 +55,9 @@ def sendMostSearched(_page_start, _page_size):
 	display_result.update({'details' : temp_result})
 	return display_result
 
-def sendRecentlyVisited(uid, _page_start, _page_size):
+def sendRecentlyVisited(_uid, _page_start, _page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_1/data/_search?size='+_page_size+'&from='+_page_start
-	query = {"query":{"match":{"uid":uid}}}
+	query = {"query":{"match":{"uid":_uid}}}
 	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
@@ -118,7 +118,7 @@ class locationdistanceclass(Resource):
 		else:
 			flag = checkRecentlyVisited()
 			if(flag == True):
-				answer = sendRecentlyVisited(uid, _page_start, _page_size)
+				answer = sendRecentlyVisited(_uid, _page_start, _page_size)
 			else:
 				flag = checkIfLocation()
 				if(flag == True):
