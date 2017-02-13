@@ -81,13 +81,8 @@ class locationdistanceclass(Resource):
 		_args = decodeArgs(_args)
 
 		#check and map variables
-		if 'lon' in _args.keys():
+		if 'lon' in _args.keys() and 'lat' in _args.keys():
 			_lon = _args['lon']
-			location_flag = True
-		else:
-			location_flag = False
-		
-		if 'lat' in _args.keys():
 			_lat = _args['lat']
 			location_flag = True
 		else:
