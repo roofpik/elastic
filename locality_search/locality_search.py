@@ -13,7 +13,8 @@ class localityclass(Resource):
 		args = parser.parse_args()
 		_id = args['id']
 
-		_id = decodeArgs(_id[1][0])
+		_id = decodeArgs(_id)
+		_id = _id[1][0]
 		#_page_start = _id[1]
 		#_page_size = _id[2]
 		_page_start = '0'
