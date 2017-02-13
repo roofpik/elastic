@@ -118,7 +118,7 @@ class locationdistanceclass(Resource):
 		else:
 			flag = checkRecentlyVisited()
 			if(flag == True):
-				answer = sendRecentlyVisited()
+				answer = sendRecentlyVisited(uid, _page_start, _page_size)
 			else:
 				flag = checkIfLocation()
 				if(flag == True):
