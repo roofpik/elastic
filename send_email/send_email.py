@@ -27,7 +27,7 @@ class sendemailclass(Resource):
 		parser.add_argument('args', type=str)
 		args = parser.parse_args()
 		_args = args['args']
-		return _args
+		
 		#decoding coded args
 		all_args = decodeArgs(_args)
 		return all_args
