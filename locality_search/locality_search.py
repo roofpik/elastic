@@ -20,6 +20,7 @@ class localityclass(Resource):
 			count = res['hits']['total']
 			index = 0
 			r_temp = {}
+			d_temp = {}
 			d_temp.update({'hits' : count})
 			while index<count:
 				r_temp.update({index : res['hits']['hits'][index]['_source']})
