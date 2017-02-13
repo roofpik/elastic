@@ -13,8 +13,6 @@ class localityclass(Resource):
 		args = parser.parse_args()
 		_id = args['id']
 
-		_id = decodeArgs(_id)
-		_id = _id[1][0]
 		#_page_start = _id[1]
 		#_page_size = _id[2]
 		_page_start = '0'
@@ -37,6 +35,9 @@ class localityclass(Resource):
 				index += 1
 			d_temp.update({'details' : r_temp})
 			return d_temp
+
+		_id = decodeArgs(_id)
+		_id = _id[1][0]
 
 
 		query = {"query": {"match": {"name": _id}}}
