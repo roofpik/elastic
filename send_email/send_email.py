@@ -30,6 +30,5 @@ class sendemailclass(Resource):
 		
 		#decoding coded args
 		all_args = decodeArgs(_args)
-		return all_args
 
 		sendMail(all_args[1][0], all_args[1][1])
