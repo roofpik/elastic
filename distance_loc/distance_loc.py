@@ -117,7 +117,7 @@ class locationdistanceclass(Resource):
 
 		else:
 			flag = checkRecentlyVisited()
-			if(flag == True)
+			if(flag == True):
 				answer = sendRecentlyVisited()
 			else:
 				flag = checkIfLocation()
