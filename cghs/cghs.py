@@ -350,7 +350,7 @@ class cghsclass(Resource):
 				query_builder = return_list[0]
 				i = return_list[1]
 			
-			#query_builder = json.dumps(query_builder)
+			query_builder = json.loads(query_builder)
 			#return query_builder
 			#requesting data from index
 			try:
