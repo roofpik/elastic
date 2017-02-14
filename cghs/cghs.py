@@ -185,7 +185,7 @@ class cghsclass(Resource):
 			if(_vertical == 'residential'):
 				url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search'
 
-				if(_category == 'cghs'):
+				if(_category == 'CGHS'):
 					url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/cghs_index/data/_search'
 
 				else:
@@ -351,7 +351,7 @@ class cghsclass(Resource):
 				i = return_list[1]
 			
 			query_builder = json.dumps(query_builder)
-			return query_builder
+			#return query_builder
 			#requesting data from index
 			try:
 				res = requests.post(url+'?size='+_page_size+'&from='+_page_start, data=query_builder)
