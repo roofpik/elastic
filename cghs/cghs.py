@@ -259,12 +259,12 @@ class cghsclass(Resource):
 			if 'page_start' in _args.keys():
 				_page_start = _args['page_start']
 			else:
-				_start = ""
+				_start = "0"
 
 			if 'page_size' in _args.keys():
 				_page_size = _args['page_size']
 			else:
-				_page_size = ""
+				_page_size = "10"
 
 			#don't change anything above this
 			if(_style):
