@@ -26,7 +26,7 @@ api.add_resource(residentialreview3class,'/GetProjectReviews_1.0')
 api.add_resource(sendemailclass,'/SendMail_1.0')
 api.add_resource(localityclass,'/GetLocality_1.0')
 api.add_resource(locationdistanceclass,'/GetLocations_1.0')
-api.add_resource(listingclass,'GetListing_1.0')
+api.add_resource(listingclass,'/GetListing_1.0')
 
 if __name__ == "__main__":
 	app.debug = True
