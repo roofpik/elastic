@@ -350,12 +350,12 @@ class cghsclass(Resource):
 				query_builder = return_list[0]
 				i = return_list[1]
 			
-			#query_builder = json.dumps(query_builder)
+			query_builder = json.dumps(query_builder)
 			#return query_builder
 			#requesting data from index
 			try:
 				res = requests.post(url+'?size='+_page_size+'&from='+_page_start, data=query_builder)
-
+				return 'this works fine'
 				res = json.loads(res.text)
 
 			except:
