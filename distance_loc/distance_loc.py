@@ -6,7 +6,7 @@ from flask import *
 from decoder import decodeArgs
 
 #check if data exists for user
-def checkRecentlyVisited():
+def checkRecentlyVisited(_uid):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches/data/_search'
 	query = {"query":{"match":{"user":_uid}}}
 	query = json.dumps(query)
