@@ -67,13 +67,16 @@ def sendRecentlyVisited(_uid, _page_start, _page_size):
 
 def sendSeries1(name_query, page_start, page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
+	query={}
+	query.update({"query":name_query})
 	query = json.dumps(name_query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
 def sendSeries2(name_query, page_start, page_size, _lat, _lon):
-	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ], name_query }
+	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ]}
+	query.update({"query":name_query})
 		
 	query = json.dumps(query)
 
@@ -144,7 +147,7 @@ class locationdistanceclass(Resource):
 					answer = sendMostSearched(_page_start, _page_size)
 
 		if _name:
-			name_query = {"query":{"match_phrase_prefix":{"name":_name}}}
+			name_query = {"match_phrase_prefix":{"name":_name}}
 			if _uid:
 				if(checkRecentlyVisited(_uid)):
 					answer = sendSeries1(name_query, page_start, page_size)
