@@ -7,8 +7,8 @@ from decoder import decodeArgs
 
 #check if data exists for user
 def checkRecentlyVisited():
-	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_1/data/_search'
-	query = {"query":{"match":{"uid":_uid}}}
+	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches/data/_search'
+	query = {"query":{"match":{"user":_uid}}}
 	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
@@ -51,15 +51,15 @@ def sortByLocation(_page_start, _page_size, _lat, _lon):
 
 #send general data for most searched localities
 def sendMostSearched(_page_start, _page_size):
-	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_2/data/_search?size='+_page_size+'&from='+_page_start
+	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/mostsearched/data/_search?size='+_page_size+'&from='+_page_start
 	res = requests.post(url)
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
 #send recently visited localities of user
 def sendRecentlyVisited(_uid, _page_start, _page_size):
-	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/dummy_data_1/data/_search?size='+_page_size+'&from='+_page_start
-	query = {"query":{"match":{"uid":_uid}}}
+	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches/data/_search?size='+_page_size+'&from='+_page_start
+	query = {"query":{"match":{"user":_uid}}}
 	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
