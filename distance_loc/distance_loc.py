@@ -65,7 +65,7 @@ def sendRecentlyVisited(_uid, _page_start, _page_size):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
-def sendSeries1(name_query, _page_start, _page_size):
+def sendSeries1(name_query, _page_start, _page_size, _lat, _lon):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
 	query={}
 	query.update({'query':name_query})
@@ -151,8 +151,8 @@ class locationdistanceclass(Resource):
 		if _name:
 			name_query = {"match_phrase_prefix":{"name":_name}}
 			if _uid:
-				if(checkRecentlyVisited(_uid)):
-					answer = sendSeries1(name_query, _page_start, _page_size)
+				if(checkRecentlyVisited(_uid) and location_flag == True):
+					answer = sendSeries1(name_query, _page_start, _page_size, _lat, _lon)
 			else:
 				if(location_flag == True):
 					answer = sendSeries2(name_query, _page_start, _page_size, _lat, _lon)
