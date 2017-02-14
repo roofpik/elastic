@@ -32,7 +32,7 @@ def calculateResult(res, _page_start, _page_size):
 	display_result.update({'hits' : res['hits']['total']})
 	#push records into the object	
 	while index<page_counter:
-		temp_result.update({res['hits']['hits']['_id'] : res['hits']['hits'][index]['_source']})
+		temp_result.update({res['hits']['hits'][index]['_id'] : res['hits']['hits'][index]['_source']})
 		index += 1
 	display_result.update({'details' : temp_result})
 	return display_result
