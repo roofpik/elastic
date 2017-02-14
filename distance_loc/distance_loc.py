@@ -125,6 +125,7 @@ class locationdistanceclass(Resource):
 
 		#call functions according to condition
 		if not 'uid' in _args.keys():
+			_uid = ""
 			if(location_flag == True):
 				#no user, given location, send locations sorted wrt given location
 				answer = sortByLocation(_page_start, _page_size, _lat, _lon)
