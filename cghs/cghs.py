@@ -349,9 +349,9 @@ class cghsclass(Resource):
 				return_list = select_filter_must("amenities.", _amenity, "Yes", query_builder, i)
 				query_builder = return_list[0]
 				i = return_list[1]
-			return 'works'
+
 			query_builder = json.dumps(query_builder)
-			#return query_builder
+			return 'works'			#return query_builder
 			#requesting data from index
 			try:
 				res = requests.post(url+'?size='+_page_size+'&from='+_page_start, data=query_builder)
