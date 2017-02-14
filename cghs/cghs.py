@@ -151,7 +151,7 @@ class cghsclass(Resource):
 			try:		
 				es = requests.get('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com')		
 			except:
-				return 'connection to es not established
+				return 'connection to es not established'
 
 			#initialize query builder, always pass and return this in every function related to building query
 			query_builder = {}
