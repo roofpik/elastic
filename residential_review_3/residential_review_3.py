@@ -4,12 +4,14 @@ import json
 from flask_restful import reqparse
 from flask import *
 
+#function to build must query
 def build_query_must(field, value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['match'] = {}
 	query_builder['query']['bool']['must'][i]['match'][field] = value
 	return query_builder
 
+#function to build should query
 def build_query_must_range(value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['range'] = {}
@@ -21,7 +23,7 @@ class residentialreview3class(Resource):
 	def get(self):
 		try:
 			i = 0
-			
+			#initialize query bind
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
@@ -86,7 +88,7 @@ class residentialreview3class(Resource):
 				page_counter = r_count
 			else:
 				page_counter = int(_page_size)
-
+			#return data in format
 			index = 0
 			while index<page_counter:
 				d = {}
