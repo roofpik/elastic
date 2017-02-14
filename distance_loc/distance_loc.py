@@ -68,8 +68,8 @@ def sendRecentlyVisited(_uid, _page_start, _page_size):
 def sendSeries1(name_query, _page_start, _page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
 	query={}
-	query.update({"query":name_query})
-	query = json.dumps(name_query)
+	query.update({'query':name_query})
+	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
