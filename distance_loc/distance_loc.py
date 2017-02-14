@@ -65,6 +65,24 @@ def sendRecentlyVisited(_uid, _page_start, _page_size):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+def sendSeries1(name_query, page_start, page_size):
+	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
+	query = json.dumps(name_query)
+	res = requests.post(url, data=query)
+	res = json.loads(res.text)
+	return calculateResult(res, _page_start, _page_size)
+
+def sendSeries2(name_query, page_start, page_size, _lat, _lon):
+	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ], name_query }
+		
+	query = json.dumps(query)
+
+	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_geo/data/_search?size='+_page_size+'&from='+_page_start
+
+	res = requests.post(url, data=query)
+	res = json.loads(res.text)
+	return calculateResult(res, _page_start, _page_size)
+
 class locationdistanceclass(Resource):
 	def get(self):
 		
@@ -87,6 +105,11 @@ class locationdistanceclass(Resource):
 			location_flag = True
 		else:
 			location_flag = False
+
+		if 'name' in _args.keys():
+			_name = _args['name']
+		else:
+			_name = ""
 
 		if not 'page_start' in _args.keys():
 			_page_start = "0"
@@ -118,6 +141,17 @@ class locationdistanceclass(Resource):
 					answer = sortByLocation(_page_start, _page_size, _lat, _lon)
 				else:
 					#if user exists, but no data and no location, send most searched
-					answer = sendMostSearched(_page_start, _page_size)		
-		
+					answer = sendMostSearched(_page_start, _page_size)
+
+		if _name:
+			name_query = {"query":{"match_phrase_prefix":{"name":_name}}}
+			if _uid:
+				if(checkRecentlyVisited(_uid)):
+					answer = sendSeries1(name_query, page_start, page_size)
+			else:
+				if(location_flag == True):
+					answer = sendSeries2(name_query, page_start, page_size, _lat, _lon)
+				else:
+					answer = sendMostSearched(_page_start, _page_size)
+
 		return answer

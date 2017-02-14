@@ -36,7 +36,7 @@ class localityclass(Resource):
 			res = json.loads(res.text)
 			return return_object(res, _page_size)
 
-		_args = decodeArgs(_id)
+		_args = decodeArgs(_args)
 		_id = _args['id']
 		if 'page_start' in _args.keys():
 			_page_start = _args['page_start']
