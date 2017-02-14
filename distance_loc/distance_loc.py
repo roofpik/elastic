@@ -32,7 +32,7 @@ def calculateResult(res, _page_start, _page_size):
 	display_result.update({'hits' : res['hits']['total']})
 	#push records into the object	
 	while index<page_counter:
-		temp_result.update({index : res['hits']['hits'][index]['_source']})
+		temp_result.update({res['hits']['hits']['_id'] : res['hits']['hits'][index]['_source']})
 		index += 1
 	display_result.update({'details' : temp_result})
 	return display_result
@@ -40,7 +40,7 @@ def calculateResult(res, _page_start, _page_size):
 #send data wrt location
 def sortByLocation(_page_start, _page_size, _lat, _lon):
 	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ] }
-		
+
 	query = json.dumps(query)
 
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_geo/data/_search?size='+_page_size+'&from='+_page_start
