@@ -98,7 +98,7 @@ class locationdistanceclass(Resource):
 		_args = args['args']
 
 		if not _args:
-			return sendMostSearched('0', '5')
+			return sendMostSearched('0', '10')
 		#call decoder to decode arguments
 		_args = decodeArgs(_args)
 
@@ -120,7 +120,7 @@ class locationdistanceclass(Resource):
 		else:
 			_page_start = _args['page_start']
 		if not 'page_size' in _args.keys():
-			_page_size = "5"
+			_page_size = "10"
 		else:
 			_page_size = _args['page_size']
 
