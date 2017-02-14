@@ -358,8 +358,8 @@ class cghsclass(Resource):
 				
 				res = json.loads(res.text)
 
-			except:
-				return 'unable to call es.search'
+			except Exception:
+				return Exception
 
 			try:
 				r_count = requests.post(url)
