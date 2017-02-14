@@ -259,12 +259,12 @@ class cghsclass(Resource):
 			if 'page_start' in _args.keys():
 				_page_start = _args['page_start']
 			else:
-				_start = "0"
+				_start = '0'
 
 			if 'page_size' in _args.keys():
 				_page_size = _args['page_size']
 			else:
-				_page_size = "10"
+				_page_size = '10'
 
 			#don't change anything above this
 			if(_style):
@@ -354,7 +354,7 @@ class cghsclass(Resource):
 			#return query_builder
 			#requesting data from index
 			try:
-				res = requests.post(url, data=query_builder)
+				res = requests.post(url+'?size='+_page_size+'&from='+_page_start, data=query_builder)
 				
 				res = json.loads(res.text)
 
