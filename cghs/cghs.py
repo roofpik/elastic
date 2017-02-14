@@ -354,7 +354,7 @@ class cghsclass(Resource):
 			#return query_builder
 			#requesting data from index
 			try:
-				res = requests.post(url+'?size='+_page_size+'&from='+_page_start)
+				res = requests.post(url, data=query_builder)
 				
 				res = json.loads(res.text)
 
