@@ -349,7 +349,7 @@ class cghsclass(Resource):
 				return_list = select_filter_must("amenities.", _amenity, "Yes", query_builder, i)
 				query_builder = return_list[0]
 				i = return_list[1]
-			
+			return 'works'
 			query_builder = json.dumps(query_builder)
 			#return query_builder
 			#requesting data from index
@@ -358,8 +358,8 @@ class cghsclass(Resource):
 				
 				res = json.loads(res.text)
 
-			except Exception:
-				return Exception
+			except:
+				return 'unable to call es.search'
 
 			try:
 				r_count = requests.post(url)
