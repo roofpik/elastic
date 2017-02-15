@@ -52,7 +52,7 @@ def getProjects(distance_query, url, project_type, url4):
 		temp1.update({'cover':res1['hits']['hits'][i]['_source']['cover_pic']})
 		temp1.update({'rent':res1['hits']['hits'][i]['_source']['rent']})
 		temp1.update({'location':res1['hits']['hits'][i]['_source']['coordinates']})
-		temp1.update({'name':res1['hits']['hits'][i]['_source']['details.name']})
+		temp1.update({'name':res1['hits']['hits'][i]['_source']['details']['name']})
 		temp1.update({'type':project_type})
 		temp2.update({id:temp1})
 		i += 1
