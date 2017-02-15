@@ -71,7 +71,7 @@ def select_filter_must(_type, field, val, query_builder, i):
 		temp = []
 		z = 0
 		while z!=count:
-			temp.append(_type.split('$')[z])
+			temp.append(field.split('$')[z])
 			query_builder = build_query_must(_type+temp[z], val, query_builder, i)
 			i += 1
 			z += 1
@@ -341,6 +341,7 @@ class listingclass(Resource):
 			#call select_filter_must
 			if(_locationId):
 				return_list = select_filter_must("location.", _location, True, query_builder, i)
+				return 'this works'
 				query_builder = return_list[0]
 				i = return_list[1]
 
