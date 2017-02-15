@@ -12,6 +12,7 @@ from send_email import *
 from locality_search import *
 from distance_loc import *
 from listing import *
+from map_api import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -27,6 +28,7 @@ api.add_resource(sendemailclass,'/SendMail_1.0')
 api.add_resource(localityclass,'/GetLocality_1.0')
 api.add_resource(locationdistanceclass,'/GetLocations_1.0')
 api.add_resource(listingclass,'/GetListing_1.0')
+api.add_resource(mapapiclass,'/GetMapData_1.0')
 
 if __name__ == "__main__":
 	app.debug = True

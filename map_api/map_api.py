@@ -5,27 +5,39 @@ from flask_restful import reqparse
 from flask import *
 from decoder import decodeArgs
 
-def calculateResult(res, _page_start, _page_size):
-	res_count = res['hits']['total']
-
-	if(res_count <= 10):
-		page_counter = res_count
-	else:
-		page_counter = int(_page_size)
-	index=0
-	display_result = {}
-	temp_result = {}
-	#push number of hits
-	display_result.update({'hits' : res['hits']['total']})
-	#push records into the object	
-	while index<page_counter:
-		temp_result.update({index : res['hits']['hits'][index]['_source']})
-		index += 1
-	display_result.update({'details' : temp_result})
-	return display_result
+def getProjects(location_id, url, url4, temp3):
+	for l in location_id:
+		query = {"query":{"match":{"location."+str(l) : True}}}
+		query = json.dumps(query)
+		res1 = requests.post(url, data = query)
+		res1 = json.loads(res1.text)
+		size = res1['hits']['total']
+		res1 = requests.post(url+'?size='+str(size), data = query)
+		res1 = json.loads(res1.text)
+		i=0
+		temp2 = {}
+		while i<res1['hits']['total']:
+			temp1 = {}
+			temp1.update({'pid':res1['hits']['hits'][i]['_source']['projectId']})
+			id = res1['hits']['hits'][i]['_source']['projectId']
+			rating = getRating(id, url4)
+			temp1.update({'rating':rating})
+			temp1.update({'cover':res1['hits']['hits'][i]['_source']['cover_pic']})
+			temp1.update({'rent':res1['hits']['hits'][i]['_source']['rent']})
+			temp1.update({'location':res1['hits']['hits'][i]['_source']['coordinates']})
+			temp1.update({'type':'cghs'})
+			temp2.update({i:temp1})
+			i += 1
+		temp3.update({str(l):temp2})
+		return temp3
 
 class mapapiclass(Resource):
 	def get(self):
+
+		url1 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_geo/data/_search'
+		url2 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/cghs_index/data/_search'
+		url3 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search'
+		url4 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/rating_projects/data/_search'
 
 		#single argument to be decoded using decodeArgs
 		parser = reqparse.RequestParser()		
@@ -47,18 +59,20 @@ class mapapiclass(Resource):
 		else:
 			_distance = '5'
 
-		if 'page_start' in _args.keys():
-			_page_start = _args['page_start']
-		else:
-			_page_start = '0'
+		distance_query = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : _lat, "lon" : _lon } } } } } }
 
-		if 'page_size' in _args.keys():
-			_page_size = _args['page_size']
-		else:
-			_page_size = '10'
+		distance_query = json.dumps(distance_query)
 
-		url1 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/'
-		url2 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/cghs_index/data/'
-		url3 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/rating_projects/data'
+		res = requests.post(url1, data=distance_query)
+		res = json.loads(res.text)
+		res = requests.post(url1+'?size='+res['hits']['total'], data=distance_query)
+		res = json.loads(res.text)
+		location_id = []
+		while i<res['hits']['total']:
+			location_id.append(res['hits']['hits'][i]['_source']['id'])
+			i += 1
 
-		
+		temp3 = {}
+		temp3 = getProjects(location_id, url2, url4, temp3)
+		temp3 = getProjects(location_id, url3, url4, temp3)
+		return temp3
