@@ -62,7 +62,7 @@ def select_category_residential(_propertyType, query_builder, i):
 
 #create filter for locationId, propertyType and amenity, irrespective of url selected
 def select_filter_must(_type, field, val, query_builder, i):
-	count = _type.count('$')
+	count = field.count('$')
 	if(count == 0):
 		query_builder = build_query_must(_type+field, val, query_builder, i)
 		i += 1
@@ -340,8 +340,7 @@ class listingclass(Resource):
 						z += 1
 			#call select_filter_must
 			if(_locationId):
-				return_list = select_filter_must("location.", _location, True, query_builder, i)
-				return 'this works'
+				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
 				query_builder = return_list[0]
 				i = return_list[1]
 
