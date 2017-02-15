@@ -86,9 +86,9 @@ class mapapiclass(Resource):
 			_distance = _args['distance']
 		else:
 			_distance = '5'
-
+		
 		distance_query_location = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : _lat, "lon" : _lon } } } } } }
-
+		return distance_query_location
 		distance_query_location = json.dumps(distance_query_location)
 
 		distance_query_projects = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "coordinates" : { "lat" : _lat, "lon" : _lon } } } } } }
