@@ -44,17 +44,22 @@ def returnResults(res, r_count, _page_size):
 def select_category_residential(_propertyType, query_builder, i):
 	count = _propertyType.count('$')
 	if(count==0):
-		query_builder = build_query_must("propertyType."+_propertyType, True, query_builder, i)
+		query_builder = build_query_must("propertyType."+_propertyType, True, query_builder, i, 0)
 		i += 1
 	else:
 		count += 1
 		temp = []
 		z = 0
 		while z!=count:
-			temp.append(_propertyType.split('$')[z])
-			query_builder = build_query_must("propertyType."+temp[z], True, query_builder, i)
-			i += 1
-			z += 1
+			if(z==0):
+				temp.append(_propertyType.split('$')[z])
+				query_builder = build_query_must("propertyType."+temp[z], True, query_builder, i, z)
+				z += 1
+			else:
+				temp.append(_propertyType.split('$')[z])
+				query_builder = build_actual_query_must("propertyType."+temp[z], True, query_builder, i, z)
+				z += 1			
+		i += 1
 	r_list = []
 	r_list.append(query_builder)
 	r_list.append(i)
@@ -73,11 +78,11 @@ def select_filter_must(_type, field, val, query_builder, i):
 		while z!=count:
 			if(z==0):
 				temp.append(field.split('$')[z])
-				query_builder = build_query_must(_type+temp[z], query_builder, i, z)
+				query_builder = build_query_must(_type+temp[z], val, query_builder, i, z)
 				z += 1
 			else:
 				temp.append(field.split('$')[z])
-				query_builder = build_actual_query_must(_type+temp[z], query_builder, i, z)
+				query_builder = build_actual_query_must(_type+temp[z], val, query_builder, i, z)
 				z += 1
 		i+=1
 	r_list = []
