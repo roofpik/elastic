@@ -18,11 +18,12 @@ def getRating(id, url):
 def getLocations(distance_query, url1):
 	res1 = requests.post(url1, data=distance_query)
 	res1 = json.loads(res1.text)
-	res1 = requests.post(url1+'?size='+str(res1['hits']['total']), data=distance_query)
+	size = res1['hits']['total']
+	res1 = requests.post(url1+'?size='+str(size), data=distance_query)
 	res1 = json.loads(res1.text)
 	temp2 = {}
 	i=0
-	while i<res1['hits']['total']:
+	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['id']})
 		temp1.update({'rating':'not available yet'})
@@ -43,7 +44,7 @@ def getProjects(distance_query, url, project_type, url4):
 	res1 = json.loads(res1.text)
 	i=0
 	temp2 = {}
-	while i<res1['hits']['total']:
+	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['projectId']})
 		id = res1['hits']['hits'][i]['_source']['projectId']
@@ -97,6 +98,7 @@ class mapapiclass(Resource):
 		result = {}
 
 		result.update(getLocations(distance_query_location, url1))
+		return 'ok'
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
