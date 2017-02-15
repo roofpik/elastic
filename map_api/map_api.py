@@ -98,8 +98,8 @@ class mapapiclass(Resource):
 		result = {}
 
 		result.update(getLocations(distance_query_location, url1))
-		return 'ok'
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
+		return 'ok'
 		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
 		return result
