@@ -44,6 +44,7 @@ def getProjects(distance_query, url, project_type, url4):
 	res1 = json.loads(res1.text)
 	i=0
 	temp2 = {}
+	return 'ok'
 	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['projectId']})
