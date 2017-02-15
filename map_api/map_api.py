@@ -44,6 +44,7 @@ def getProjects(distance_query, url, project_type, url4):
 	res1 = json.loads(res1.text)
 	i=0
 	temp2 = {}
+	return 'works'
 	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['projectId']})
@@ -97,7 +98,7 @@ class mapapiclass(Resource):
 
 		result = {}
 
-		result.update(getLocations(distance_query_location, url1))
+		return result.update(getLocations(distance_query_location, url1))
 		#result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		#return 'ok'
 		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
