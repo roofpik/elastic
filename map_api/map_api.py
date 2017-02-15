@@ -68,6 +68,7 @@ class mapapiclass(Resource):
 		res = requests.post(url1+'?size='+str(res['hits']['total']), data=distance_query)
 		res = json.loads(res.text)
 		location_id = []
+		i=0
 		while i<res['hits']['total']:
 			location_id.append(res['hits']['hits'][i]['_source']['id'])
 			i += 1
