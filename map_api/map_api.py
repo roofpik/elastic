@@ -21,6 +21,7 @@ def getLocations(distance_query, url1):
 	res = requests.post(url1+'?size='+str(res['hits']['total']), data=distance_query)
 	res = json.loads(res.text)
 	temp2 = {}
+	i=0
 	while i<res1['hits']['total']:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['id']})
@@ -94,6 +95,7 @@ class mapapiclass(Resource):
 		distance_query_projects = json.dumps(distance_query_projects)
 
 		result = {}
+
 		result.update(getLocations(distance_query_location, url1))
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		result.update(getProjects(distance_query_projects, url3, "residential", url4))
