@@ -306,10 +306,10 @@ class listingclass(Resource):
 				i += 1
 		
 			#build definitions for build multi query must and build multi query should
-			if(_style):
+			if(_details_builder):
 				count = _style.count('$')
 				if(count == 0):
-					query_builder = build_query_must("style", _style, query_builder, i, 0)
+					query_builder = build_query_must("details.builder", _details_builder, query_builder, i, 0)
 					i += 1
 				else:
 					count += 1
@@ -317,12 +317,12 @@ class listingclass(Resource):
 					z = 0		
 					while z!=count:
 						if(z==0):
-							temp.append(_style.split('$')[z])
-							query_builder = build_query_must("style", temp[z], query_builder, i, z)
+							temp.append(_details_builder.split('$')[z])
+							query_builder = build_query_must("details.builder", temp[z], query_builder, i, z)
 							z += 1
 						else:
-							temp.append(_style.split('$')[z])
-							query_builder = build_actual_query_must("style", temp[z], query_builder, i, z)
+							temp.append(_details_builder.split('$')[z])
+							query_builder = build_actual_query_must("details.builder", temp[z], query_builder, i, z)
 							z += 1
 					i += 1
 
@@ -343,7 +343,7 @@ class listingclass(Resource):
 				high = _sort_field.split('$')[1]
 				query_builder = build_query_sort(low, high, query_builder, k)
 				k += 1
-			return 'works'
+
 			if(_bhk):
 				count = _bhk.count('$')
 				if(count == 0):
@@ -363,6 +363,8 @@ class listingclass(Resource):
 							query_builder = build_actual_query_exists("bhk."+temp[z], query_builder, i, z)
 							z += 1
 					i+=1
+
+			return 'works'
 			#call select_filter_must
 			if(_locationId):
 				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
