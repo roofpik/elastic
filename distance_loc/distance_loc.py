@@ -149,8 +149,8 @@ class locationdistanceclass(Resource):
 					answer = sendMostSearched(_page_start, _page_size)
 
 		if _name:
-			name_query = {"match":{"name":{"query":_name, "fuzziness":2}}
-			if _uid:
+			name_query = {"match":{"name":{"query":_name, "fuzziness":2}}}
+			if (_uid):
 				if(checkRecentlyVisited(_uid) and location_flag == True):
 					answer = sendSeries1(name_query, _page_start, _page_size, _lat, _lon)
 			else:
