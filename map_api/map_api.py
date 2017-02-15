@@ -99,7 +99,7 @@ class mapapiclass(Resource):
 
 		result.update(getLocations(distance_query_location, url1))
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
-		return 'ok'
 		result.update(getProjects(distance_query_projects, url3, "residential", url4))
+		return 'ok'
 
 		return result
