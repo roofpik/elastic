@@ -116,7 +116,7 @@ def build_query_sort(field, asc_or_dsc, query_builder, k):
 	query_builder['sort'][k][field]['order'] = asc_or_dsc
 	return query_builder
 
-def build_query_exists(field, query_builder, i):
+def build_query_exists(field, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['bool'] = {}
 	query_builder['query']['bool']['must'][i]['bool']['should'] = []
@@ -357,7 +357,7 @@ class listingclass(Resource):
 						if(z==0):
 							temp.append(_bhk.split('$')[z])
 							query_builder = build_query_exists("bhk."+temp[z], query_builder, i, z)
-							return query_builder
+							#return query_builder
 							z += 1
 						else:
 							temp.append(_bhk.split('$')[z])
