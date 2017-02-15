@@ -101,9 +101,4 @@ class mapapiclass(Resource):
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
-		index = 0
-		final_result = {}	
-		while index<30:
-			final_result.update({result.keys(index):result.values(index)})
-			i += 1
-		return final_result
+		return result[:30]
