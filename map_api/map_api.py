@@ -5,7 +5,7 @@ from flask_restful import reqparse
 from flask import *
 from decoder import decodeArgs
 
-def getProjects(location_id, url, url4, temp3):
+def getProjects(location_id, url, url4, temp3, _type):
 	for l in location_id:
 		query = {"query":{"match":{"location."+str(l) : True}}}
 		query = json.dumps(query)
@@ -25,7 +25,7 @@ def getProjects(location_id, url, url4, temp3):
 			temp1.update({'cover':res1['hits']['hits'][i]['_source']['cover_pic']})
 			temp1.update({'rent':res1['hits']['hits'][i]['_source']['rent']})
 			temp1.update({'location':res1['hits']['hits'][i]['_source']['coordinates']})
-			temp1.update({'type':'cghs'})
+			temp1.update({'type':_type})
 			temp2.update({i:temp1})
 			i += 1
 		temp3.update({str(l):temp2})
@@ -73,6 +73,6 @@ class mapapiclass(Resource):
 			i += 1
 
 		temp3 = {}
-		temp3 = getProjects(location_id, url2, url4, temp3)
-		temp3 = getProjects(location_id, url3, url4, temp3)
+		temp3 = getProjects(location_id, url2, url4, temp3, "cghs")
+		temp3 = getProjects(location_id, url3, url4, temp3, "residential")
 		return temp3
