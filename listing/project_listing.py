@@ -64,32 +64,37 @@ def select_category_residential(_propertyType, query_builder, i):
 def select_filter_must(_type, field, val, query_builder, i):
 	count = field.count('$')
 	if(count == 0):
-		query_builder = build_query_must(_type+field, val, query_builder, i)
+		query_builder = build_query_must(_type+field, query_builder, i, 0)
 		i += 1
 	else:
 		count += 1
 		temp = []
 		z = 0
 		while z!=count:
-			temp.append(field.split('$')[z])
-			query_builder = build_query_must(_type+temp[z], val, query_builder, i)
-			i += 1
-			z += 1
+			if(z==0):
+				temp.append(field.split('$')[z])
+				query_builder = build_query_must(_type+temp[z], query_builder, i, z)
+				z += 1
+			else:
+				temp.append(field.split('$')[z])
+				query_builder = build_actual_query_must(_type+temp[z], query_builder, i, z)
+				z += 1
+		i+=1
 	r_list = []
 	r_list.append(query_builder)
 	r_list.append(i)
 	return r_list
 
-def build_query_must(field, value, query_builder, i):
+def build_query_must(field, value, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['match'] = {}
-	query_builder['query']['bool']['must'][i]['match'][field] = value
-	return query_builder
+	query_builder['query']['bool']['must'][i]['bool'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'] = []
+	return build_actual_query_must(field,value, query_builder, i, z)
 
-def build_query_should(field, value, query_builder, j):
-	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['match'] = {}
-	query_builder['query']['bool']['should'][j]['match'][field] = value
+def build_actual_query_must(field, value, query_builder, i, z):
+	query_builder['query']['bool']['must'][i]['bool']['should'].append({})
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['match'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['match'][field] = value
 	return query_builder
 
 def build_query_must_range(field, lower, upper, query_builder, i):
@@ -100,14 +105,6 @@ def build_query_must_range(field, lower, upper, query_builder, i):
 	query_builder['query']['bool']['must'][i]['range'][field]['to'] = upper
 	return query_builder
 
-def build_query_should_range(field, lower, upper, query_builder, j):
-	query_builder['query']['bool']['should'].append({})
-	query_builder['query']['bool']['should'][j]['range'] = {}
-	query_builder['query']['bool']['should'][j]['range'][field] = {}
-	query_builder['query']['bool']['should'][j]['range'][field]['from'] = lower
-	query_builder['query']['bool']['should'][j]['range'][field]['to'] = upper
-	return query_builder
-
 def build_query_sort(field, asc_or_dsc, query_builder, k):
 	query_builder['sort'].append({})
 	query_builder['sort'][k][field] = {}
@@ -116,10 +113,16 @@ def build_query_sort(field, asc_or_dsc, query_builder, k):
 
 def build_query_exists(field, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['constant_score'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists'] = {}
-	query_builder['query']['bool']['must'][i]['constant_score']['filter']['exists']['field'] = field
+	query_builder['query']['bool']['must'][i]['bool'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'] = []
+	return build_actual_query_exists(field, query_builder, i ,z)
+
+def build_actual_query_exists(field, query_builder, i ,z):
+	query_builder['query']['bool']['must'][i]['bool']['should'].append({})
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['constant_score'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['constant_score']['filter'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['constant_score']['filter']['exists'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
 def build_query_range(_type, lower, upper, query_builder, j):
@@ -274,37 +277,49 @@ class listingclass(Resource):
 			if(_style):
 				count = _style.count('$')
 				if(count == 0):
-					query_builder = build_query_must("style", _style, query_builder, i)
+					query_builder = build_query_must("style", _style, query_builder, i, 0)
 					i += 1
 				else:
 					count += 1
 					temp = []
-					z = 0
+					z = 0		
 					while z!=count:
-						temp.append(_style.split('$')[z])
-						query_builder = build_query_must("style", temp[z], query_builder, i)
-						i += 1
-						z += 1
+						if(z==0):
+							temp.append(_style.split('$')[z])
+							query_builder = build_query_must("style", temp[z], query_builder, i, z)
+							z += 1
+						else:
+							temp.append(_style.split('$')[z])
+							query_builder = build_actual_query_must("style", temp[z], query_builder, i, z)
+							z += 1
+					i += 1
 
+			#flag
+			#
 			if(_details_name):
 				query_builder = build_query_must("details.name", _details_name, query_builder, i)
 				i += 1
 		
 			#build definitions for build multi query must and build multi query should
-			if(_details_builder):
-				count = _details_builder.count('$')
+			if(_style):
+				count = _style.count('$')
 				if(count == 0):
-					query_builder = build_query_must("details.builder", _details_builder, query_builder, i)
+					query_builder = build_query_must("style", _style, query_builder, i, 0)
 					i += 1
 				else:
 					count += 1
 					temp = []
-					z = 0
+					z = 0		
 					while z!=count:
-						temp.append(_details_builder.split('$')[z])
-						query_builder = build_query_should("details.builder", temp[z], query_builder, j)
-						j += 1
-						z += 1
+						if(z==0):
+							temp.append(_style.split('$')[z])
+							query_builder = build_query_must("style", temp[z], query_builder, i, z)
+							z += 1
+						else:
+							temp.append(_style.split('$')[z])
+							query_builder = build_actual_query_must("style", temp[z], query_builder, i, z)
+							z += 1
+					i += 1
 
 			if(_area_range):
 				low = _area_range.split('$')[0]
@@ -327,17 +342,22 @@ class listingclass(Resource):
 			if(_bhk):
 				count = _bhk.count('$')
 				if(count == 0):
-					query_builder = build_query_exists("bhk."+_bhk, query_builder, i)
+					query_builder = build_query_exists("bhk."+_bhk, query_builder, i, 0)
 					i += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
-						temp.append(_bhk.split('$')[z])
-						query_builder = build_query_exists("bhk."+temp[z], query_builder, i)
-						i += 1
-						z += 1
+						if(z==0):
+							temp.append(_bhk.split('$')[z])
+							query_builder = build_query_exists("bhk."+temp[z], query_builder, i, z)
+							z += 1
+						else:
+							temp.append(_bhk.split('$')[z])
+							query_builder = build_actual_query_exists("bhk."+temp[z], query_builder, i, z)
+							z += 1
+					i+=1
 			#call select_filter_must
 			if(_locationId):
 				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
