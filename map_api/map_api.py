@@ -23,6 +23,7 @@ def getLocations(distance_query, url1):
 	res1 = json.loads(res1.text)
 	temp2 = {}
 	i=0
+	return 'ok'
 	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['id']})
@@ -36,7 +37,7 @@ def getLocations(distance_query, url1):
 		i += 1
 	return temp2
 
-def getProjects(distance_query, url, project_type, url4):
+def getProjects(distance_query, url, project_type, url4):	
 	res1 = requests.post(url, data = distance_query)
 	res1 = json.loads(res1.text)
 	size = res1['hits']['total']
@@ -44,7 +45,6 @@ def getProjects(distance_query, url, project_type, url4):
 	res1 = json.loads(res1.text)
 	i=0
 	temp2 = {}
-	return 'ok'
 	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['projectId']})
