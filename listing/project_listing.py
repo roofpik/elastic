@@ -64,7 +64,7 @@ def select_category_residential(_propertyType, query_builder, i):
 def select_filter_must(_type, field, val, query_builder, i):
 	count = _type.count('$')
 	if(count == 0):
-		query_builder = build_query_must(field+_type, val, query_builder, i)
+		query_builder = build_query_must(_type+field, val, query_builder, i)
 		i += 1
 	else:
 		count += 1
@@ -72,7 +72,7 @@ def select_filter_must(_type, field, val, query_builder, i):
 		z = 0
 		while z!=count:
 			temp.append(_type.split('$')[z])
-			query_builder = build_query_must(field+temp[z], val, query_builder, i)
+			query_builder = build_query_must(_type+temp[z], val, query_builder, i)
 			i += 1
 			z += 1
 	r_list = []
@@ -274,16 +274,16 @@ class listingclass(Resource):
 			if(_style):
 				count = _style.count('$')
 				if(count == 0):
-					query_builder = build_query_should("style", _style, query_builder, j)
-					j += 1
+					query_builder = build_query_must("style", _style, query_builder, i)
+					i += 1
 				else:
 					count += 1
 					temp = []
 					z = 0
 					while z!=count:
 						temp.append(_style.split('$')[z])
-						query_builder = build_query_should("style", temp[z], query_builder, j)
-						j += 1
+						query_builder = build_query_must("style", temp[z], query_builder, i)
+						i += 1
 						z += 1
 
 			if(_details_name):
