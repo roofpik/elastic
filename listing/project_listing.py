@@ -357,6 +357,7 @@ class listingclass(Resource):
 						if(z==0):
 							temp.append(_bhk.split('$')[z])
 							query_builder = build_query_exists("bhk."+temp[z], query_builder, i, z)
+							return query_builder
 							z += 1
 						else:
 							temp.append(_bhk.split('$')[z])
@@ -364,7 +365,6 @@ class listingclass(Resource):
 							z += 1
 					i+=1
 
-			return 'works'
 			#call select_filter_must
 			if(_locationId):
 				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
