@@ -87,17 +87,17 @@ class mapapiclass(Resource):
 		else:
 			_distance = '5'
 		
-		distance_query_location = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : _lat, "lon" : _lon } } } } } }
-		return distance_query_location
+		distance_query_location = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
+		
 		distance_query_location = json.dumps(distance_query_location)
 
-		distance_query_projects = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "coordinates" : { "lat" : _lat, "lon" : _lon } } } } } }
+		distance_query_projects = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "coordinates" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
 
 		distance_query_projects = json.dumps(distance_query_projects)
 
 		result = {}
 
-		#result.update(getLocations(distance_query_location, url1))
+		result.update(getLocations(distance_query_location, url1))
 		#result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		#return 'ok'
 		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
