@@ -343,7 +343,7 @@ class listingclass(Resource):
 				high = _sort_field.split('$')[1]
 				query_builder = build_query_sort(low, high, query_builder, k)
 				k += 1
-
+			return 'works'
 			if(_bhk):
 				count = _bhk.count('$')
 				if(count == 0):
