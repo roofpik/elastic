@@ -16,10 +16,10 @@ def getRating(id, url):
 		return 0
 
 def getLocations(distance_query, url1):
-	res = requests.post(url1, data=distance_query)
-	res = json.loads(res.text)
-	res = requests.post(url1+'?size='+str(res['hits']['total']), data=distance_query)
-	res = json.loads(res.text)
+	res1 = requests.post(url1, data=distance_query)
+	res1 = json.loads(res.text)
+	res1 = requests.post(url1+'?size='+str(res['hits']['total']), data=distance_query)
+	res1 = json.loads(res.text)
 	temp2 = {}
 	i=0
 	while i<res1['hits']['total']:
