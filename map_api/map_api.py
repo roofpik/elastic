@@ -5,6 +5,16 @@ from flask_restful import reqparse
 from flask import *
 from decoder import decodeArgs
 
+def getRating(id, url):
+	q = {"query":{"match":{"pid":id}}}
+	q = json.dumps(q)
+	res = requests.post(url, data = q)
+	res = json.loads(res.text)
+	try:
+		return res['hits']['hits'][0]['_source']['rating']
+	except:
+		return 0
+
 def getProjects(location_id, url, url4, temp3, _type):
 	for l in location_id:
 		query = {"query":{"match":{"location."+str(l) : True}}}
@@ -68,7 +78,7 @@ class mapapiclass(Resource):
 		res = requests.post(url1+'?size='+str(res['hits']['total']), data=distance_query)
 		res = json.loads(res.text)
 		location_id = []
-		i=0
+		i = 0
 		while i<res['hits']['total']:
 			location_id.append(res['hits']['hits'][i]['_source']['id'])
 			i += 1
