@@ -382,7 +382,7 @@ class listingclass(Resource):
 				i = return_list[1]
 
 			query_builder = json.dumps(query_builder)
-			#return query_builder
+			return query_builder
 			#requesting data from index
 			url = url+'?size='+_page_size+'&from='+_page_start
 			try:
