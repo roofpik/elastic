@@ -365,6 +365,8 @@ class listingclass(Resource):
 							z += 1
 					i+=1
 
+			return query_builder
+
 			#call select_filter_must
 			if(_locationId):
 				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
