@@ -69,7 +69,7 @@ def select_category_residential(_propertyType, query_builder, i):
 def select_filter_must(_type, field, val, query_builder, i):
 	count = field.count('$')
 	if(count == 0):
-		query_builder = build_query_must(_type+field, query_builder, i, 0)
+		query_builder = build_query_must(_type+field, val, query_builder, i, 0)
 		i += 1
 	else:
 		count += 1
@@ -372,7 +372,7 @@ class listingclass(Resource):
 				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
 				query_builder = return_list[0]
 				i = return_list[1]
-			return query_builder
+
 			if(_propertyType):
 				return_list = select_filter_must("propertyType.", _propertyType, True, query_builder, i)
 				query_builder = return_list[0]
