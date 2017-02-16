@@ -365,14 +365,14 @@ class listingclass(Resource):
 							z += 1
 					i+=1
 
-			return query_builder
+			#return query_builder
 
 			#call select_filter_must
 			if(_locationId):
 				return_list = select_filter_must("location.", _locationId, True, query_builder, i)
 				query_builder = return_list[0]
 				i = return_list[1]
-
+			return query_builder
 			if(_propertyType):
 				return_list = select_filter_must("propertyType.", _propertyType, True, query_builder, i)
 				query_builder = return_list[0]
