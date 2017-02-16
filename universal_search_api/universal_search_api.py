@@ -16,6 +16,7 @@ class universalsearchclass(Resource):
 		if not _args:
 			return 'no argument'
 		_args = decodeArgs(_args)
+
 		if not 'name' in _args.keys():
 			return 'no search query as of now'
 		

@@ -87,6 +87,15 @@ def sendSeries2(name_query, _page_start, _page_size, _lat, _lon):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+def sendSeries3(name_query, _page_start, _page_size):
+	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/mostsearched,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
+	query={}
+	query.update({'query':name_query})
+	query = json.dumps(query)
+	res = requests.post(url, data=query)
+	res = json.loads(res.text)
+	return calculateResult(res, _page_start, _page_size)
+
 class locationdistanceclass(Resource):
 	def get(self):
 		
@@ -157,6 +166,6 @@ class locationdistanceclass(Resource):
 				if(location_flag == True):
 					answer = sendSeries2(name_query, _page_start, _page_size, _lat, _lon)
 				else:
-					answer = sendMostSearched(_page_start, _page_size)
+					answer = sendSeries3(name_query, _page_start, _page_size)
 
 		return answer
