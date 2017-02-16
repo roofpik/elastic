@@ -26,9 +26,9 @@ def getLocations(distance_query, url1):
 	while i<size:
 		temp1 = {}
 		temp1.update({'id':res1['hits']['hits'][i]['_source']['id']})
-		temp1.update({'rating':'not available yet'})
-		temp1.update({'cover':'not available yet'})
-		temp1.update({'rent':'not available yet'})
+		temp1.update({'rating':'NA'})
+		temp1.update({'cover':'NA'})
+		temp1.update({'rent':'NA'})
 		temp1.update({'location':res1['hits']['hits'][i]['_source']['location']})
 		temp1.update({'type':res1['hits']['hits'][i]['_source']['type']})
 		temp1.update({'name':res1['hits']['hits'][i]['_source']['name']})
