@@ -8,7 +8,7 @@ from decoder import decodeArgs
 class universalsearchclass(Resource):
 	def get(self):
 		url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/universal_search_index/data/_search'
-
+		parser = reqparse.RequestParser()
 		parser.add_argument('args', type=str)
 		args = parser.parse_args()
 		_args = args['args']
