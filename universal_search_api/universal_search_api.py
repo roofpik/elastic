@@ -35,7 +35,7 @@ class universalsearchclass(Resource):
 		final_result = {}
 
 		while index<counter:
-			final_result.update({index:result['hits']['hits'][index]['_source'])})
+			final_result.update({index:result['hits']['hits'][index]['_source']})
 			index += 1
 
 		return final_result
