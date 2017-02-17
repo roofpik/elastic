@@ -3,6 +3,7 @@ import requests
 import json
 from flask_restful import reqparse
 from flask import *
+#add decoder module - pending
 
 #function to build must query
 def build_query_must(field, value, query_builder, i):
@@ -11,7 +12,7 @@ def build_query_must(field, value, query_builder, i):
 	query_builder['query']['bool']['must'][i]['match'][field] = value
 	return query_builder
 
-#function to build should query
+#function to build range query
 def build_query_must_range(value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['range'] = {}
@@ -22,13 +23,15 @@ def build_query_must_range(value, query_builder, i):
 class residentialreview3class(Resource):
 	def get(self):
 		try:
+			#i is index for 'must'field in query builder that is to be incremented every time someone builds a query
 			i = 0
-			#initialize query bind
+			#initialize query build
 			query_builder = {}
 			query_builder['query'] = {}
 			query_builder['query']['bool'] = {}
 			query_builder['query']['bool']['must'] = []					
 			
+			#take arguments
 			parser = reqparse.RequestParser()
 			
 			parser.add_argument('pid', type=str)

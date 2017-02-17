@@ -12,6 +12,7 @@ class residentialreview2class(Resource):
 		args = parser.parse_args()
 		_id = args['id']
 
+		#premade index - provide id and return data as it is, if found
 		url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/' + _id
 
 		r = requests.get(url)

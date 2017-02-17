@@ -1,5 +1,6 @@
 import urllib
 
+#decoder older version specifically for email api
 def decodeArgs(_args):
 	_args = _args.decode('base64')
 	count = _args.count('&')

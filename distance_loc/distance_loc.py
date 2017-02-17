@@ -65,6 +65,7 @@ def sendRecentlyVisited(_uid, _page_start, _page_size):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+#send series of recentsearches + sorted locations according to provided location and input in search box
 def sendSeries1(name_query, _page_start, _page_size, _lat, _lon):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/recentsearches,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
 	query={}
@@ -75,6 +76,7 @@ def sendSeries1(name_query, _page_start, _page_size, _lat, _lon):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+#send sorted locations according to provided location and input in search box
 def sendSeries2(name_query, _page_start, _page_size, _lat, _lon):
 	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ]}
 	query.update({"query":name_query})
@@ -87,6 +89,7 @@ def sendSeries2(name_query, _page_start, _page_size, _lat, _lon):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
+#send series of mostsearched(general) + sorted locations according to provided location and input in search box
 def sendSeries3(name_query, _page_start, _page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/mostsearched,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
 	query={}
@@ -157,6 +160,7 @@ class locationdistanceclass(Resource):
 					#if user exists, but no data and no location, send most searched
 					answer = sendMostSearched(_page_start, _page_size)
 
+		#cases when user types in search query, refer to comments above function definitions
 		if _name:
 			name_query = {"match_phrase_prefix":{"name":_name}}
 			if (_uid):

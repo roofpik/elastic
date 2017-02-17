@@ -5,6 +5,7 @@ from flask_restful import reqparse
 from flask import *
 from decoder import decodeArgs
 
+#send rating if available else return 0
 def getRating(id, url):
 	q = {"query":{"match":{"pid":id}}}
 	q = json.dumps(q)
@@ -15,6 +16,7 @@ def getRating(id, url):
 	except:
 		return 0
 
+#send location and locality data
 def getLocations(distance_query, url1):
 	res1 = requests.post(url1, data=distance_query)
 	res1 = json.loads(res1.text)
@@ -36,6 +38,7 @@ def getLocations(distance_query, url1):
 		i += 1
 	return temp2
 
+#send project data
 def getProjects(distance_query, url, project_type, url4):	
 	res1 = requests.post(url, data = distance_query)
 	res1 = json.loads(res1.text)
@@ -61,7 +64,7 @@ def getProjects(distance_query, url, project_type, url4):
 
 class mapapiclass(Resource):
 	def get(self):
-		
+		#urls for different es indices
 		url1 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_geo/data/_search'
 		url2 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/cghs_index/data/_search'
 		url3 = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index/data/_search'
@@ -76,6 +79,7 @@ class mapapiclass(Resource):
 
 		_args = decodeArgs(_args)
 
+		#ckecking available parameters and allocating variables accordingly
 		if 'lat' in _args.keys() and 'lon' in _args.keys():
 			_lat = _args['lat']
 			_lon = _args['lon']
@@ -85,8 +89,9 @@ class mapapiclass(Resource):
 		if 'distance' in _args.keys():
 			_distance = _args['distance']
 		else:
-			_distance = '5'
+			_distance = '2'
 		
+		#query for different indices - due to difference in naming of fields
 		distance_query_location = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
 		
 		distance_query_location = json.dumps(distance_query_location)
@@ -96,7 +101,7 @@ class mapapiclass(Resource):
 		distance_query_projects = json.dumps(distance_query_projects)
 
 		result = {}
-
+		#add data to final result accordingly - check comments above function definitions
 		result.update(getLocations(distance_query_location, url1))
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		result.update(getProjects(distance_query_projects, url3, "residential", url4))

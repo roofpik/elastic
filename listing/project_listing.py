@@ -6,8 +6,7 @@ from flask import *
 from elasticsearch import Elasticsearch
 from decoder import decodeArgs
 
-#check all comments before pushing code
-
+#general function definition for returning results as object
 def returnResults(res, r_count, _page_size):
 	index_num = 0
 	final_res = {}
@@ -90,38 +89,35 @@ def select_filter_must(_type, field, val, query_builder, i):
 	r_list.append(i)
 	return r_list
 
+#build must query if there is a single value in a type
 def build_query_must(field, value, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['bool'] = {}
 	query_builder['query']['bool']['must'][i]['bool']['should'] = []
 	return build_actual_query_must(field,value, query_builder, i, z)
 
+#function called automatically if there are multiple values of a single type
 def build_actual_query_must(field, value, query_builder, i, z):
 	query_builder['query']['bool']['must'][i]['bool']['should'].append({})
 	query_builder['query']['bool']['must'][i]['bool']['should'][z]['match'] = {}
 	query_builder['query']['bool']['must'][i]['bool']['should'][z]['match'][field] = value
 	return query_builder
 
-def build_query_must_range(field, lower, upper, query_builder, i):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['range'] = {}
-	query_builder['query']['bool']['must'][i]['range'][field] = {}
-	query_builder['query']['bool']['must'][i]['range'][field]['from'] = lower
-	query_builder['query']['bool']['must'][i]['range'][field]['to'] = upper
-	return query_builder
-
+#for sorting according to a parameter - provide name of parameter followed by $ separater and asc/desc accordingly
 def build_query_sort(field, asc_or_dsc, query_builder, k):
 	query_builder['sort'].append({})
 	query_builder['sort'][k][field] = {}
 	query_builder['sort'][k][field]['order'] = asc_or_dsc
 	return query_builder
 
+#check existance of a field - currently for checking existence of bhks
 def build_query_exists(field, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['bool'] = {}
 	query_builder['query']['bool']['must'][i]['bool']['should'] = []
 	return build_actual_query_exists(field, query_builder, i ,z)
 
+#for cheking multiple instances of bhks
 def build_actual_query_exists(field, query_builder, i ,z):
 	query_builder['query']['bool']['must'][i]['bool']['should'].append({})
 	query_builder['query']['bool']['must'][i]['bool']['should'][z]['constant_score'] = {}
@@ -130,6 +126,7 @@ def build_actual_query_exists(field, query_builder, i ,z):
 	query_builder['query']['bool']['must'][i]['bool']['should'][z]['constant_score']['filter']['exists']['field'] = field
 	return query_builder
 
+#specifically for area and price fields
 def build_query_range(_type, lower, upper, query_builder, j):
 	query_builder['query']['bool']['should'].append({})
 	query_builder['query']['bool']['should'][j]['bool'] = {}
@@ -278,7 +275,8 @@ class listingclass(Resource):
 			else:
 				_page_size = '10'
 
-			#don't change anything above this
+			#calling functions according to available parameter
+			#check comments above function definitions for more info
 			if(_style):
 				count = _style.count('$')
 				if(count == 0):
@@ -299,8 +297,6 @@ class listingclass(Resource):
 							z += 1
 					i += 1
 
-			#flag
-			#
 			if(_details_name):
 				query_builder = build_query_must("details.name", _details_name, query_builder, i)
 				i += 1
@@ -357,7 +353,6 @@ class listingclass(Resource):
 						if(z==0):
 							temp.append(_bhk.split('$')[z])
 							query_builder = build_query_exists("bhk."+temp[z], query_builder, i, z)
-							#return query_builder
 							z += 1
 						else:
 							temp.append(_bhk.split('$')[z])
@@ -365,7 +360,7 @@ class listingclass(Resource):
 							z += 1
 					i+=1
 
-			#return query_builder
+			
 
 			#call select_filter_must
 			if(_locationId):
@@ -384,7 +379,7 @@ class listingclass(Resource):
 				i = return_list[1]
 
 			query_builder = json.dumps(query_builder)
-			#return query_builder
+			
 			#requesting data from index
 			url = url+'?size='+_page_size+'&from='+_page_start
 			try:
@@ -405,6 +400,6 @@ class listingclass(Resource):
 			#processing object before returning
 			result = returnResults(res, r_count, _page_size)
 			return result
-			#check all comments before pushing code
+			
 		except Exception:
 			return Exception
