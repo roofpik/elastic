@@ -23,7 +23,7 @@ class universalsearchclass(Resource):
 		
 		_name = _args['name']
 		#query for matching search box input
-		query = {"query":{"match_phrase_prefix":{"name":_name}}}
+		query = {"query":{"match":{"name":_name}}}
 		query = json.dumps(query)
 		#posting query to es
 		result = requests.post(url, data = query)
