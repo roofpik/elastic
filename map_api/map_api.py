@@ -89,7 +89,7 @@ class mapapiclass(Resource):
 		if 'distance' in _args.keys():
 			_distance = _args['distance']
 		else:
-			_distance = '2'
+			_distance = '5'
 		
 		#query for different indices - due to difference in naming of fields
 		distance_query_location = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
