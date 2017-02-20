@@ -34,7 +34,7 @@ def returnResults(res, r_count, _page_size, url_rating):
 		bhk = []
 		temp_temp_res = {}
 		temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
-		id = res['hits']['hits'][i]['_source']['projectId']
+		id = res['hits']['hits'][index_num]['_source']['projectId']
 		rating = getRating(id, url_rating)
 		temp_temp_res.update({'rating':rating})
 		temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
