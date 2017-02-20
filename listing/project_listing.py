@@ -6,19 +6,8 @@ from flask import *
 from elasticsearch import Elasticsearch
 from decoder import decodeArgs
 
-#function to get ratings
-def getRating(id, url):
-	q = {"query":{"match":{"pid":id}}}
-	q = json.dumps(q)
-	res = requests.post(url, data = q)
-	res = json.loads(res.text)
-	try:
-		return res['hits']['hits'][0]['_source']['rating']
-	except:
-		return 0
-
 #general function definition for returning results as object
-def returnResults(res, r_count, _page_size, url_rating):
+def returnResults(res, r_count, _page_size):
 	index_num = 0
 	final_res = {}
 	temp_res = {}
@@ -34,9 +23,7 @@ def returnResults(res, r_count, _page_size, url_rating):
 		bhk = []
 		temp_temp_res = {}
 		temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
-		id = res['hits']['hits'][index_num]['_source']['projectId']
-		rating = getRating(id, url_rating)
-		temp_temp_res.update({'rating':rating})
+		temp_temp_res.update({'rating':res['hits']['hits'][index_num]['_source']['rating']})
 		temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
 		temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
 		temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
@@ -102,12 +89,14 @@ def select_filter_must(_type, field, val, query_builder, i):
 	r_list.append(query_builder)
 	r_list.append(i)
 	return r_list
+
 def get_range_above(field, value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['range'] = {}
 	query_builder['query']['bool']['must'][i]['range'][field] = {}
 	query_builder['query']['bool']['must'][i]['range'][field]['gte'] = value
 	return query_builder
+
 #build must query if there is a single value in a type
 def build_query_must(field, value, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
@@ -176,7 +165,7 @@ class listingclass(Resource):
 				es = requests.get('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com')		
 			except:
 				return 'connection to es not established'
-			url_rating = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/rating_projects/data/_search'
+			
 			#initialize query builder, always pass and return this in every function related to building query
 			query_builder = {}
 			query_builder['query'] = {}
@@ -425,7 +414,7 @@ class listingclass(Resource):
 				return 'unable to count records'
 
 			#processing object before returning
-			result = returnResults(res, r_count, _page_size, url_rating)
+			result = returnResults(res, r_count, _page_size)
 			return result
 			
 		except Exception:
