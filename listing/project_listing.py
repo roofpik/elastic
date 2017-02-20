@@ -102,7 +102,12 @@ def select_filter_must(_type, field, val, query_builder, i):
 	r_list.append(query_builder)
 	r_list.append(i)
 	return r_list
-
+def get_range_above(field, value, query_builder, i):
+	query_builder['query']['bool']['must'].append({})
+	query_builder['query']['bool']['must'][i]['range'] = {}
+	query_builder['query']['bool']['must'][i]['range'][field] = {}
+	query_builder['query']['bool']['must'][i]['range'][field]['gte'] = value
+	return query_builder
 #build must query if there is a single value in a type
 def build_query_must(field, value, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
@@ -289,7 +294,15 @@ class listingclass(Resource):
 			else:
 				_page_size = '10'
 
+			if 'rating' in _args.keys():
+				_rating = _args['rating']
+			else:
+				_rating = ""
+
 			#calling functions according to available parameter
+			if _rating:
+				query_builder = get_range_above("rating", _rating, query_builder, i)
+				i += 1
 			#check comments above function definitions for more info
 			if(_style):
 				count = _style.count('$')
