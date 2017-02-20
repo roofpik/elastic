@@ -20,6 +20,7 @@ def getRating(id, url):
 def getLocations(distance_query, url1):
 	res1 = requests.post(url1, data=distance_query)
 	res1 = json.loads(res1.text)
+	return res1
 	size = res1['hits']['total']
 	res1 = requests.post(url1+'?size='+str(size), data=distance_query)
 	res1 = json.loads(res1.text)
