@@ -76,10 +76,12 @@ class mapapiclass(Resource):
 		parser.add_argument('args', type=str)
 		args = parser.parse_args()
 		_args = args['args']
+		if _args:
+			_args = decodeArgs(_args)
+		else:
+			return 'no location provided'
 
-		_args = decodeArgs(_args)
-
-		#ckecking available parameters and allocating variables accordingly
+		#checking available parameters and allocating variables accordingly
 		if 'lat' in _args.keys() and 'lon' in _args.keys():
 			_lat = _args['lat']
 			_lon = _args['lon']
