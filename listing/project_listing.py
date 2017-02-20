@@ -24,6 +24,7 @@ def returnResults(res, r_count, _page_size):
 		temp_temp_res = {}
 		temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
 		temp_temp_res.update({'rating':res['hits']['hits'][index_num]['_source']['rating']})
+		temp_temp_res.update({'numberOfReviews':res['hits']['hits'][index_num]['_source']['numberOfReviews']})
 		temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
 		temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
 		temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
