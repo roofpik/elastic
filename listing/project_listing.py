@@ -6,6 +6,17 @@ from flask import *
 from elasticsearch import Elasticsearch
 from decoder import decodeArgs
 
+#function to get ratings
+def getRating(id, url):
+	q = {"query":{"match":{"pid":id}}}
+	q = json.dumps(q)
+	res = requests.post(url, data = q)
+	res = json.loads(res.text)
+	try:
+		return res['hits']['hits'][0]['_source']['rating']
+	except:
+		return 0
+
 #general function definition for returning results as object
 def returnResults(res, r_count, _page_size):
 	index_num = 0
@@ -23,6 +34,9 @@ def returnResults(res, r_count, _page_size):
 		bhk = []
 		temp_temp_res = {}
 		temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
+		id = res1['hits']['hits'][i]['_source']['projectId']
+		rating = getRating(id, url_rating)
+		temp_temp_res.update({'rating':rating})
 		temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
 		temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
 		temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
@@ -157,7 +171,7 @@ class listingclass(Resource):
 				es = requests.get('https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com')		
 			except:
 				return 'connection to es not established'
-
+			url_rating = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/rating_projects/data/_search'
 			#initialize query builder, always pass and return this in every function related to building query
 			query_builder = {}
 			query_builder['query'] = {}
