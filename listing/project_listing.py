@@ -18,7 +18,7 @@ def getRating(id, url):
 		return 0
 
 #general function definition for returning results as object
-def returnResults(res, r_count, _page_size):
+def returnResults(res, r_count, _page_size, url_rating):
 	index_num = 0
 	final_res = {}
 	temp_res = {}
@@ -34,7 +34,7 @@ def returnResults(res, r_count, _page_size):
 		bhk = []
 		temp_temp_res = {}
 		temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
-		id = res1['hits']['hits'][i]['_source']['projectId']
+		id = res['hits']['hits'][i]['_source']['projectId']
 		rating = getRating(id, url_rating)
 		temp_temp_res.update({'rating':rating})
 		temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
@@ -412,7 +412,7 @@ class listingclass(Resource):
 				return 'unable to count records'
 
 			#processing object before returning
-			result = returnResults(res, r_count, _page_size)
+			result = returnResults(res, r_count, _page_size, url_rating)
 			return result
 			
 		except Exception:
