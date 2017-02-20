@@ -308,7 +308,7 @@ class residentialclass(Resource):
 				page_counter = res['hits']['total']
 			else:
 				page_counter = int(_page_size)
-
+			return 'works'
 			while index_num<page_counter:
 				bhk = []
 				temp_temp_res = {}
