@@ -310,6 +310,7 @@ class residentialclass(Resource):
 				page_counter = int(_page_size)
 			
 			while index_num<page_counter:
+				return 'works'
 				bhk = []
 				temp_temp_res = {}
 				temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
@@ -318,7 +319,6 @@ class residentialclass(Resource):
 				temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
 				temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
 				temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
-				return 'works'
 				for key in res['hits']['hits'][index_num]['_source']['bhk']:
 					bhk.append(key)
 				bhk.sort()
