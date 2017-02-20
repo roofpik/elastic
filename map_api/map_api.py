@@ -41,8 +41,8 @@ def getLocations(distance_query, url1):
 #send project data
 def getProjects(distance_query, url, project_type, url4):	
 	res1 = requests.post(url, data = distance_query)
-	res1 = json.loads(res1.text)
 	return res1
+	res1 = json.loads(res1.text)
 	size = res1['hits']['total']
 	res1 = requests.post(url+'?size='+str(size), data = distance_query)
 	res1 = json.loads(res1.text)
