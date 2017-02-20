@@ -20,7 +20,6 @@ def getRating(id, url):
 def getLocations(distance_query, url1):
 	res1 = requests.post(url1, data=distance_query)
 	res1 = json.loads(res1.text)
-	return res1
 	size = res1['hits']['total']
 	res1 = requests.post(url1+'?size='+str(size), data=distance_query)
 	res1 = json.loads(res1.text)
@@ -102,11 +101,11 @@ class mapapiclass(Resource):
 		distance_query_projects = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "coordinates" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
 
 		distance_query_projects = json.dumps(distance_query_projects)
-		#return distance_query_projects
+		
 		result = {}
 		#add data to final result accordingly - check comments above function definitions
-		result.update(getLocations(distance_query_location, url1))
-		#result.update(getProjects(distance_query_projects, url2, "cghs", url4))
-		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
+		#result.update(getLocations(distance_query_location, url1))
+		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
+		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
 		return result
