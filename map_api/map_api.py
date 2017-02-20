@@ -42,7 +42,6 @@ def getLocations(distance_query, url1):
 def getProjects(distance_query, url, project_type, url4):	
 	res1 = requests.post(url, data = distance_query)
 	res1 = json.loads(res1.text)
-	return res1
 	size = res1['hits']['total']
 	res1 = requests.post(url+'?size='+str(size), data = distance_query)
 	res1 = json.loads(res1.text)
@@ -105,9 +104,8 @@ class mapapiclass(Resource):
 		
 		result = {}
 		#add data to final result accordingly - check comments above function definitions
-		#result.update(getLocations(distance_query_location, url1))
-		#result.update(getProjects(distance_query_projects, url2, "cghs", url4))
-		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
-		return getProjects(distance_query_projects, url3, "residential", url4)
+		result.update(getLocations(distance_query_location, url1))
+		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
+		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
 		return result
