@@ -315,7 +315,6 @@ class residentialclass(Resource):
 				temp_temp_res.update({'id': res['hits']['hits'][index_num]['_source']['projectId']})
 				temp_temp_res.update({'name': res['hits']['hits'][index_num]['_source']['details']['name']})
 				temp_temp_res.update({'address': res['hits']['hits'][index_num]['_source']['address']})
-				return 'works'
 				temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
 				temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
 				temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
