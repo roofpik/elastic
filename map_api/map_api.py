@@ -101,7 +101,7 @@ class mapapiclass(Resource):
 		distance_query_projects = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "coordinates" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
 
 		distance_query_projects = json.dumps(distance_query_projects)
-
+		return distance_query_projects
 		result = {}
 		#add data to final result accordingly - check comments above function definitions
 		result.update(getLocations(distance_query_location, url1))
