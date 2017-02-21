@@ -95,7 +95,7 @@ def get_range_above(field, value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['range'] = {}
 	query_builder['query']['bool']['must'][i]['range'][field] = {}
-	query_builder['query']['bool']['must'][i]['range'][field]['gte'] = value
+	query_builder['query']['bool']['must'][i]['range'][field]['gte'] = int(value)
 	return query_builder
 
 #build must query if there is a single value in a type
