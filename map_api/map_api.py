@@ -106,6 +106,6 @@ class mapapiclass(Resource):
 		#add data to final result accordingly - check comments above function definitions
 		result.update(getLocations(distance_query_location, url1))
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
-		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
+		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
 		return result
