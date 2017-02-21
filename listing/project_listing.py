@@ -19,8 +19,8 @@ def returnResults(res, r_count, _page_size):
 	else:
 		page_counter = int(_page_size)
 	#added fix
-	if int(_page_size)>res['hits']['total']
-		page_counter = abs(res['hits']['total'] - int(_page_size))
+	if int(_page_size)>res['hits']['total']:
+		page_counter = res['hits']['total']
 	while index_num<page_counter:
 		bhk = []
 		temp_temp_res = {}
