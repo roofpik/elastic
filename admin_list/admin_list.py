@@ -21,15 +21,12 @@ def printProjectList(city, cityList, projectList):
 	for iteration in projectList:
 		if (iteration == city):
 			checker = 1
-			#print 'project list for '+cityList[iteration]['cityName']+': '
 			lister['project listing for '+cityList[iteration]['cityName']] = {}			
 			for type_ in projectList[iteration]:
-				#print type_+":"
 				lister['project listing for '+cityList[iteration]['cityName']][type_] = {}
 				index = 0
 				for project in projectList[iteration][type_]:
 					index += 1
-					#print projectList[iteration][type_][project]['projectName']
 					lister['project listing for '+cityList[iteration]['cityName']][type_].update({index:projectList[iteration][type_][project]})
 	return lister
 	if checker == 0:
@@ -41,12 +38,10 @@ def printllList(city, cityList, projectList, locationOrLocality):
 	for iteration in projectList:
 		if (iteration == city):
 			checker = 1
-			#print 'project list for '+cityList[iteration]['cityName']+': '
 			lister[locationOrLocality+'s for '+cityList[iteration]['cityName']] = {}			
 			index = 0
 			for project in projectList[iteration]:
 				index += 1
-				#print projectList[iteration][type_][project]['projectName']
 				lister[locationOrLocality+'s for '+cityList[iteration]['cityName']].update({index:projectList[iteration][project][locationOrLocality]})
 	return lister
 	if checker == 0:
