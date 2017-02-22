@@ -108,7 +108,7 @@ class adminviewclass(Resource):
 
 		if view=='location':
 			if city and locationId:
-				locationList = fb.get('/projects', None)
+				locationList = fb.get('/locations', None)
 				return viewLL(city, locationId, locationList)
 			else:
 				return 'incomplete info provided for '+view
