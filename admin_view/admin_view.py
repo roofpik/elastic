@@ -92,24 +92,26 @@ class adminviewclass(Resource):
 			else:
 				return 'no city id provided for '+view
 
-		if view=='project':
+		elif view=='project':
 			if city and _type and projectId:
 				projectList = fb.get('/projects', None)
 				return viewProject(city, _type, projectId, projectList)
 			else:
 				return 'incomplete info provided for '+view
 
-		if view=='locality':
+		elif view=='locality':
 			if city and localityId:
 				localityList = fb.get('/locality', None)
 				return viewLL(city, localityId, localityList)
 			else:
 				return 'incomplete info provided for '+view
 
-		if view=='location':
+		elif view=='location':
 			if city and locationId:
 				locationList = fb.get('/locations', None)
 				return viewLL(city, locationId, locationList)
 			else:
 				return 'incomplete info provided for '+view
 
+		else:
+			return 'not a valid view type'
