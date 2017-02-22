@@ -30,7 +30,7 @@ def printProjectList(city, cityList, projectList):
 				for project in projectList[iteration][type_]:
 					index += 1
 					#print projectList[iteration][type_][project]['projectName']
-					lister['project listing for '+cityList[iteration]['cityName']][type_].update({index:projectList[iteration][type_][project]['projectName']})
+					lister['project listing for '+cityList[iteration]['cityName']][type_].update({index:projectList[iteration][type_][project]})
 	return lister
 	if checker == 0:
 		return {city:'city not found'}
