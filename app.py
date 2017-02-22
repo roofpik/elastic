@@ -14,6 +14,7 @@ from distance_loc import *
 from listing import *
 from map_api import *
 from universal_search_api import *
+from admin_view import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -31,6 +32,7 @@ api.add_resource(locationdistanceclass,'/GetLocations_1.0')
 api.add_resource(listingclass,'/GetListing_1.0')
 api.add_resource(mapapiclass,'/GetMapData_1.0')
 api.add_resource(universalsearchclass,'/GetByName_1.0')
+api.add_resource(adminviewclass,'/AdminViewData_1.0')
 
 if __name__ == "__main__":
 	app.debug = True
