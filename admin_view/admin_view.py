@@ -46,7 +46,7 @@ def viewLL(city, id_, LList):
 class adminviewclass(Resource):
 	def get(self):
 
-		firebase = firebase.FirebaseApplication('https://roofpik-f8f55.firebaseio.com/', None)
+		fb = firebase.FirebaseApplication('https://roofpik-f8f55.firebaseio.com/', None)
 
 		parser = reqparse.RequestParser()
 		parser.add_argument('args', type=str)
@@ -87,28 +87,28 @@ class adminviewclass(Resource):
 
 		if view=='city':
 			if city:
-				cityList = firebase.get('/city', None)
+				cityList = fb.get('/city', None)
 				return viewCity(city, cityList)
 			else:
 				return 'no city id provided for '+view
 
 		if view=='project':
 			if city and _type and projectId:
-				projectList = firebase.get('/projects', None)
+				projectList = fb.get('/projects', None)
 				return viewProject(city, _type, projectId, projectList)
 			else:
 				return 'incomplete info provided for '+view
 
 		if view=='locality':
 			if city and localityId:
-				localityList = firebase.get('/locality', None)
+				localityList = fb.get('/locality', None)
 				return viewLL(city, localityId, localityList)
 			else:
 				return 'incomplete info provided for '+view
 
 		if view=='location':
 			if city and locationId:
-				locationList = firebase.get('/projects', None)
+				locationList = fb.get('/projects', None)
 				return viewLL(city, locationId, locationList)
 			else:
 				return 'incomplete info provided for '+view
