@@ -74,27 +74,27 @@ class adminlistclass(Resource):
 		else:
 			city = ''
 
-		cityList = firebase.get('/city', None)
+		cityList = fb.get('/city', None)
 		if view=='city':
 			return printCityList(cityList)
 
 		elif view=='project':
 			if city:
-				projectList = firebase.get('/projects', None)
+				projectList = fb.get('/projects', None)
 				return printProjectList(city, cityList, projectList)
 			else:
 				return 'provide city to list projects'
 
 		elif view=='locality':
 			if city:
-				localityList = firebase.get('/locality', None)
+				localityList = fb.get('/locality', None)
 				return printllList(city, cityList, localityList, 'localityName')
 			else:
 				return 'provide city to list localities'
 
 		elif view=='location':
 			if city:
-				locationList = firebase.get('/locations', None)
+				locationList = fb.get('/locations', None)
 				return printllList(city, cityList, locationList, 'locationName')
 			else:
 				return 'provide city to list locations'
