@@ -38,7 +38,7 @@ def viewLL(city, id_, LList):
 			for loc in LList[iteration]:
 				if loc==id_:
 					checker = 1
-					lister.update(LList[iteration][id_])
+					lister.update(LList[iteration][loc])
 	return lister
 	if checker == 0:
 		return 'not found'
