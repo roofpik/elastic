@@ -59,10 +59,10 @@ class adminlistclass(Resource):
 
 		_args = decodeArgs(_args)
 
-		if 'listType' in _args.keys():
-			view = _args['listType']
+		if 'view' in _args.keys():
+			view = _args['view']
 		else:
-			return 'no listType provided'
+			return 'no view provided'
 
 		if 'city' in _args.keys():
 			city = _args['city']

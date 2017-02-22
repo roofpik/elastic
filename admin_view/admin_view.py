@@ -60,10 +60,10 @@ class adminviewclass(Resource):
 		else:
 			city = ""
 		
-		if 'type' in _args.keys():
-			_type = _args['type']
+		if 'projectType' in _args.keys():
+			projectType = _args['projectType']
 		else:
-			_type = ""
+			projectType = ""
 
 		if 'projectId' in _args.keys():
 			projectId = _args['projectId']
@@ -93,9 +93,9 @@ class adminviewclass(Resource):
 				return 'no city id provided for '+view
 
 		elif view=='project':
-			if city and _type and projectId:
+			if city and projectType and projectId:
 				projectList = fb.get('/projects', None)
-				return viewProject(city, _type, projectId, projectList)
+				return viewProject(city, projectType, projectId, projectList)
 			else:
 				return 'incomplete info provided for '+view
 
