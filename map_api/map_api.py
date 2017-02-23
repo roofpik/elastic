@@ -67,6 +67,7 @@ def getProjects(distance_query, url, project_type, url4):
 		temp1.update({'type':project_type})
 		temp2.update({id:temp1})
 		i += 1
+		return temp2
 	return temp2
 
 class mapapiclass(Resource):
