@@ -13,7 +13,7 @@ def create(auth, db, userData, _type):
 		userId = res['localId']
 		db.child(_type).child(userId).set(data)
 		db.child(_type).child(userId).update({"userId": userId})
-		db.child(_type).child(userId).update({"createdDate": time.time()})
+		db.child(_type).child(userId).update({"createdDate": int(time.time())})
 		sendVerificationEmail(auth, userData)
 		return userId
 	else:
