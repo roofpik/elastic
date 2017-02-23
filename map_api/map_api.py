@@ -40,7 +40,7 @@ def getLocations(url1):
 	return temp2
 
 #send project data
-def getProjects(distance_query, url, project_type, url4):	
+def getProjects(url, project_type, url4):	
 	res1 = requests.post(url)
 	res1 = json.loads(res1.text)
 	size = res1['hits']['total']
