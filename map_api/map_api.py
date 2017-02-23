@@ -94,11 +94,6 @@ class mapapiclass(Resource):
 			_lon = _args['lon']
 		else:
 			return 'provide latitude and longitude'
-	
-		if 'distance' in _args.keys():
-			_distance = _args['distance']
-		else:
-			_distance = '5'
 		
 		#query for different indices - due to difference in naming of fields
 		distance_query_location = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ]}
@@ -112,7 +107,7 @@ class mapapiclass(Resource):
 		result = {}
 		#add data to final result accordingly - check comments above function definitions
 		result.update(getLocations(distance_query_location, url1))
-		#result.update(getProjects(distance_query_projects, url2, "cghs", url4))
+		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
 		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
 		return result
