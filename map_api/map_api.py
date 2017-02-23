@@ -31,7 +31,7 @@ def getLocations(distance_query, url1):
 		temp1.update({'rating':'NA'})
 		temp1.update({'cover':'NA'})
 		temp1.update({'rent':'NA'})
-		temp1.update({'bhks': 'NA'})		
+		temp1.update({'bhks':'NA'})
 		temp1.update({'location':res1['hits']['hits'][i]['_source']['location']})
 		temp1.update({'type':res1['hits']['hits'][i]['_source']['type']})
 		temp1.update({'name':res1['hits']['hits'][i]['_source']['name']})
@@ -67,7 +67,6 @@ def getProjects(distance_query, url, project_type, url4):
 		temp1.update({'type':project_type})
 		temp2.update({id:temp1})
 		i += 1
-		return temp2
 	return temp2
 
 class mapapiclass(Resource):
@@ -95,13 +94,18 @@ class mapapiclass(Resource):
 			_lon = _args['lon']
 		else:
 			return 'provide latitude and longitude'
+	
+		if 'distance' in _args.keys():
+			_distance = _args['distance']
+		else:
+			_distance = '5'
 		
 		#query for different indices - due to difference in naming of fields
-		distance_query_location = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ]}
+		distance_query_location = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "location" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
 		
 		distance_query_location = json.dumps(distance_query_location)
 
-		distance_query_projects = { "sort": [ { "_geo_distance": { "coordinates": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ]}
+		distance_query_projects = { "query": { "bool" : { "must" : { "match_all" : {} }, "filter" : { "geo_distance" : { "distance" : _distance+"km", "coordinates" : { "lat" : float(_lat), "lon" : float(_lon) } } } } } }
 
 		distance_query_projects = json.dumps(distance_query_projects)
 		
@@ -109,6 +113,6 @@ class mapapiclass(Resource):
 		#add data to final result accordingly - check comments above function definitions
 		result.update(getLocations(distance_query_location, url1))
 		result.update(getProjects(distance_query_projects, url2, "cghs", url4))
-		#result.update(getProjects(distance_query_projects, url3, "residential", url4))
+		result.update(getProjects(distance_query_projects, url3, "residential", url4))
 
 		return result
