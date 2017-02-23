@@ -15,19 +15,20 @@ def printCityList(cityList):
 		lister['cityList'].update({index:cityList[iteration]['cityName']})
 	return lister
 
-def printProjectList(city, cityList, projectList):
+def printProjectList(city, cityList, projectType, projectList):
 	checker = 0
 	lister = {}
 	for iteration in projectList:
 		if (iteration == city):
-			checker = 1
 			lister['project listing for '+cityList[iteration]['cityName']] = {}			
 			for type_ in projectList[iteration]:
-				lister['project listing for '+cityList[iteration]['cityName']][type_] = {}
-				index = 0
-				for project in projectList[iteration][type_]:
-					index += 1
-					lister['project listing for '+cityList[iteration]['cityName']][type_].update({index:projectList[iteration][type_][project]})
+				if type_==projectType:
+					lister['project listing for '+cityList[iteration]['cityName']][type_] = {}
+					index = 0
+					for project in projectList[iteration][type_]:
+						checker = 1
+						index += 1
+						lister['project listing for '+cityList[iteration]['cityName']][type_].update({index:projectList[iteration][type_][project]})
 	return lister
 	if checker == 0:
 		return {city:'city not found'}
@@ -69,6 +70,11 @@ class adminlistclass(Resource):
 		else:
 			city = ''
 
+		if 'projectType' in _args.keys():
+			projectType = _args['projectType']
+		else:
+			projectType = ''
+
 		cityList = fb.get('/city', None)
 		if view=='city':
 			return printCityList(cityList)
@@ -76,7 +82,7 @@ class adminlistclass(Resource):
 		elif view=='project':
 			if city:
 				projectList = fb.get('/projects', None)
-				return printProjectList(city, cityList, projectList)
+				return printProjectList(city, cityList, projectType, projectList)
 			else:
 				return 'provide city to list projects'
 

@@ -6,6 +6,7 @@ from flask import *
 from decoder import decodeArgs
 from firebase import firebase
 
+#function to find city if exists and return its details
 def viewCity(city, cityList):
 	checker = 0
 	for iterator in cityList:
@@ -15,6 +16,7 @@ def viewCity(city, cityList):
 	if checker==0:
 		return 'city not found'
 
+#function to find a project and return its details
 def viewProject(city, type_, projectId, projectList):
 	checker = 0
 	lister = {}
@@ -30,6 +32,7 @@ def viewProject(city, type_, projectId, projectList):
 	if checker == 0:
 		return 'not found'
 
+#function to find location or locality and return its details
 def viewLL(city, id_, LList):
 	checker = 0
 	lister = {}
@@ -85,6 +88,7 @@ class adminviewclass(Resource):
 		else:
 			return 'no view requested'
 
+		#call above defined functions according to selected 'view'
 		if view=='city':
 			if city:
 				cityList = fb.get('/city', None)
