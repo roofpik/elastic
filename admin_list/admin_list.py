@@ -6,6 +6,7 @@ from flask import *
 from decoder import decodeArgs
 from firebase import firebase
 
+#print list of all cities
 def printCityList(cityList):
 	index= 0
 	lister = {}
@@ -15,6 +16,7 @@ def printCityList(cityList):
 		lister['cityList'].update({index:cityList[iteration]['cityName']})
 	return lister
 
+#print list of all projects according to data provided 
 def printProjectList(city, cityList, projectType, projectList):
 	checker = 0
 	lister = {}
@@ -33,6 +35,7 @@ def printProjectList(city, cityList, projectType, projectList):
 	if checker == 0:
 		return {city:'city not found'}
 
+#print list of locations or localities as requested
 def printllList(city, cityList, projectList, locationOrLocality):
 	checker = 0
 	lister = {}
@@ -47,6 +50,14 @@ def printllList(city, cityList, projectList, locationOrLocality):
 	return lister
 	if checker == 0:
 		return {city:'city not found'}
+
+def printBuilderList(builderList):
+	lister = {}
+	index = 0
+	for iteration in builderList:
+		index += 1
+		lister.update({index:builderList[iteration]})
+	return lister
 
 class adminlistclass(Resource):
 	def get(self):
@@ -75,6 +86,7 @@ class adminlistclass(Resource):
 		else:
 			projectType = ''
 
+		#call above mentioned methods accordingly
 		cityList = fb.get('/city', None)
 		if view=='city':
 			return printCityList(cityList)
@@ -100,5 +112,9 @@ class adminlistclass(Resource):
 			else:
 				return 'provide city to list locations'
 
+		elif view=='builder':
+			builderList = fb.get('/builders', None)
+			return printBuilderList(builderList)
+			
 		else:
 			return 'not a valid list type'

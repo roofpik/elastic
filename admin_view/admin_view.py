@@ -37,7 +37,7 @@ def viewLL(city, id_, LList):
 	checker = 0
 	lister = {}
 	for iteration in LList:
-		if iteration == city:	
+		if iteration == city:
 			for loc in LList[iteration]:
 				if loc==id_:
 					checker = 1
@@ -45,6 +45,15 @@ def viewLL(city, id_, LList):
 	return lister
 	if checker == 0:
 		return 'not found'
+
+def viewBuilder(builderId, builderList):
+	checker = 0
+	for iteration in builderList:
+		if iteration==builderId:
+			checker = 1
+			return builderList[iteration]
+	if checker==0:
+		return 'builder not found'
 
 class adminviewclass(Resource):
 	def get(self):
@@ -83,6 +92,11 @@ class adminviewclass(Resource):
 		else:
 			localityId = ""
 
+		if 'builderId' in _args.keys():
+			builderId = _args['builderId']
+		else:
+			builderId = ""
+
 		if 'view' in _args.keys():
 			view = _args['view']
 		else:
@@ -114,6 +128,13 @@ class adminviewclass(Resource):
 			if city and locationId:
 				locationList = fb.get('/locations', None)
 				return viewLL(city, locationId, locationList)
+			else:
+				return 'incomplete info provided for '+view
+
+		elif view=='builder':
+			if builderId:
+				builderList = fb.get('/builders', None)
+				return viewBuilder(builderId, builderList)
 			else:
 				return 'incomplete info provided for '+view
 

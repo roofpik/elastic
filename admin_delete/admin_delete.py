@@ -48,6 +48,12 @@ class admindeleteclass(Resource):
 		else:
 			projectId = ''
 
+		if 'builderId' in _args.keys():
+			builderId = _args['builderId']
+		else:
+			builderId = ''
+
+		#delete element/row as requested
 		if _type=='city':
 			if cityId:
 				fb.delete('https://roofpik-f8f55.firebaseio.com/city/'+cityId, None)
@@ -66,6 +72,12 @@ class admindeleteclass(Resource):
 			else:
 				return 'provide both city id and locality id'
 
+		elif _type=='builder':
+			if builderId:
+				fb.delete('https://roofpik-f8f55.firebaseio.com/builders/'+builderId, None)
+			else:
+				return 'provide builder id'
+
 		elif _type=='project':
 			if cityId and projectType and projectId:
 				fb.delete('https://roofpik-f8f55.firebaseio.com/projects/'+cityId+'/'+projectType+'/'+projectId, None)
@@ -73,4 +85,4 @@ class admindeleteclass(Resource):
 				return 'provide city id, project id and project type'
 		
 		else:
-			return 'not a valid type'	
+			return 'not a valid type'

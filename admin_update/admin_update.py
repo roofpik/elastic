@@ -48,11 +48,17 @@ class adminupdateclass(Resource):
 		else:
 			projectId = ''
 
+		if 'builderId' in _args.keys():
+			builderId = _args['builderId']
+		else:
+			builderId = ''
+
 		if 'data' in _args.keys():
 			_data = _args['data']
 		else:
 			return 'provide data'
 
+		#update _data according to given id and path
 		if _type=='city':
 			if cityId:
 				fb.put('https://roofpik-f8f55.firebaseio.com/city/', cityId, _data)
@@ -76,6 +82,12 @@ class adminupdateclass(Resource):
 				fb.put('https://roofpik-f8f55.firebaseio.com/projects/'+cityId+'/'+projectType+'/', projectId, _data)
 			else:
 				return 'provide city id, project id and project type'
+
+		elif _type=='builder':
+			if builderId:
+				fb.put('https://roofpik-f8f55.firebaseio.com/builders/', builderId, _data)
+			else:
+				return 'provide builder id'
 		
 		else:
 			return 'not a valid type'

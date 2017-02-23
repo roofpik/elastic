@@ -38,6 +38,7 @@ class adminpostclass(Resource):
 		else:
 			return 'provide data'
 
+		#post _data as requested
 		if _type=='city':
 			res = fb.post('https://roofpik-f8f55.firebaseio.com/city/', _data)
 			return res
@@ -55,6 +56,10 @@ class adminpostclass(Resource):
 				return res
 			else:
 				return 'provide city id'
+
+		elif _type=='builder':
+			res = fb.post('https://roofpik-f8f55.firebaseio.com/builders/', _data)
+			return res
 
 		elif _type=='project':
 			if cityId and projectType:

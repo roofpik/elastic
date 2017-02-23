@@ -76,7 +76,7 @@ def sendSeries1(name_query, _page_start, _page_size, _lat, _lon):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
-#send sorted locations according to provided location and input in search box
+#send sorted locations according to provided location + input in search box
 def sendSeries2(name_query, _page_start, _page_size, _lat, _lon):
 	query = { "sort": [ { "_geo_distance": { "location": { "lat": float(_lat), "lon": float(_lon) }, "order": "asc", "unit": "km", "distance_type": "plane" } } ]}
 	query.update({"query":name_query})
@@ -89,7 +89,7 @@ def sendSeries2(name_query, _page_start, _page_size, _lat, _lon):
 	res = json.loads(res.text)
 	return calculateResult(res, _page_start, _page_size)
 
-#send series of mostsearched(general) + sorted locations according to provided location and input in search box
+#send series of mostsearched(general) + sorted locations according to provided location + input in search box
 def sendSeries3(name_query, _page_start, _page_size):
 	url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/mostsearched,locality_geo/data/_search?size='+_page_size+'&from='+_page_start
 	query={}
