@@ -55,7 +55,7 @@ def getProjects(url, project_type, url4):
 		rating = getRating(id, url4)
 		temp1.update({'rating':rating})
 		bhk = []
-		for key in res['hits']['hits'][i]['_source']['bhk']:
+		for key in res1['hits']['hits'][i]['_source']['bhk']:
 			bhk.append(key)
 		bhk.sort()
 		fbhk = ', '.join(str(e) for e in bhk)
