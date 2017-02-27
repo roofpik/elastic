@@ -61,7 +61,7 @@ class useractivityclass(Resource):
 
 		if _token == 'random':
 			stamp = int(time.time())
-			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(data)
+			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(_data)
 			return stamp
 
 		else:
