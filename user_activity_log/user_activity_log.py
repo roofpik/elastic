@@ -60,8 +60,6 @@ class useractivityclass(Resource):
 
 		if 'url' in _args.keys():
 			_url = _args['url']
-		else:
-			return 'no url activity provided'
 
 		if _token == 'random':
 			if _type=='project':
