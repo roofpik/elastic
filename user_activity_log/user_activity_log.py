@@ -60,7 +60,7 @@ class useractivityclass(Resource):
 			return 'no data' 
 
 		#{"isDeleted":False,"liked":True,"type":"location"}		
-		#_data = json.loads(json.dumps(_data))
+		_data = json.loads(json.dumps(_data))
 
 		if _token == 'random':
 			stamp = int(time.time())
