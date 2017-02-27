@@ -57,7 +57,7 @@ class useractivityclass(Resource):
 
 		else:
 			return 'no operation(like, dislike, bookmark...) specified'
-
+		return _args
 		if _token == 'random':
 			stamp = int(time.time())
 			counter = 0
