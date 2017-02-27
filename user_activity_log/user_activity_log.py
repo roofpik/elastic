@@ -60,8 +60,13 @@ class useractivityclass(Resource):
 
 		if _token == 'random':
 			stamp = int(time.time())
+			counter = 0
 			for key,val in _args.items():
-				db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set({key:val})
+				if counter==0:
+					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set({key:val})
+					counter += 1
+				else:
+					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({key:val})
 			return stamp
 
 		else:
