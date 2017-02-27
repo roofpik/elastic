@@ -67,13 +67,13 @@ class useractivityclass(Resource):
 					counter += 1
 				else:
 					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({key:val})
+			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
 			return stamp
 
 		else:
 			userId = _token.split('$')[0]
 			replacee = _token.split('$')[1]
 			replacee = int(replacee)
-			return replacee
 			temp = db.child('userActivity').child(replacee).get()
 			return temp
 			db.child('userActivity').child(userId).set(temp)
