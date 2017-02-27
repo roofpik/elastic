@@ -59,6 +59,8 @@ class useractivityclass(Resource):
 		else:
 			return 'no data' 
 
+		_data = json.dumps(_data)		
+
 		if _token == 'random':
 			stamp = int(time.time())
 			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(_data)
