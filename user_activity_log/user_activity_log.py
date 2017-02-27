@@ -75,7 +75,7 @@ class useractivityclass(Resource):
 			replacee = _token.split('$')[1]
 			replacee = int(replacee)
 			temp = db.child('userActivity').child(replacee).get()
-			return temp
+			temp = json.loads(json.dumps(temp.val()))
 			db.child('userActivity').child(userId).set(temp)
 			db.child('userActivity').child(replacee).remove()
 			return userId
