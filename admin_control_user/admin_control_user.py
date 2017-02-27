@@ -8,25 +8,27 @@ import pyrebase
 import time
 
 #create admin or user according to conditions
-def create(auth, db, userData, _type):
-	if userData['email'] and userData['password'] and userData:
-		if '@roofpik.com' in userData['email'] and _type=='admins':
-			res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
+def create(auth, db, _args, _type):
+	if _args['email'] and _args['password']:
+		if '@roofpik.com' in _args['email'] and _type=='admins':
+			res = auth.create_user_with_email_and_password(_args['email'], _args['password'])
 			userId = res['localId']
-			db.child(_type).child(userId).set(userData)
+			for key,val in _args.items():
+				db.child(_type).child(userId).set({key:val})
 			db.child(_type).child(userId).update({"userId": userId})
 			db.child(_type).child(userId).update({"createdDate": int(time.time())})
-			sendVerificationEmail(auth, userData)
+			sendVerificationEmail(auth, _args)
 			return userId
-		elif '@roofpik.com' in userData['email'] and _type=='users':
+		elif '@roofpik.com' in _args['email'] and _type=='users':
 			return '@roofpik.com can be held by admins only'
 		elif _type=='users':
-			res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
+			res = auth.create_user_with_email_and_password(_args['email'], _args['password'])
 			userId = res['localId']
-			db.child(_type).child(userId).set(userData)
+			for key,val in _args.items():
+				db.child(_type).child(userId).set({key:val})
 			db.child(_type).child(userId).update({"userId": userId})
 			db.child(_type).child(userId).update({"createdDate": int(time.time())})
-			sendVerificationEmail(auth, userData)
+			sendVerificationEmail(auth, _args)
 			return userId			
 		else:
 			return 'not a valid email'
@@ -34,8 +36,8 @@ def create(auth, db, userData, _type):
 		return 'userdata must be provided and should contain email and password'
 
 #send verification mail to given mail by getting a fresh token
-def sendVerificationEmail(auth, userData):
-	user = auth.sign_in_with_email_and_password(userData['email'], userData['password'])
+def sendVerificationEmail(auth, _args):
+	user = auth.sign_in_with_email_and_password(_args['email'], _args['password'])
 	user = auth.refresh(user['refreshToken'])
 	token = user['idToken']
 	res = auth.send_email_verification(token)
@@ -64,23 +66,24 @@ class admincontrolclass(Resource):
 
 		if 'operation' in _args.keys():
 			operation = _args['operation']
+			del _args['operation']
 		else:
 			return 'provide an operation'
 
-		if 'userData' in _args.keys():
-			userEmail = _args['userEmail']
+		if 'userEmail' in _args.keys():
+			userEmail = _args['email']
 		else:
-			userEmail = ''
+			return 'no email provided'
 
 		if operation=='createAdmin':
-			return create(auth, db, userData, "admins")
+			return create(auth, db, _args, "admins")
 
 		elif operation=='createUser':
-			return create(auth, db, userData, "users")
+			return create(auth, db, _args, "users")
 
 		elif operation=='sendPasswordReset':
-			if userData['email']:
-				auth.send_password_reset_email("email")
+			if userEmail:
+				auth.send_password_reset_email(userEmail)
 			else:
 				return 'send user email in user data'
 				

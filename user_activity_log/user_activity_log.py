@@ -30,6 +30,7 @@ class useractivityclass(Resource):
 
 		if 'token' in _args.keys():
 			_token = _args['token']
+			del _args['token']
 		else:
 			return 'token not provided'
 		if _token=='custom':
@@ -38,33 +39,29 @@ class useractivityclass(Resource):
 
 		if 'type' in _args.keys():
 			_type = _args['type']
+			del _args['type']
 
 		else:
 			return 'no type(loc, project, review...) specified'
 
 		if 'id' in _args.keys():
 			_id = _args['id']
+			del _args['id']
 
 		else:
 			return 'no id specified'
 
 		if 'operation' in _args.keys():
 			_operation = _args['operation']
+			del _args['operation']
 
 		else:
 			return 'no operation(like, dislike, bookmark...) specified'
 
-		if 'data' in _args.keys():
-			_data = _args['data']
-		else:
-			return 'no data' 
-
-		#{"isDeleted":False,"liked":True,"type":"location"}		
-		_data = json.loads(json.dumps(_data))
-
 		if _token == 'random':
 			stamp = int(time.time())
-			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(_data)
+			for key,val in _args.items():
+				db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set({key:val})
 			return stamp
 
 		else:
