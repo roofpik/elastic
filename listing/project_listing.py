@@ -32,6 +32,7 @@ def returnResults(res, r_count, _page_size):
 		temp_temp_res.update({'cover': res['hits']['hits'][index_num]['_source']['cover_pic']})
 		temp_temp_res.update({'area': res['hits']['hits'][index_num]['_source']['area']})
 		temp_temp_res.update({'rent': res['hits']['hits'][index_num]['_source']['rent']})
+		temp_temp_res.update({'type': res['hits']['hits'][index_num]['_source']['flag']})
 		for key in res['hits']['hits'][index_num]['_source']['bhk']:
 			bhk.append(key)
 		bhk.sort()
