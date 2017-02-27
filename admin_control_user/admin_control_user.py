@@ -7,23 +7,38 @@ from decoder import decodeArgs
 import pyrebase
 import time
 
+#create admin or user according to conditions
 def create(auth, db, userData, _type):
 	if userData['email'] and userData['password'] and userData:
-		res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
-		userId = res['localId']
-		db.child(_type).child(userId).set(data)
-		db.child(_type).child(userId).update({"userId": userId})
-		db.child(_type).child(userId).update({"createdDate": int(time.time())})
-		sendVerificationEmail(auth, userData)
-		return userId
+		if '@roofpik.com' in userData['email'] and _type=='admins':
+			res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
+			userId = res['localId']
+			db.child(_type).child(userId).set(data)
+			db.child(_type).child(userId).update({"userId": userId})
+			db.child(_type).child(userId).update({"createdDate": int(time.time())})
+			sendVerificationEmail(auth, userData)
+			return userId
+		elif '@roofpik.com' in userData['email'] and _type=='users':
+			return '@roofpik.com can be held by admins only'
+		elif _type=='users':
+			res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
+			userId = res['localId']
+			db.child(_type).child(userId).set(data)
+			db.child(_type).child(userId).update({"userId": userId})
+			db.child(_type).child(userId).update({"createdDate": int(time.time())})
+			sendVerificationEmail(auth, userData)
+			return userId			
+		else:
+			return 'not a valid email'
 	else:
 		return 'userdata must be provided and should contain email and password'
 
+#send verification mail to given mail by getting a fresh token
 def sendVerificationEmail(auth, userData):
 	user = auth.sign_in_with_email_and_password(userData['email'], userData['password'])
 	user = auth.refresh(user['refreshToken'])
 	token = user['idToken']
-	res = auth.send_email_verification(user['idToken'])
+	res = auth.send_email_verification(token)
 
 class admincontrolclass(Resource):
 	def get(self):

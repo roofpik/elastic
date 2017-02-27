@@ -208,6 +208,9 @@ class listingclass(Resource):
 				if(_category == 'CGHS'):
 					url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/cghs_index/data/_search'
 
+				elif(_category== 'all'):
+					url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/residential_index,cghs_index/data/_search'
+
 				else:
 					try:
 						return_list = select_category_residential(_category, query_builder, i)

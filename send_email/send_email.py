@@ -20,6 +20,7 @@ def sendMail(email, name):
 	mail.personalizations[0].add_substitution(Substitution("-name-", name))
 	mail.set_template_id("a029e13d-b169-4bc5-891c-356b80d23a6f")
 	response = sg.client.mail.send.post(request_body=mail.get())
+	return 'mail sent'
 
 class sendemailclass(Resource):
 	def get(self):
@@ -32,4 +33,10 @@ class sendemailclass(Resource):
 		#decoding coded args
 		all_args = decodeArgs(_args)
 
-		sendMail(all_args[0], all_args[1])
+		try:
+			email = all_args['email']
+			name = all_args['name']
+		except:
+			return 'params not provided correctly'
+
+		return sendMail(email, name)
