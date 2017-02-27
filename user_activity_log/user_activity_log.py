@@ -32,6 +32,8 @@ class useractivityclass(Resource):
 			_token = _args['token']
 		else:
 			return 'token not provided'
+		if _token=='custom':
+			db.child('userActivity').remove()
 
 		if 'type' in _args.keys():
 			_type = _args['type']
@@ -62,12 +64,13 @@ class useractivityclass(Resource):
 			_url = _args['url']
 
 		if _token == 'random':
+			stamp = int(time.time())
 			if _type=='project':
-				res = db.child('userActivity').child(int(time.time())).child(_operation).child(_type).child(_projectType).set(_id)
-				return res
+				res = db.child('userActivity').child(stamp).child(_operation).child(_type).child(_projectType).child(_id).set(stamp)
+				return stamp
 			else:
-				res = db.child('userActivity').child(int(time.time())).child(_operation).child(_type).set(_id)
-				return res
+				db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(stamp)
+				return stamp
 
 		else:
 			userId = _token.split('$')[0]
