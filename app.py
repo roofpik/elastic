@@ -20,6 +20,7 @@ from admin_delete import *
 from admin_update import *
 from admin_post import *
 from admin_control_user import *
+from user_activity_log import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -43,6 +44,7 @@ api.add_resource(admindeleteclass,'/AdminDeleteData_1.0')
 api.add_resource(adminupdateclass,'/AdminUpdateData_1.0')
 api.add_resource(adminpostclass,'/AdminPostData_1.0')
 api.add_resource(admincontrolclass,'/AdminControl_1.0')
+api.add_resource(useractivityclass,'/LogActivity_1.0')
 
 if __name__ == "__main__":
 	app.debug = True

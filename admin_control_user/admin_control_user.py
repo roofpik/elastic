@@ -13,7 +13,7 @@ def create(auth, db, userData, _type):
 		if '@roofpik.com' in userData['email'] and _type=='admins':
 			res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
 			userId = res['localId']
-			db.child(_type).child(userId).set(data)
+			db.child(_type).child(userId).set(userData)
 			db.child(_type).child(userId).update({"userId": userId})
 			db.child(_type).child(userId).update({"createdDate": int(time.time())})
 			sendVerificationEmail(auth, userData)
@@ -23,7 +23,7 @@ def create(auth, db, userData, _type):
 		elif _type=='users':
 			res = auth.create_user_with_email_and_password(userData['email'], userData['password'])
 			userId = res['localId']
-			db.child(_type).child(userId).set(data)
+			db.child(_type).child(userId).set(userData)
 			db.child(_type).child(userId).update({"userId": userId})
 			db.child(_type).child(userId).update({"createdDate": int(time.time())})
 			sendVerificationEmail(auth, userData)

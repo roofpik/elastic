@@ -59,6 +59,7 @@ class adminupdateclass(Resource):
 			return 'provide data'
 
 		#update _data according to given id and path
+		#format to put data - fb.put(url, _id_, _data)
 		if _type=='city':
 			if cityId:
 				fb.put('https://roofpik-f8f55.firebaseio.com/city/', cityId, _data)

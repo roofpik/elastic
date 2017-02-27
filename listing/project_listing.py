@@ -93,6 +93,7 @@ def select_filter_must(_type, field, val, query_builder, i):
 	r_list.append(i)
 	return r_list
 
+#to build query for getting upper ranges
 def get_range_above(field, value, query_builder, i):
 	query_builder['query']['bool']['must'].append({})
 	query_builder['query']['bool']['must'][i]['range'] = {}
@@ -344,6 +345,7 @@ class listingclass(Resource):
 							z += 1
 					i += 1
 
+			#build range query for price and area, format - low_range$high_range
 			if(_area_range):
 				low = _area_range.split('$')[0]
 				high = _area_range.split('$')[1]
@@ -356,6 +358,7 @@ class listingclass(Resource):
 				query_builder = build_query_range('price', low, high, query_builder, j)
 				j += 1
 
+			#build sort query, format - field$asc_or_dsc
 			if(_sort_field):
 				low = _sort_field.split('$')[0]
 				high = _sort_field.split('$')[1]

@@ -39,6 +39,7 @@ class adminpostclass(Resource):
 			return 'provide data'
 
 		#post _data as requested
+		#format to post - fb.post(url, _data)
 		if _type=='city':
 			res = fb.post('https://roofpik-f8f55.firebaseio.com/city/', _data)
 			return res
