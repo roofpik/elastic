@@ -34,19 +34,13 @@ class useractivityclass(Resource):
 			return 'token not provided'
 		if _token=='custom':
 			db.child('userActivity').remove()
+			return 'parent node userActivity deleted'
 
 		if 'type' in _args.keys():
 			_type = _args['type']
 
 		else:
 			return 'no type(loc, project, review...) specified'
-
-		if _type=='project':
-			if 'projectType' in _args.keys():
-				_projectType = _args['projectType']
-	
-			else:
-				return 'no projectType specified'
 
 		if 'id' in _args.keys():
 			_id = _args['id']
@@ -60,19 +54,20 @@ class useractivityclass(Resource):
 		else:
 			return 'no operation(like, dislike, bookmark...) specified'
 
-		if 'url' in _args.keys():
-			_url = _args['url']
+		if 'data' in _args.keys():
+			_data = _args['data']
+		else:
+			return 'no data' 
 
 		if _token == 'random':
 			stamp = int(time.time())
-			if _type=='project':
-				res = db.child('userActivity').child(stamp).child(_operation).child(_type).child(_projectType).child(_id).set(stamp)
-				return stamp
-			else:
-				db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(stamp)
-				return stamp
+			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set(data)
+			return stamp
 
 		else:
 			userId = _token.split('$')[0]
 			replacee = _token.split('$')[1]
-			db.child('userActivity').child(_operation).child(_type).child(_projectType).set(_id)
+			temp = db.child('userActivity').child(replacee).get()
+			db.child('userActivity').child(userId).set(temp)
+			db.child('userActivity').child(replacee).remove()
+			return userId
