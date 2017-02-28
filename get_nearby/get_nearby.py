@@ -15,8 +15,7 @@ def result(query, url):
 		page_counter = res['hits']['total']
 	else:
 		page_counter = 10
-	if int(_page_size)>res['hits']['total']:
-		page_counter = res['hits']['total']
+
 	temp_res={}
 	while index_num<page_counter:
 		temp_res = {}
