@@ -18,7 +18,7 @@ def result(query, url):
 
 	temp_res={}
 	while index_num<page_counter:
-		temp_res.update({'index_num': res['hits']['hits'][index_num]['_source']})
+		temp_res.update({index_num: res['hits']['hits'][index_num]['_source']})
 		index_num += 1
 	return temp_res
 
