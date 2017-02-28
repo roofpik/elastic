@@ -7,9 +7,10 @@ from elasticsearch import Elasticsearch
 from decoder import decodeArgs
 
 def result(query, url):
-	query = json.loads(query)
+	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
+	return res
 	try:
 		return res['source']
 	except:
