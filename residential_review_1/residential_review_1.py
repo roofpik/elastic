@@ -33,12 +33,11 @@ class residentialreview1class(Resource):
 			temp = {}
 			temp1 ={}
 			temp2 = {}
-			return r['_source']
 			for element in r['_source']:
-				if isinstance(element,dict):
-					temp1.update(element)
+				if isinstance(r['_source'][element],dict):
+					temp1.update(r['_source'][element])
 				else:
-					temp2.update(element)
+					temp2.update(r['_source'][element])
 			temp.update({'yes_no':temp1})
 			temp.update({'number':temp2})
 			return temp
