@@ -86,7 +86,7 @@ class residentialreview3class(Resource):
 			final_res = {}
 			d_res = {}
 			final_res.update({'hits': r_count})
-
+			result_count = 0
 			if(r_count <= 10):
 				page_counter = r_count
 			else:
@@ -106,10 +106,12 @@ class residentialreview3class(Resource):
 					d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText'][:400]})
 					d_res.update({index : d})
 					index += 1
+					result_count += 1
 				except:
 					index += 1
 					pass
 			final_res.update({'details' : d_res})
+			final_res.update({'hits': result_count})
 			return final_res
 
 		except:
