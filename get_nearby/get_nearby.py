@@ -10,9 +10,8 @@ def result(query, url):
 	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
-	return res
 	try:
-		return res['source']
+		return res['hits']['source']
 	except:
 		return 'not found'
 
