@@ -107,6 +107,7 @@ class residentialreview3class(Resource):
 					d_res.update({index : d})
 					index += 1
 				except:
+					index += 1
 					pass
 			final_res.update({'details' : d_res})
 			return final_res
