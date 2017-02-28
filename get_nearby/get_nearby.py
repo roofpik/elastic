@@ -10,10 +10,19 @@ def result(query, url):
 	query = json.dumps(query)
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
-	try:
-		return res['hits']['source']
-	except:
-		return 'not found'
+	index_num = 0
+	if(res['hits']['total'] <= 10):
+		page_counter = res['hits']['total']
+	else:
+		page_counter = 10
+	if int(_page_size)>res['hits']['total']:
+		page_counter = res['hits']['total']
+	temp_res={}
+	while index_num<page_counter:
+		temp_res = {}
+		temp_res.update({'index_num': res['hits']['hits'][index_num]['_source']['projectId']})
+		index_num += 1
+	return temp_res
 
 class nearbyclass(Resource):
 	def get(self):
