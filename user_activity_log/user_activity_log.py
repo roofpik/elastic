@@ -10,6 +10,7 @@ import time
 class useractivityclass(Resource):
 	def get(self):
 
+		#creating connection to firebase 
 		config = {
     			'apiKey': "AIzaSyAapASzaLGFxHgbMpu9Cibfn97MSEheCcU",
     			'authDomain': "roofpik-f8f55.firebaseapp.com",
@@ -19,13 +20,14 @@ class useractivityclass(Resource):
   		}
 
 		firebase = pyrebase.initialize_app(config)
+		#db stores storage details		
 		db = firebase.database()
 
 		parser = reqparse.RequestParser()
 		parser.add_argument('args', type=str)
 		args = parser.parse_args()
 		_args = args['args']
-
+		#decoding arguments
 		_args = decodeArgs(_args)
 
 		if 'token' in _args.keys():
@@ -33,9 +35,9 @@ class useractivityclass(Resource):
 			del _args['token']
 		else:
 			return 'token not provided'
-		if _token=='custom':
-			db.child('userActivity').remove()
-			return 'parent node userActivity deleted'
+		#if _token=='custom':
+		#	db.child('userActivity').remove()
+		#	return 'parent node userActivity deleted'
 
 		if 'type' in _args.keys():
 			_type = _args['type']
@@ -58,24 +60,34 @@ class useractivityclass(Resource):
 		else:
 			return 'no operation(like, dislike, bookmark...) specified'
 		
+		#if token is random, insert data in timestamp
 		if _token == 'random':
 			stamp = int(time.time())
 			counter = 0
 			for key,val in _args.items():
+				#for first entry, use set to set custom key
 				if counter==0:
 					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set({key:val})
 					counter += 1
+				#second entry onwards, use update 
 				else:
 					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({key:val})
 			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
 			return stamp
 
 		else:
+			#split the token to recieve previously set custom key and userId
 			userId = _token.split('$')[0]
 			replacee = _token.split('$')[1]
 			replacee = int(replacee)
+			#get data from previous key
 			temp = db.child('userActivity').child(replacee).get()
 			temp = json.loads(json.dumps(temp.val()))
+			#set data into user
 			db.child('userActivity').child(userId).set(temp)
+			for key,val in _args.items():
+				db.child('userActivity').child(userId).child(_operation).child(_type).child(_id).update({key:val})
+			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
+			#delete previous key			
 			db.child('userActivity').child(replacee).remove()
 			return userId
