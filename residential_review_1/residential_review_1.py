@@ -17,24 +17,8 @@ class residentialreview1class(Resource):
 		
 		if not _type:
 			_type='project'
-		
 
-		d = {}
- 		d.update({'averageRating':0})
- 		d.update({'numberOfReviews':0})
- 		d.update({'oneStar':0})
- 		d.update({'twoStar':0})
- 		d.update({'threeStar':0})
- 		d.update({'fourStar':0})
- 		d.update({'fiveStar':0})
- 		d.update({'layoutOfApartment':0})
- 		d.update({'electricityAndWaterSupply':0})
- 		d.update({'convenienceOfParking':0})
- 		d.update({'openAndGreenAreas':0})
- 		d.update({'convenienceOfHouseMaids':0})
- 		d.update({'infrastructure':0})
- 		d.update({'amenities':0})
- 		d.update({'security':0})
+		d = {_id:'not found'}
 		
 		if _type=='project':
 			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/' + _id
@@ -49,29 +33,13 @@ class residentialreview1class(Resource):
 			temp = {}
 			temp1 ={}
 			temp2 = {}
-			temp1.update({r['_source']['24x7electricity']})
-			temp1.update({r['_source']['apartmentLayoutEfficient']})
-			temp1.update({r['_source']['dailyNeedItems']})
-			temp1.update({r['_source']['easyAccessToPublicTransport']})
-			temp1.update({r['_source']['goodHospitals']})
-			temp1.update({r['_source']['goodSchools']})			
-			temp1.update({r['_source']['markets']})
-			temp1.update({r['_source']['regularCleanWaterSupply']})
+			for element in r['_source']:
+				if isinstance(element,dict):
+					temp1.update(element)
+				else:
+					temp2.update(element)
 			temp.update({'yes_no':temp1})
-			temp2.update({r['source']['amenities']})
-			temp2.update({r['source']['averageRating']})
-			temp2.update({r['source']['convenienceOfHouseMaids']})
-			temp2.update({r['source']['convenienceOfParking']})
-			temp2.update({r['source']['fiveStar']})
-			temp2.update({r['source']['fourStar']})
-			temp2.update({r['source']['infrastructure']})
-			temp2.update({r['source']['numberOfReviews']})
-			temp2.update({r['source']['twoStar']})
-			temp2.update({r['source']['oneStar']})
-			temp2.update({r['source']['threeStar']})
-			temp2.update({r['source']['openAndGreenAreas']})
-			temp2.update({r['source']['security']})
-			temp.update({'numbers':temp2})
+			temp.update({'number':temp2})
 			return temp
 		except:
 			return d		
