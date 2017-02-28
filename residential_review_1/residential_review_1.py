@@ -34,6 +34,32 @@ class residentialreview1class(Resource):
 		r = requests.get(url)
 		r = json.loads(r.text)
 		try:
-			return r['_source']
+			temp = {}
+			temp1 ={}
+			temp2 = {}
+			temp1.update({r['_source']['24x7electricity']})
+			temp1.update({r['_source']['apartmentLayoutEfficient']})
+			temp1.update({r['_source']['dailyNeedItems']})
+			temp1.update({r['_source']['easyAccessToPublicTransport']})
+			temp1.update({r['_source']['goodHospitals']})
+			temp1.update({r['_source']['goodSchools']})			
+			temp1.update({r['_source']['markets']})
+			temp1.update({r['_source']['regularCleanWaterSupply']})
+			temp.update({'yes_no':temp1})
+			temp2.update({r['source']['amenities']})
+			temp2.update({r['source']['averageRating']})
+			temp2.update({r['source']['convenienceOfHouseMaids']})
+			temp2.update({r['source']['convenienceOfParking']})
+			temp2.update({r['source']['fiveStar']})
+			temp2.update({r['source']['fourStar']})
+			temp2.update({r['source']['infrastructure']})
+			temp2.update({r['source']['numberOfReviews']})
+			temp2.update({r['source']['twoStar']})
+			temp2.update({r['source']['oneStar']})
+			temp2.update({r['source']['threeStar']})
+			temp2.update({r['source']['openAndGreenAreas']})
+			temp2.update({r['source']['security']})
+			temp.update({'numbers':temp2})
+			return temp
 		except:
 			return d		
