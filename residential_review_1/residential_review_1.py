@@ -11,6 +11,13 @@ class residentialreview1class(Resource):
 		parser.add_argument('id', type=str)
 		args = parser.parse_args()
 		_id = args['id']
+		parser.add_argument('type', type=str)
+		args = parser.parse_args()
+		_type = args['type']
+		
+		if not _type:
+			_type='project'
+		
 
 		d = {}
  		d.update({'averageRating':0})
@@ -29,7 +36,12 @@ class residentialreview1class(Resource):
  		d.update({'amenities':0})
  		d.update({'security':0})
 		
-		url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/' + _id
+		if _type=='project':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/' + _id
+		elif _type=='locality':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/localitysummary_reviews/reviews/' + _id
+		elif _type=='location':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locationsummary_reviews/reviews/' + _id
 		
 		r = requests.get(url)
 		r = json.loads(r.text)

@@ -11,9 +11,19 @@ class residentialreview2class(Resource):
 		parser.add_argument('id', type=str)
 		args = parser.parse_args()
 		_id = args['id']
+		parser.add_argument('type', type=str)
+		args = parser.parse_args()
+		_type = args['type']
 
+		if not _type:
+			_type = 'project'
 		#premade index - provide id and return data as it is, if found
-		url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/' + _id
+		if _type=='project':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews,cghs_reviews/reviews/' + _id
+		elif _type=='locality':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_reviews/reviews/' + _id
+		elif _type=='location':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/location_reviews/reviews/' + _id
 
 		r = requests.get(url)
 		r = json.loads(r.text)
