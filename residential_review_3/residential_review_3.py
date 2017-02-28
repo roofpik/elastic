@@ -82,7 +82,7 @@ class residentialreview3class(Resource):
 			r = requests.post(url, data=query_builder)
 			r = json.loads(r.text)
 			r_count = r['hits']['total']
-			return r_count
+			
 			final_res = {}
 			d_res = {}
 			final_res.update({'hits': r_count})
@@ -94,17 +94,20 @@ class residentialreview3class(Resource):
 			#return data in format
 			index = 0
 			while index<page_counter:
-				d = {}
-				d.update({'userId':r['hits']['hits'][index]['_source']['userId']})
-				d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
-				d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
-				d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
-				d.update({'reviewTitle':r['hits']['hits'][index]['_source']['reviewTitle']})
-				d.update({'wordCount':r['hits']['hits'][index]['_source']['wordCount']})
-				d.update({'reviewId':r['hits']['hits'][index]['_id']})
-				d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText'][:400]})
-				d_res.update({index : d})
-				index += 1
+				try:
+					d = {}
+					d.update({'userId':r['hits']['hits'][index]['_source']['userId']})
+					d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
+					d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
+					d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
+					d.update({'reviewTitle':r['hits']['hits'][index]['_source']['reviewTitle']})
+					d.update({'wordCount':r['hits']['hits'][index]['_source']['wordCount']})
+					d.update({'reviewId':r['hits']['hits'][index]['_id']})
+					d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText'][:400]})
+					d_res.update({index : d})
+					index += 1
+				except:
+					pass
 			final_res.update({'details' : d_res})
 			return final_res
 
