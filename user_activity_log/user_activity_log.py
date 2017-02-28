@@ -75,13 +75,16 @@ class useractivityclass(Resource):
 			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
 			return stamp
 
-		else:
+		elif '$' in _token:
 			#split the token to recieve previously set custom key and userId
 			userId = _token.split('$')[0]
 			replacee = _token.split('$')[1]
 			replacee = int(replacee)
 			#get data from previous key
-			temp = db.child('userActivity').child(replacee).get()
+			try:
+				temp = db.child('userActivity').child(replacee).get()
+			except:
+				return 'custom key not found'
 			temp = json.loads(json.dumps(temp.val()))
 			#set data into user
 			db.child('userActivity').child(userId).set(temp)
@@ -91,3 +94,6 @@ class useractivityclass(Resource):
 			#delete previous key			
 			db.child('userActivity').child(replacee).remove()
 			return userId
+
+		else:
+			return 'not a valid token'

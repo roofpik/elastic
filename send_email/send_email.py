@@ -8,17 +8,26 @@ from sendgrid.helpers.mail import Email, Content, Mail, Substitution
 from decoder import decodeArgs
 
 #sending mail via sendgrid
-def sendMail(email, name):
+def sendMail(email, name, conf):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
 	#do not send any empty field
-	subject = "Welcome!"
-	to_email = Email(email)
-	content = Content("text/html", "hi")
-	mail = Mail(from_email, subject, to_email, content)
-	#substitute name in the template
-	mail.personalizations[0].add_substitution(Substitution("-name-", name))
-	mail.set_template_id("a029e13d-b169-4bc5-891c-356b80d23a6f")
+	if conf==1:	
+		subject = "Welcome!"
+		to_email = Email(email)
+		content = Content("text/html", "hi")
+		mail = Mail(from_email, subject, to_email, content)
+		#substitute name in the template
+		mail.personalizations[0].add_substitution(Substitution("-name-", name))
+		mail.set_template_id("a029e13d-b169-4bc5-891c-356b80d23a6f")
+	elif conf==2:
+		subject = "Your review was submitted successfully!"
+		to_email = Email(email)
+		content = Content("text/html", "hi")
+		mail = Mail(from_email, subject, to_email, content)
+		#substitute name in the template
+		mail.personalizations[0].add_substitution(Substitution("-name-", name))
+		mail.set_template_id("a029e13d-b169-4bc5-891c-356b80d23a6f")		
 	response = sg.client.mail.send.post(request_body=mail.get())
 	return 'mail sent'
 
@@ -39,4 +48,9 @@ class sendemailclass(Resource):
 		except:
 			return 'params not provided correctly'
 
-		return sendMail(email, name)
+		if 'conf' in all_args['conf']:
+			_conf = all_args['conf']
+		else:
+			_conf = '1'
+
+		return sendMail(email, name, int(_conf))
