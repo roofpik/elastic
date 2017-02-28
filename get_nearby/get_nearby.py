@@ -7,8 +7,6 @@ from elasticsearch import Elasticsearch
 from decoder import decodeArgs
 
 def result(query, url):
-	query = json.dumps(query)
-	return query
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
 	try:
