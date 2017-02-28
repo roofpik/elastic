@@ -39,7 +39,7 @@ class residentialreview1class(Resource):
 				else:
 					temp2.update({element:r['_source'][element]})
 			temp.update({'yes_no':temp1})
-			temp.update({'number':temp2})
+			temp.update({'numbers':temp2})
 			return temp
 		except:
 			return d		
