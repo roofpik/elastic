@@ -42,6 +42,6 @@ class sendotpclass(Resource):
                     'msg': 'OTP successfully sent to '+_mobile,
                     'mail': mailStatus
                 }
-        except Exception as e:
+		except Exception as e:
 			return str(e)
 
