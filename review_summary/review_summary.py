@@ -20,6 +20,7 @@ class reviewsummaryclass(Resource):
 
 		d = {_id:'not found'}
 		
+		#search in respective index
 		if _type=='project':
 			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/r_reviews/reviews/' + _id
 		elif _type=='locality':
@@ -27,6 +28,7 @@ class reviewsummaryclass(Resource):
 		elif _type=='location':
 			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locationsummary_reviews/reviews/' + _id
 		
+		#send request to selected url
 		r = requests.get(url)
 		r = json.loads(r.text)
 		try:

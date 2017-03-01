@@ -43,4 +43,3 @@ class universalsearchclass(Resource):
 			index += 1
 
 		return final_result
-

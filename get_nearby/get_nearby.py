@@ -10,6 +10,7 @@ def result(query, url):
 	res = requests.post(url, data=query)
 	res = json.loads(res.text)
 	index_num = 0
+
 	if(res['hits']['total'] <= 10):
 		page_counter = res['hits']['total']
 	else:
