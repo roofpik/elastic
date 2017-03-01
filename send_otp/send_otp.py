@@ -13,8 +13,7 @@ class sendotpclass(Resource):
 			args = decodeArgs(args)
 			_mobile = args['mobile']
 			_otp = args['otp']
-			return args
-			url = 'http://smsapi.24x7sms.com/api_2.0/SendSMS.aspx?APIKEY=rNfGwBJ7xcV&MobileNo='+str(_mobile)+'&SenderID=ROOFPK&Message=Greetings, '+str(otp)+' is your verification code for Roofpik.&ServiceName=TEMPLATE_BASED'
+			url = 'http://smsapi.24x7sms.com/api_2.0/SendSMS.aspx?APIKEY=rNfGwBJ7xcV&MobileNo='+str(_mobile)+'&SenderID=ROOFPK&Message=Greetings, '+str(_otp)+' is your verification code for Roofpik.&ServiceName=TEMPLATE_BASED'
 			response = requests.post(url)
 			status = response.status_code
 			content = response.content
