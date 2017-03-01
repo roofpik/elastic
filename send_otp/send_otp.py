@@ -9,9 +9,12 @@ class sendotpclass(Resource):
 			parser = reqparse.RequestParser()
 			parser.add_argument('args', type=str)
 			args = parser.parse_args()
-			args = args['args']
-			_mobile = args['mobile']
-			_otp = args['otp']
+			_args = args['args']
+		
+			_args = decodeArgs(_args)
+
+			_mobile = _args['mobile']
+			_otp = _args['otp']
 			url = 'http://smsapi.24x7sms.com/api_2.0/SendSMS.aspx?APIKEY=rNfGwBJ7xcV&MobileNo='+_mobile+'&SenderID=ROOFPK&Message=Greetings, '+_otp+' is your verification code for Roofpik.&ServiceName=TEMPLATE_BASED'
 			response = requests.post(url)
 			status = response.status_code
