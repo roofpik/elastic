@@ -21,7 +21,7 @@ class sendotpclass(Resource):
 		try:
 			parser = reqparse.RequestParser()
 			#requesting argument
-			parser.add_argument('otp', type=str)
+			parser.add_argument('mobile', type=str)
 			parser.add_argument('email', type=str)
 			parser.add_argument('otp', type=str)
 			args = parser.parse_args()
