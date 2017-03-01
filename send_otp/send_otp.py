@@ -19,6 +19,7 @@ def sendMail(email, _otp):
 class sendotpclass(Resource):
     def get(self):
         try:
+        	return 'ok'
 			parser = reqparse.RequestParser()
 			#requesting argument
 			parser.add_argument('args', type=str)
