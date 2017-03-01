@@ -92,6 +92,7 @@ class residentialreview3class(Resource):
 			else:
 				page_counter = int(_page_size)
 			#return data in format
+
 			index = 0
 			while index<page_counter:
 				try:
@@ -100,10 +101,18 @@ class residentialreview3class(Resource):
 					d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
 					d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
 					d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
-					d.update({'reviewTitle':r['hits']['hits'][index]['_source']['reviewTitle']})
+					try:
+						title = r['hits']['hits'][index]['_source']['reviewTitle']
+					except:
+						title = r['hits']['hits'][index]['_source']['reviewText'].partition('.')[0]
+					d.update({'reviewTitle':title})
 					d.update({'wordCount':r['hits']['hits'][index]['_source']['wordCount']})
 					d.update({'reviewId':r['hits']['hits'][index]['_id']})
-					d.update({'reviewText':r['hits']['hits'][index]['_source']['reviewText'][:400]})
+					try:
+						text = r['hits']['hits'][index]['_source']['reviewText'][:400]
+					except:
+						text = title
+					d.update({'reviewText':text})
 					d_res.update({index : d})
 					index += 1
 					result_count += 1
