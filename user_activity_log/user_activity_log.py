@@ -65,7 +65,7 @@ class useractivityclass(Resource):
 			stamp = int(time.time())
 			counter = 0
 			for key,val in _args.items():
-				#for first entry, use set to set custom key
+				#for first entry, use 'set' to set custom key
 				if counter==0:
 					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set({key:val})
 					counter += 1

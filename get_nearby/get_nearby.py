@@ -3,7 +3,6 @@ import requests
 import json
 from flask_restful import reqparse
 from flask import *
-from elasticsearch import Elasticsearch
 from decoder import decodeArgs
 
 def result(query, url):
