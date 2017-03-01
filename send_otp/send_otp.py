@@ -4,13 +4,12 @@ import requests
 from decoder import decodeArgs
 
 class sendotpclass(Resource):
-    def post(self):
+    def get(self):
         try:
 			parser = reqparse.RequestParser()
 			parser.add_argument('mobile', required=True, type=int, help='user phone number')
 			parser.add_argument('otp', required=True, type=int,  help='one time password')
 			args = parser.parse_args()
-			return args
 			args = decodeArgs(args)
 			_mobile = args['mobile']
 			_otp = args['otp']
