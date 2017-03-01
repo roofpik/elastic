@@ -16,10 +16,12 @@ class residentialreview2class(Resource):
 		_type = args['type']
 
 		if not _type:
-			_type = 'project'
+			_type = 'residential'
 		#premade index - provide id and return data as it is, if found
-		if _type=='project':
-			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews,cghs_reviews/reviews/' + _id
+		if _type=='residential':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/' + _id
+		if _type=='cghs':
+			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/cghs_reviews/reviews/' + _id
 		elif _type=='locality':
 			url = 'http://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_reviews/reviews/' + _id
 		elif _type=='location':
@@ -27,7 +29,7 @@ class residentialreview2class(Resource):
 
 		r = requests.get(url)
 		r = json.loads(r.text)
-		try:		
+		try:
 			return r['_source']
 		except:
 			return 'record not found'
