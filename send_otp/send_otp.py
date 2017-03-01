@@ -4,7 +4,7 @@ import requests
 from decoder import decodeArgs
 
 class sendotpclass(Resource):
-    def post(self):
+    def get(self):
         try:
 			parser = reqparse.RequestParser()
 			parser.add_argument('mobile', required=True, type=int, help='user phone number')
@@ -14,7 +14,7 @@ class sendotpclass(Resource):
 			_mobile = args['mobile']
 			_otp = args['otp']
 			url = 'http://smsapi.24x7sms.com/api_2.0/SendSMS.aspx?APIKEY=rNfGwBJ7xcV&MobileNo='+str(_mobile)+'&SenderID=ROOFPK&Message=Greetings, '+str(otp)+' is your verification code for Roofpik.&ServiceName=TEMPLATE_BASED'
-			response = requests.get(url)
+			response = requests.post(url)
 			status = response.status_code
 			content = response.content
 			return {
