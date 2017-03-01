@@ -9,7 +9,7 @@ class sendotpclass(Resource):
             parser = reqparse.RequestParser()
             parser.add_argument('mobile', required=True, type=int, help='user phone number')
             parser.add_argument('otp', required=True, type=int,  help='one time password')
-            args = parser.parse_args()
+			args = parser.parse_args()
 			args = decodeArgs(args)
             _mobile = args['mobile']
             _otp = args['otp']
