@@ -39,7 +39,7 @@ class sendotpclass(Resource):
 			#send response
 			return {
                     'status' : status,
-                    'msg': 'OTP successfully sent to '+_mobile
+                    'msg': 'OTP successfully sent to '+_mobile,
                     'mail': mailStatus
                 }
         except Exception as e:
