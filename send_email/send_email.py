@@ -67,16 +67,6 @@ class sendemailclass(Resource):
 		else:
 			_couponFlag = False
 
-		try:
-			if _couponFlag:
-				coupon = all_args['coupon']
-
-			if not _couponFlag:
-				url = all_args['url']
-
-		except:
-			return 'either url or coupon code is missing'
-
 		_conf=int(_conf)
 
 		#check _conf to jump to method
@@ -84,6 +74,15 @@ class sendemailclass(Resource):
 			return sendWelcomeMail(email, name)
 
 		elif _conf==2:
+			try:
+				if _couponFlag:
+					coupon = all_args['coupon']
+
+				if not _couponFlag:
+					url = all_args['url']
+			except:
+				return 'either url or coupon code is missing'
+		
 			if not _couponFlag:
 				return sendSuccessWOCoupon(email, name, url)
 			if _couponFlag:
