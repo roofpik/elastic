@@ -4,7 +4,7 @@ import requests
 from decoder import decodeArgs
 
 class sendotpclass(Resource):
-    def get(self):
+    def post(self):
         try:
 			parser = reqparse.RequestParser()
 			parser.add_argument('mobile', required=True, type=int, help='user phone number')
