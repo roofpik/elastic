@@ -58,6 +58,12 @@ class residentialreview3class(Resource):
 			if not _page_start:
 					_page_start = '0'
 
+			parser.add_argument('type', type=str)
+			args = parser.parse_args()
+			_type = args['type']
+			if not _type:
+				_type = 'project'
+
 			parser.add_argument('page_size', type=str)
 			args = parser.parse_args()
 			_page_size = args['page_size']
@@ -75,8 +81,16 @@ class residentialreview3class(Resource):
 			if(_overallRating):
 				query_builder = build_query_must_range(_overallRating, query_builder, i)
 				i += 1
-			
-			url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews/reviews/_search?size='+_page_size+'&from='+_page_start	
+
+			if _type=='project':
+				url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews,cghs_reviews/reviews/_search?size='+_page_size+'&from='+_page_start
+
+			if _type=='location':
+				url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/location_reviews/reviews/_search?size='+_page_size+'&from='+_page_start
+
+			if _type=='locality':
+				url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/locality_reviews/reviews/_search?size='+_page_size+'&from='+_page_start	
+
 
 			query_builder = json.dumps(query_builder)
 			r = requests.post(url, data=query_builder)
