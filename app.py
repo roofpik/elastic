@@ -5,9 +5,9 @@ from flask.ext.cors import CORS
 from search import *
 from residential import *
 from cghs import *
-from residential_review_1 import *
-from residential_review_2 import *
-from residential_review_3 import *
+from review_summary import *
+from review_details import *
+from project_reviews import *
 from send_email import *
 from locality_search import *
 from distance_loc import *
@@ -32,9 +32,9 @@ CORS(app)
 api.add_resource(test,'/test')
 api.add_resource(residentialclass,'/GetResidential_1.0')
 api.add_resource(cghsclass,'/GetCghs_1.0')
-api.add_resource(residentialreview1class,'/GetReviewSummary_1.0')
-api.add_resource(residentialreview2class,'/GetReviewDetails_1.0')
-api.add_resource(residentialreview3class,'/GetProjectReviews_1.0')
+api.add_resource(reviewsummaryclass,'/GetReviewSummary_1.0')
+api.add_resource(reviewdetailsclass,'/GetReviewDetails_1.0')
+api.add_resource(projectreviewsclass,'/GetProjectReviews_1.0')
 api.add_resource(sendemailclass,'/SendMail_1.0')
 api.add_resource(localityclass,'/GetLocality_1.0')
 api.add_resource(locationdistanceclass,'/GetLocations_1.0')

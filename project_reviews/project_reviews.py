@@ -20,7 +20,7 @@ def build_query_must_range(value, query_builder, i):
 	query_builder['query']['bool']['must'][i]['range']['overallRating']['gte'] = value
 	return query_builder
 
-class residentialreview3class(Resource):
+class projectreviewsclass(Resource):
 	def get(self):
 		try:
 			#i is index for 'must'field in query builder that is to be incremented every time someone builds a query

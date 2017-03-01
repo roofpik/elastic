@@ -4,7 +4,7 @@ import json
 from flask_restful import reqparse
 from flask import *
 
-class residentialreview2class(Resource):
+class reviewdetailsclass(Resource):
 	def get(self):
 
 		parser = reqparse.RequestParser()
