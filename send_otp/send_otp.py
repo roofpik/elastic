@@ -35,7 +35,7 @@ class sendotpclass(Resource):
 			status = response.status_code
 			content = response.content
 			#send mail
-			mailStatus = sendMail(email, _otp)
+			mailStatus = sendMail(_email, _otp)
 			#send response
 			return {
                     'status' : status,
