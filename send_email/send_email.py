@@ -21,10 +21,10 @@ def sendMail(email, name, template_id, *extra):
 	if extra:
 		extra = list(extra)
 	#add extra substitutions here
-	if extra[1]==2:
-		mail.personalizations[0].add_substitution(Substitution("-coupon-", extra[0]))
-	else:
-		mail.personalizations[0].add_substitution(Substitution("-url-", extra[0]))
+		if extra[1]==2:
+			mail.personalizations[0].add_substitution(Substitution("-coupon-", extra[0]))
+		else:
+			mail.personalizations[0].add_substitution(Substitution("-url-", extra[0]))
 	mail.set_template_id(template_id)
 	response = sg.client.mail.send.post(request_body=mail.get())
 	return 'mail sent'
