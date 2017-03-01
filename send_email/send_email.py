@@ -7,11 +7,14 @@ import sendgrid
 from sendgrid.helpers.mail import Email, Content, Mail, Substitution
 from decoder import decodeArgs
 
-def sendMail(email, name, template_id, *extra):
+def sendMail(email, name, conf, template_id, *extra):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
-	#do not send any empty field	
-	subject = "Greetings from Roofpik!"
+	#do not send any empty field
+	if conf==1:	
+		subject = "Greetings from Roofpik!"
+	else:
+		subject = "Review submitted successfully!"
 	to_email = Email(email)
 	content = Content("text/html", "hi")
 	mail = Mail(from_email, subject, to_email, content)
@@ -25,19 +28,23 @@ def sendMail(email, name, template_id, *extra):
 			mail.personalizations[0].add_substitution(Substitution("-coupon-", extra[0]))
 		else:
 			mail.personalizations[0].add_substitution(Substitution("-url-", extra[0]))
+	#send template_id
 	mail.set_template_id(template_id)
 	response = sg.client.mail.send.post(request_body=mail.get())
 	return 'mail sent'
 
 #sending mail via sendgrid
-def sendWelcomeMail(email, name):
-	return sendMail(email, name, "a029e13d-b169-4bc5-891c-356b80d23a6f")
+def sendWelcomeMail(email, name, _conf):
+	return sendMail(email, name, _conf, "a029e13d-b169-4bc5-891c-356b80d23a6f")
 
-def sendSuccessWOCoupon(email, name, url):
-	return sendMail(email, name, "a790120a-899d-4a79-b3bb-7f07679a235f", url, 1)
+def sendSuccessWOCoupon(email, name, _conf, url):
+	return sendMail(email, name, _conf, "a790120a-899d-4a79-b3bb-7f07679a235f", url, 1)
 
-def sendSuccessWCoupon(email, name, coupon):
-	return sendMail(email, name, "9eb5e8e2-e91b-4a3d-bbb4-d7f03afee40e", coupon, 2)
+def sendVerifiedWOCoupon(email, name, _conf):
+	return sendMail(email, name, _conf, "331b64de-838d-4405-b56a-c6cf6f0b42dc")
+
+def sendSuccessWCoupon(email, name, _conf, coupon):
+	return sendMail(email, name, _conf, "9eb5e8e2-e91b-4a3d-bbb4-d7f03afee40e", coupon, 2)
 
 #main class
 class sendemailclass(Resource):
@@ -67,20 +74,27 @@ class sendemailclass(Resource):
 		else:
 			_couponFlag = False
 
+		if 'verifiedFlag' in all_args.keys():
+			_verifiedFlag = bool(all_args['verifiedFlag'])
+		else:
+			_verifiedFlag = False
+
 		_conf=int(_conf)
 
 		#check _conf to jump to method
 		if _conf==1:
-			return sendWelcomeMail(email, name)
+			return sendWelcomeMail(email, name, _conf)
 
 		elif _conf==2:
 			try:
+				if _verifiedFlag and not _couponFlag:
+					return sendVerifiedWOCoupon(email, name, _conf) 
 				if _couponFlag:
 					coupon = all_args['coupon']
-					return sendSuccessWCoupon(email, name, coupon)
+					return sendSuccessWCoupon(email, name, _conf, coupon)
 				else:
 					url = 'test.roofpik.com/#/profile'
-					return sendSuccessWOCoupon(email, name, url)
+					return sendSuccessWOCoupon(email, name, _conf, url)
 			except:
 				return 'either url or coupon code is missing'
 
