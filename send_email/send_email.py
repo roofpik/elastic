@@ -11,7 +11,7 @@ def sendMail(email, name, template_id, *extra):
 	sg = sendgrid.SendGridAPIClient(apikey='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')
 	from_email = Email("noreply@roofpik.com")
 	#do not send any empty field	
-	subject = "Welcome!"
+	subject = "Greetings from Roofpik!"
 	to_email = Email(email)
 	content = Content("text/html", "hi")
 	mail = Mail(from_email, subject, to_email, content)
@@ -55,7 +55,7 @@ class sendemailclass(Resource):
 			email = all_args['email']
 			name = all_args['name']
 		except:
-			return 'params not provided correctly'
+			return 'email or name not provided correctly'
 
 		if 'conf' in all_args.keys():
 			_conf = all_args['conf']
@@ -77,16 +77,12 @@ class sendemailclass(Resource):
 			try:
 				if _couponFlag:
 					coupon = all_args['coupon']
-
-				if not _couponFlag:
-					url = all_args['url']
+					return sendSuccessWCoupon(email, name, coupon)
+				else:
+					url = 'test.roofpik.com/#/profile'
+					return sendSuccessWOCoupon(email, name, url)
 			except:
 				return 'either url or coupon code is missing'
-		
-			if not _couponFlag:
-				return sendSuccessWOCoupon(email, name, url)
-			if _couponFlag:
-				return sendSuccessWCoupon(email, name, coupon)
 
 		else:
 			return 'conf not identified'
