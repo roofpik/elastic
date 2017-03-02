@@ -90,7 +90,7 @@ class sendemailclass(Resource):
 				if _verifiedFlag and not _couponFlag:
 					return sendVerifiedWOCoupon(email, name, _conf) 
 				elif _verifiedFlag and _couponFlag:
-					if _couponFlag==True:
+					if _couponFlag:
 						coupon = all_args['coupon']
 						return sendSuccessWCoupon(email, name, _conf, coupon)
 					else:
