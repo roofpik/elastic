@@ -86,20 +86,14 @@ class sendemailclass(Resource):
 			return sendWelcomeMail(email, name, _conf)
 
 		elif _conf==2:
-			try:
-				if _verifiedFlag and not _couponFlag:
-					return sendVerifiedWOCoupon(email, name, _conf) 
-				elif _verifiedFlag and _couponFlag:
-					if _couponFlag:
-						coupon = all_args['coupon']
-						return sendSuccessWCoupon(email, name, _conf, coupon)
-					else:
-						url = 'test.roofpik.com/#/profile'
-						return sendSuccessWOCoupon(email, name, _conf, url)
-				else:
-					return 'no selection'
-			except:
-				return 'some data is inconsistent'
-
+			if _verifiedFlag and not _couponFlag:
+				return sendVerifiedWOCoupon(email, name, _conf) 
+			elif _verifiedFlag and _couponFlag:
+				coupon = all_args['coupon']
+				return sendSuccessWCoupon(email, name, _conf, coupon)
+			else:
+				url = 'test.roofpik.com/#/profile'
+				return sendSuccessWOCoupon(email, name, _conf, url)
+			
 		else:
 			return 'conf not identified'
