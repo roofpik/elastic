@@ -80,7 +80,7 @@ class sendemailclass(Resource):
 			_verifiedFlag = False
 
 		_conf=int(_conf)
-		coupon = ''
+		coupon = 'DEFAULT_COUPON'
 		#check _conf to jump to method
 		if _conf==1:
 			return sendWelcomeMail(email, name, _conf)
@@ -89,11 +89,8 @@ class sendemailclass(Resource):
 			try:
 				if _verifiedFlag and not _couponFlag:
 					return sendVerifiedWOCoupon(email, name, _conf) 
-				elif _verifiedFlag and _couponFlag:
-					try:
-						coupon = all_args['coupon']
-					except:
-						pass
+				elif _verifiedFlag==True and _couponFlag==True:
+					coupon = all_args['coupon']
 					return sendSuccessWCoupon(email, name, _conf, coupon)
 				elif not _verifiedFlag and not _couponFlag:
 					url = 'test.roofpik.com/#/profile'
