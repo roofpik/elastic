@@ -95,6 +95,8 @@ class sendemailclass(Resource):
 				elif not _verifiedFlag and not _couponFlag:
 					url = 'test.roofpik.com/#/profile'
 					return sendSuccessWOCoupon(email, name, _conf, url)
+				else:
+					return 'no selection'
 			except:
 				return 'some data is inconsistent'
 
