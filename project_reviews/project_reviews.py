@@ -134,7 +134,7 @@ class projectreviewsclass(Resource):
 					index += 1
 					pass
 			final_res.update({'details' : d_res})
-			final_res.update({'hits': result_count})
+			#final_res.update({'hits': result_count})
 			return final_res
 
 		except:
