@@ -105,6 +105,7 @@ class projectreviewsclass(Resource):
 			else:
 				page_counter = int(_page_size)
 			#return data in format
+			n_hits = 0
 			index = 0
 			while index<page_counter:
 				try:
