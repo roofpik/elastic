@@ -93,6 +93,7 @@ class sendemailclass(Resource):
 					coupon = all_args['coupon']
 					return sendSuccessWCoupon(email, name, _conf, coupon)
 				else:
+					return 'this calls'
 					url = 'test.roofpik.com/#/profile'
 					return sendSuccessWOCoupon(email, name, _conf, url)
 			except:
