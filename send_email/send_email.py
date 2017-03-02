@@ -96,7 +96,7 @@ class sendemailclass(Resource):
 					url = 'test.roofpik.com/#/profile'
 					return sendSuccessWOCoupon(email, name, _conf, url)
 			except:
-				return 'either url or coupon code is missing'
+				return 'some data is inconsistent'
 
 		else:
 			return 'conf not identified'
