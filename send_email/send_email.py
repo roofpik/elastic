@@ -80,7 +80,7 @@ class sendemailclass(Resource):
 			_verifiedFlag = False
 
 		_conf=int(_conf)
-
+		coupon = ''
 		#check _conf to jump to method
 		if _conf==1:
 			return sendWelcomeMail(email, name, _conf)
