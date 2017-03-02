@@ -99,14 +99,12 @@ class projectreviewsclass(Resource):
 			
 			final_res = {}
 			d_res = {}
-			final_res.update({'hits': r_count})
 			result_count = 0
 			if(r_count <= 10):
 				page_counter = r_count
 			else:
 				page_counter = int(_page_size)
 			#return data in format
-
 			index = 0
 			while index<page_counter:
 				try:
@@ -132,9 +130,10 @@ class projectreviewsclass(Resource):
 					result_count += 1
 				except:
 					index += 1
+					n_hits += 1
 					pass
 			final_res.update({'details' : d_res})
-			#final_res.update({'hits': result_count})
+			final_res.update({'hits': r_count-n_hits})
 			return final_res
 
 		except:
