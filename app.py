@@ -23,6 +23,7 @@ from user_activity_log import *
 from get_nearby import *
 from get_relatedservices import *
 from send_otp import *
+from universal_search_api_home import *
 
 app = Flask(__name__)
 api = Api(app)
