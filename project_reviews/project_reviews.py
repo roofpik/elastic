@@ -46,10 +46,10 @@ class projectreviewsclass(Resource):
 			if not _userType:
 				_userType = ""
 
-			parser.add_argument('overalloverallRating', type=int)
+			parser.add_argument('overallRating', type=str)
 			args = parser.parse_args()
-			_overallRating = args['overalloverallRating']
-			if not _overallRating:
+			_overallRating = args['overallRating']
+			if _overallRating=='0':
 					_overallRating = '5$4$3$2$1'
 
 			parser.add_argument('page_start', type=str)
