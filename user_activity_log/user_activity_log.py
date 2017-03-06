@@ -73,4 +73,9 @@ class useractivityclass(Resource):
 			return userId
 
 		else:
-			return 'invalid token'
+			userId = _token
+			stamp = int(time.time() * 1000)
+			_args.update({'userId':userId})
+			_args.update({'createdDate':stamp})
+			db.child('userActivity').child(_operation).push(_args)
+			return stamp
