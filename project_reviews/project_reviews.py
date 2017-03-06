@@ -50,7 +50,7 @@ class projectreviewsclass(Resource):
 			args = parser.parse_args()
 			_overallRating = args['overallRating']
 			if not _overallRating:
-					_overallRating = 0
+					_overallRating = '5$4$3$2$1'
 
 			parser.add_argument('page_start', type=str)
 			args = parser.parse_args()
