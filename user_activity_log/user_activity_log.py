@@ -35,16 +35,9 @@ class useractivityclass(Resource):
 			del _args['token']
 		else:
 			return 'token not provided'
-		#if _token=='custom':
-		#	db.child('userActivity').remove()
-		#	return 'parent node userActivity deleted'
-
-		if 'type' in _args.keys():
-			_type = _args['type']
-			del _args['type']
-
-		else:
-			return 'no type(loc, project, review...) specified'
+		if _token=='custom':
+			db.child('userActivity').remove()
+			return 'parent node userActivity deleted'
 
 		if 'id' in _args.keys():
 			_id = _args['id']
