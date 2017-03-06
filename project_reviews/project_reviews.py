@@ -46,11 +46,11 @@ class projectreviewsclass(Resource):
 			if not _userType:
 				_userType = ""
 
-			parser.add_argument('overallRating', type=int)
+			parser.add_argument('overalloverallRating', type=int)
 			args = parser.parse_args()
-			_rating = args['overallRating']
-			if not _rating:
-					_rating = '5$4$3$2$1'
+			_overallRating = args['overalloverallRating']
+			if not _overallRating:
+					_overallRating = '5$4$3$2$1'
 
 			parser.add_argument('page_start', type=str)
 			args = parser.parse_args()
@@ -78,10 +78,10 @@ class projectreviewsclass(Resource):
 				query_builder = build_query_must("userType", _userType, query_builder, i, 0)
 				i += 1
 
-			if _rating:
-				count = _rating.count('$')
+			if _overallRating:
+				count = _overallRating.count('$')
 				if(count == 0):
-					query_builder = build_query_must("rating", _rating, query_builder, i, 0)
+					query_builder = build_query_must("overallRating", _overallRating, query_builder, i, 0)
 					i += 1
 				else:
 					count += 1
@@ -89,12 +89,12 @@ class projectreviewsclass(Resource):
 					z = 0		
 					while z!=count:
 						if(z==0):
-							temp.append(_rating.split('$')[z])
-							query_builder = build_query_must("rating", temp[z], query_builder, i, z)
+							temp.append(_overallRating.split('$')[z])
+							query_builder = build_query_must("overallRating", temp[z], query_builder, i, z)
 							z += 1
 						else:
-							temp.append(_rating.split('$')[z])
-							query_builder = build_actual_query_must("rating", temp[z], query_builder, i, z)
+							temp.append(_overallRating.split('$')[z])
+							query_builder = build_actual_query_must("overallRating", temp[z], query_builder, i, z)
 							z += 1
 					i += 1
 
@@ -127,7 +127,7 @@ class projectreviewsclass(Resource):
 					d = {}
 					d.update({'userId':r['hits']['hits'][index]['_source']['userId']})
 					d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
-					d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
+					d.update({'overalloverallRating':r['hits']['hits'][index]['_source']['overalloverallRating']})
 					d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
 					try:
 						title = r['hits']['hits'][index]['_source']['reviewTitle']
