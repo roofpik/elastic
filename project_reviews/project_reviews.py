@@ -127,7 +127,7 @@ class projectreviewsclass(Resource):
 					d = {}
 					d.update({'userId':r['hits']['hits'][index]['_source']['userId']})
 					d.update({'userName':r['hits']['hits'][index]['_source']['userName']})
-					d.update({'overalloverallRating':r['hits']['hits'][index]['_source']['overalloverallRating']})
+					d.update({'overallRating':r['hits']['hits'][index]['_source']['overallRating']})
 					d.update({'createdDate':r['hits']['hits'][index]['_source']['createdDate']})
 					try:
 						title = r['hits']['hits'][index]['_source']['reviewTitle']
