@@ -22,6 +22,7 @@ class universalhomesearchclass(Resource):
 			return 'no search query as of now'
 		
 		_name = _args['name']
+		_name = _name.lower()
 		#query for matching search box input
 		query = {"query":{"regexp":{"name":".*"+_name+".*"}}}
 		query = json.dumps(query)

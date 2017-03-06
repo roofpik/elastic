@@ -39,33 +39,18 @@ class useractivityclass(Resource):
 			db.child('userActivity').remove()
 			return 'parent node userActivity deleted'
 
-		if 'id' in _args.keys():
-			_id = _args['id']
-			del _args['id']
-
-		else:
-			return 'no id specified'
-
 		if 'operation' in _args.keys():
 			_operation = _args['operation']
 			del _args['operation']
-
 		else:
 			return 'no operation(like, dislike, bookmark...) specified'
 		
 		#if token is random, insert data in timestamp
 		if _token == 'random':
-			stamp = int(time.time())
-			counter = 0
-			for key,val in _args.items():
-				#for first entry, use 'set' to set custom key
-				if counter==0:
-					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).set({key:val})
-					counter += 1
-				#second entry onwards, use update 
-				else:
-					db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({key:val})
-			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
+			stamp = int(time.time() * 1000)
+			checker = 0
+			_args.update({'userId':stamp})
+			db.child('userActivity').child(_operation).push(_args)
 			return stamp
 
 		elif '$' in _token:
@@ -75,7 +60,7 @@ class useractivityclass(Resource):
 			replacee = int(replacee)
 			#get data from previous key
 			try:
-				temp = db.child('userActivity').child(replacee).get()
+				temp = db.child('userActivity').child(_operation).child(replacee).get()
 			except:
 				return 'custom key not found'
 			temp = json.loads(json.dumps(temp.val()))
@@ -84,7 +69,7 @@ class useractivityclass(Resource):
 			for key,val in _args.items():
 				db.child('userActivity').child(userId).child(_operation).child(_type).child(_id).update({key:val})
 			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
-			#delete previous key			
+			#delete previous key		
 			db.child('userActivity').child(replacee).remove()
 			return userId
 
