@@ -7,6 +7,12 @@ from decoder import decodeArgs
 import pyrebase
 import time
 
+def update_user(db, data, operation, temp_stamp, userId):
+	for x in data:
+		if data[x]['userId'] == temp_stamp:
+			db.child('userActivity').child(operation).child(x).update({'userId':userId})
+	return db
+
 class useractivityclass(Resource):
 	def get(self):
 
@@ -44,34 +50,27 @@ class useractivityclass(Resource):
 			del _args['operation']
 		else:
 			return 'no operation(like, dislike, bookmark...) specified'
-		
+
 		#if token is random, insert data in timestamp
 		if _token == 'random':
 			stamp = int(time.time() * 1000)
 			checker = 0
 			_args.update({'userId':stamp})
+			_args.update({'createdDate':stamp})
 			db.child('userActivity').child(_operation).push(_args)
 			return stamp
 
 		elif '$' in _token:
 			#split the token to recieve previously set custom key and userId
 			userId = _token.split('$')[0]
-			replacee = _token.split('$')[1]
-			replacee = int(replacee)
+			temp_stamp = _token.split('$')[1]
+			temp_stamp = int(temp_stamp)
 			#get data from previous key
-			try:
-				temp = db.child('userActivity').child(_operation).child(replacee).get()
-			except:
-				return 'custom key not found'
+			temp = db.child('userActivity').child(_operation).get()
 			temp = json.loads(json.dumps(temp.val()))
-			#set data into user
-			db.child('userActivity').child(userId).set(temp)
-			for key,val in _args.items():
-				db.child('userActivity').child(userId).child(_operation).child(_type).child(_id).update({key:val})
-			db.child('userActivity').child(stamp).child(_operation).child(_type).child(_id).update({'createdDate':int(time.time())})
-			#delete previous key		
-			db.child('userActivity').child(replacee).remove()
+			#update previously set temporary stamp to actual userId
+			update_user(db, temp, _operation, temp_stamp, userId)
 			return userId
 
 		else:
-			return 'not a valid token'
+			return 'invalid token'
