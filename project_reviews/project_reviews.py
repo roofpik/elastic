@@ -79,7 +79,7 @@ class projectreviewsclass(Resource):
 				i += 1
 
 			if _rating:
-				count = _style.count('$')
+				count = _rating.count('$')
 				if(count == 0):
 					query_builder = build_query_must("rating", _rating, query_builder, i, 0)
 					i += 1
@@ -89,11 +89,11 @@ class projectreviewsclass(Resource):
 					z = 0		
 					while z!=count:
 						if(z==0):
-							temp.append(_style.split('$')[z])
+							temp.append(_rating.split('$')[z])
 							query_builder = build_query_must("rating", temp[z], query_builder, i, z)
 							z += 1
 						else:
-							temp.append(_style.split('$')[z])
+							temp.append(_rating.split('$')[z])
 							query_builder = build_actual_query_must("rating", temp[z], query_builder, i, z)
 							z += 1
 					i += 1
