@@ -61,7 +61,7 @@ class useractivityclass(Resource):
 			return stamp
 
 		elif '$' in _token:
-			#split the token to recieve previously set custom key and userId
+			#split the token to receive previously set custom key and userId
 			userId = _token.split('$')[0]
 			temp_stamp = _token.split('$')[1]
 			temp_stamp = int(temp_stamp)
@@ -70,8 +70,13 @@ class useractivityclass(Resource):
 			temp = json.loads(json.dumps(temp.val()))
 			#update previously set temporary stamp to actual userId
 			update_user(db, temp, _operation, temp_stamp, userId)
+			if 'type' in _args.keys():
+				_args.update({'userId':userId})
+				_args.update({'createdDate':temp_stamp})
+				db.child('userActivity').child(_operation).push(_args)
 			return userId
 
+		#if only userId is given, any other token will be treated as userId
 		else:
 			userId = _token
 			stamp = int(time.time() * 1000)
