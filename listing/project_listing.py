@@ -298,8 +298,24 @@ class listingclass(Resource):
 
 			#calling functions according to available parameter
 			if _rating:
-				query_builder = get_range_above("rating", _rating, query_builder, i)
-				i += 1
+				count = _style.count('$')
+				if(count == 0):
+					query_builder = build_query_must("rating", _rating, query_builder, i, 0)
+					i += 1
+				else:
+					count += 1
+					temp = []
+					z = 0		
+					while z!=count:
+						if(z==0):
+							temp.append(_style.split('$')[z])
+							query_builder = build_query_must("rating", temp[z], query_builder, i, z)
+							z += 1
+						else:
+							temp.append(_style.split('$')[z])
+							query_builder = build_actual_query_must("rating", temp[z], query_builder, i, z)
+							z += 1
+					i += 1
 			#check comments above function definitions for more info
 			if(_style):
 				count = _style.count('$')

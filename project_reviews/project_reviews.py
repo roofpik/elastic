@@ -6,18 +6,18 @@ from flask import *
 #add decoder module - pending
 
 #function to build must query
-def build_query_must(field, value, query_builder, i):
+#build must query if there is a single value in a type
+def build_query_must(field, value, query_builder, i, z):
 	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['match'] = {}
-	query_builder['query']['bool']['must'][i]['match'][field] = value
-	return query_builder
+	query_builder['query']['bool']['must'][i]['bool'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'] = []
+	return build_actual_query_must(field,value, query_builder, i, z)
 
-#function to build range query
-def build_query_must_range(value, query_builder, i):
-	query_builder['query']['bool']['must'].append({})
-	query_builder['query']['bool']['must'][i]['range'] = {}
-	query_builder['query']['bool']['must'][i]['range']['overallRating'] = {}
-	query_builder['query']['bool']['must'][i]['range']['overallRating']['gte'] = value
+#function called automatically if there are multiple values of a single type
+def build_actual_query_must(field, value, query_builder, i, z):
+	query_builder['query']['bool']['must'][i]['bool']['should'].append({})
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['match'] = {}
+	query_builder['query']['bool']['must'][i]['bool']['should'][z]['match'][field] = value
 	return query_builder
 
 class projectreviewsclass(Resource):
@@ -71,16 +71,32 @@ class projectreviewsclass(Resource):
 					_page_size = '10'
 
 			if(_pid):
-				query_builder = build_query_must("pid", _pid, query_builder, i)
+				query_builder = build_query_must("pid", _pid, query_builder, i, 0)
 				i += 1
 
 			if(_userType):
-				query_builder = build_query_must("userType", _userType, query_builder, i)
+				query_builder = build_query_must("userType", _userType, query_builder, i, 0)
 				i += 1
 
-			if(_overallRating):
-				query_builder = build_query_must_range(_overallRating, query_builder, i)
-				i += 1
+			if _rating:
+				count = _style.count('$')
+				if(count == 0):
+					query_builder = build_query_must("rating", _rating, query_builder, i, 0)
+					i += 1
+				else:
+					count += 1
+					temp = []
+					z = 0		
+					while z!=count:
+						if(z==0):
+							temp.append(_style.split('$')[z])
+							query_builder = build_query_must("rating", temp[z], query_builder, i, z)
+							z += 1
+						else:
+							temp.append(_style.split('$')[z])
+							query_builder = build_actual_query_must("rating", temp[z], query_builder, i, z)
+							z += 1
+					i += 1
 
 			if _type=='project':
 				url = 'https://search-roof-pnslfpvdk2valk5lfzveecww54.ap-south-1.es.amazonaws.com/res_reviews,cghs_reviews/reviews/_search?size='+_page_size+'&from='+_page_start
