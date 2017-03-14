@@ -24,6 +24,7 @@ from get_nearby import *
 from get_relatedservices import *
 from send_otp import *
 from universal_search_api_home import *
+from file_upload import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -51,6 +52,7 @@ api.add_resource(useractivityclass,'/LogActivity_1.0')
 api.add_resource(nearbyclass,'/GetNearby_1.0')
 api.add_resource(relatedservicesclass,'/GetRelatedServices_1.0')
 api.add_resource(sendotpclass,'/SendOTP_1.0')
+api.add_resource(uploadFile,'/UploadFile')
 
 if __name__ == "__main__":
 	app.debug = True

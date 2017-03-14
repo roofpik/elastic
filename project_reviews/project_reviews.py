@@ -78,6 +78,7 @@ class projectreviewsclass(Resource):
 				query_builder = build_query_must("userType", _userType, query_builder, i, 0)
 				i += 1
 
+			#to be able to select multiple ratings
 			if _overallRating:
 				count = _overallRating.count('$')
 				if(count == 0):
