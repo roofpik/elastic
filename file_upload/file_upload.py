@@ -12,18 +12,23 @@ class uploadFile(Resource):
 		parser.add_argument('name', type=str, help='name of file')
 		parser.add_argument('path', type=str, help='path to save file')
 		args = parser.parse_args()
+		return 'called'
 		uFile = request.files['file']
-		return uFile
+		
 		try:
 			_path = args['path']
 			_name = args['name']
 		except:
 			_path = ''
 			_name = uFile.filename
-		# _path = ''
-		# _name = uFile.filename
+
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
+
+		ftp = FTP('push-12.cdn77.com')
+		ftp.login(user='user_o85l0jln', passwd='4J961952nvftlkGLVHGC')
+		ftp.cwd('/www/files/rishabh-test')
+		ftp.storbinary("STOR " + _name, open(_name,"rb"), 1024)
+		ftp.quit()
+
 		return r
-		
-#107.23.243.89
