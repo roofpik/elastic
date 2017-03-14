@@ -20,7 +20,10 @@ class uploadFile(Resource):
 		except:
 			_path = ''
 			_name = uFile.filename
-
+		try:
+			os.mkdir('/var/www/api/uploaded_files/'+_path)
+		except:
+			pass
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
 		return 'called'
