@@ -8,7 +8,24 @@ import uuid
 
 class uploadFile(Resource):
 	def post(self):
-		uFile = request.files['file']
-		os.chdir('/var/www/api/uploaded_files')
-		r = uFile.save(secure_filename(uFile.filename))
+
+        parser = reqparse.RequestParser()
+        parser.add_argument('name', type=str, help='name of file')
+        parser.add_argument('path', type=str, help='path to save file')
+        args = parser.parse_args()
+        uFile = request.files['file']
+
+        _path = args['path']
+        if not _path:
+        	_path = ''
+
+        _name = args['name']
+        if not _name:
+        	_name = uFile.filename
+		
+		os.chdir('/var/www/api/uploaded_files/'+_path)
+		r = uFile.save(secure_filename(_name))
+
+		if r==null:
+			return 'file uploaded successfully'
 		return r
