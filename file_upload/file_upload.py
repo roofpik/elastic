@@ -26,7 +26,7 @@ class uploadFile(Resource):
 			pass
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
-		return 'called'
+		
 		ftp = FTP('push-12.cdn77.com')
 		ftp.login(user='user_o85l0jln', passwd='4J961952nvftlkGLVHGC')
 		ftp.cwd('/www/files/rishabh-test')
