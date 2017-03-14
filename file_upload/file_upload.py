@@ -13,15 +13,18 @@ class uploadFile(Resource):
 		parser.add_argument('path', type=str, help='path to save file')
 		args = parser.parse_args()
 		uFile = request.files['file']
+		
+        try:
+        	_path = args['path']
+        	_name = args['name']
+        except:
+        	pass
 
-        _path = args['path']
         if not _path:
         	_path = ''
-
-        _name = args['name']
         if not _name:
         	_name = uFile.filename
 		
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
-		
+		return r
