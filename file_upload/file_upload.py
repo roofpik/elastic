@@ -27,10 +27,10 @@ class uploadFile(Resource):
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
 		
-		ftp = FTP('push-12.cdn77.com')
-		ftp.login(user='user_o85l0jln', passwd='4J961952nvftlkGLVHGC')
-		ftp.cwd('/www/files/rishabh-test')
-		ftp.storbinary("STOR " + _name, open(_name,"rb"), 1024)
-		ftp.quit()
+		# ftp = FTP('push-12.cdn77.com')
+		# ftp.login(user='user_o85l0jln', passwd='4J961952nvftlkGLVHGC')
+		# ftp.cwd('/www/files/rishabh-test')
+		# ftp.storbinary("STOR " + _name, open(_name,"rb"), 1024)
+		# ftp.quit()
 
 		return r
