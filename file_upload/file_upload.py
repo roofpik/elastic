@@ -17,13 +17,12 @@ class uploadFile(Resource):
         try:
         	_path = args['path']
         	_name = args['name']
+        	if not _path:
+        		_path = ''
+        	if not _name:
+        		_name = uFile.filename
         except:
         	pass
-
-        if not _path:
-        	_path = ''
-        if not _name:
-        	_name = uFile.filename
 		
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
