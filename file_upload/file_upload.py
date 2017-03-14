@@ -24,5 +24,6 @@ class uploadFile(Resource):
 		# _name = uFile.filename
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
-		return r
+		#return r
 		
+#107.23.243.89
