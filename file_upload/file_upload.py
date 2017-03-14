@@ -25,6 +25,4 @@ class uploadFile(Resource):
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
 
-		if r==null:
-			return 'file uploaded successfully'
 		return r
