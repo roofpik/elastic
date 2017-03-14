@@ -13,7 +13,6 @@ class uploadFile(Resource):
 		parser.add_argument('path', type=str, help='path to save file')
 		args = parser.parse_args()
 		uFile = request.files['file']
-		return 'called'
 		
 		try:
 			_path = args['path']
@@ -24,7 +23,7 @@ class uploadFile(Resource):
 
 		os.chdir('/var/www/api/uploaded_files/'+_path)
 		r = uFile.save(secure_filename(_name))
-
+		return 'called'
 		ftp = FTP('push-12.cdn77.com')
 		ftp.login(user='user_o85l0jln', passwd='4J961952nvftlkGLVHGC')
 		ftp.cwd('/www/files/rishabh-test')
