@@ -8,12 +8,11 @@ import uuid
 
 class uploadFile(Resource):
 	def post(self):
-
-        parser = reqparse.RequestParser()
-        parser.add_argument('name', type=str, help='name of file')
-        parser.add_argument('path', type=str, help='path to save file')
-        args = parser.parse_args()
-        uFile = request.files['file']
+		parser = reqparse.RequestParser()
+		parser.add_argument('name', type=str, help='name of file')
+		parser.add_argument('path', type=str, help='path to save file')
+		args = parser.parse_args()
+		uFile = request.files['file']
 
         _path = args['path']
         if not _path:
