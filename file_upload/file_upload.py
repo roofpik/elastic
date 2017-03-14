@@ -12,8 +12,8 @@ class uploadFile(Resource):
 		parser.add_argument('name', type=str, help='name of file')
 		parser.add_argument('path', type=str, help='path to save file')
 		args = parser.parse_args()
-		return 'called'
 		uFile = request.files['file']
+		return 'called'
 		
 		try:
 			_path = args['path']
